@@ -1,0 +1,76 @@
+{
+  "pages": [{
+    "path": "pages/index",
+    "name": "index",
+    "aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
+    "style": {
+      "navigationBarTitleText": "首页",
+      "enablePullDownRefresh": true
+    }
+  }],
+  "subPackages": [{
+      // 公共public
+      "root": "pages/public",
+      "pages": [{
+        "path": "webview",
+        "style": {
+          "navigationBarTitleText": "" //外部链接
+        }
+      }, {
+        "path": "login",
+        "name": "login",
+        "style": {
+          "navigationBarTitleText": "登入",
+          "navigationStyle": "custom"
+        }
+      }, {
+        "path": "map",
+        "name": "map",
+        "style": {
+          "navigationBarTitleText": "地图"
+        }
+      }, {
+        "path": "address-search",
+        "name": "address-search",
+        "style": {
+          "navigationBarTitleText": "搜索地址"
+        }
+      }, {
+        "path": "template",
+        "name": "template",
+        "style": {
+          "navigationBarTitleText": "通用组件"
+        }
+      }]
+    },
+
+    // 直播live
+    {
+      "root": "pages/live",
+      "pages": [{
+        "path": "live-details",
+        "style": {
+          "navigationBarTitleText": "职位详情"
+        }
+      }]
+    },
+    // 我的user
+    {
+      "root": "pages/user",
+      "pages": [{
+        "path": "user",
+        "style": {
+          "navigationBarTitleText": "职位详情"
+        }
+      }]
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#479ff7",
+    "backgroundColor": "#FFFFFF",
+    "backgroundColorTop": "#FFFFFF" // iOS APP真机bounce回弹区域默认灰色,建议统一重置为白色
+  }
+
+}

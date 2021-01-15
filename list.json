@@ -1,0 +1,19 @@
+{
+  "code": 1,
+  "msg": "操作成功",
+  "time": "1610533921",
+  "type": "list",
+  "search": 1,
+  "list": [],
+  "template": "",
+  "data": {
+    "total": 2,
+    "per_page": "10",
+    "current_page": 1,
+    "last_page": 1,
+    "type": "",
+    "data": [{
+
+    }, {}]
+  }
+}
