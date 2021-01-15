@@ -51,13 +51,23 @@ const actions = {
   }, options) {
     var params = {};
     return new Promise((resolve, reject) => {
-      api('template', params).then(res => {
+      try
+      {
+        /* 读取本地数据 */
+        let res = require('@/config/template.json');
         uni.setStorageSync('templateData', res.data);
         commit('TEMPLATE_DATA', res.data);
-        resolve(res)
-      }).catch(e => {
-        reject(e)
-      })
+      } catch (error)
+      {
+        /* 读取远程数据 */
+        api('template', params).then(res => {
+          uni.setStorageSync('templateData', res.data);
+          commit('TEMPLATE_DATA', res.data);
+          resolve(res)
+        }).catch(e => {
+          reject(e)
+        })
+      }
     })
   },
 }

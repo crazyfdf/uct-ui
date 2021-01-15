@@ -32,6 +32,7 @@ export default {
     };
   },
   created () {
+    console.log(this.content.list[0].activeImage);
     this.extClass = `color:${this.content.color};background-color: ${this.content.bgcolor};`
     this.tabbarItemOn = `color:${this.content.activeColor}`
   },

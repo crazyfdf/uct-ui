@@ -1,0 +1,179 @@
+{
+  "code": 1,
+  "msg": "模板数据",
+  "time": "1610691692",
+  "data": {
+    "home": [{
+      "id": 50,
+      "type": "banner",
+      "category": "home",
+      "name": "轮播图",
+      "content": {
+        "name": "",
+        "style": 1,
+        "list": [{
+          "name": "",
+          "bgcolor": "",
+          "image": "https://uniwork.weiyoho.com/uploads/20201204/77a59586994321aa2253b3fed135e853.png",
+          "path": "1",
+          "path_name": "首页",
+          "path_type": 1
+        }, {
+          "image": "https://uniwork.weiyoho.com/uploads/20201215/45b8cfa62865fa1d8e63afb2bd6c89cf.png",
+          "path": "",
+          "path_type": 1,
+          "name": "",
+          "bgcolor": "",
+          "path_name": ""
+        }]
+      },
+      "decorate_id": 2
+    }],
+    "user": [{
+      "id": 53,
+      "type": "user",
+      "category": "user",
+      "name": "用户卡片",
+      "content": {
+        "name": "用户卡片",
+        "image": "https://uniwork.weiyoho.com",
+        "style": 1,
+        "color": "#eeeeee"
+      },
+      "decorate_id": 2
+    }, {
+      "id": 54,
+      "type": "grid-list",
+      "category": "user",
+      "name": "宫格列表",
+      "content": {
+        "name": "",
+        "list": [{
+          "name": "打卡",
+          "image": "https://uniwork.weiyoho.com/uploads/20201204/d865d74d0e50bc82a9e5df541896cbc1.png",
+          "path": "1",
+          "path_name": "首页",
+          "path_type": 1
+        }, {
+          "name": "历史投递",
+          "image": "https://uniwork.weiyoho.com/uploads/20201204/d1d2561551852259f0b62cc8dfffe1a5.png",
+          "path": "",
+          "path_name": "",
+          "path_type": 1
+        }, {
+          "name": "工资表",
+          "image": "https://uniwork.weiyoho.com/uploads/20201204/495871e640251739e264dc46cfd86139.png",
+          "path": "",
+          "path_name": "",
+          "path_type": 1
+        }]
+      },
+      "decorate_id": 2
+    }, {
+      "id": 55,
+      "type": "nav-list",
+      "category": "user",
+      "name": "列表导航",
+      "content": {
+        "name": "",
+        "list": [{
+          "name": "我的简历",
+          "image": "https://uniwork.weiyoho.com/uploads/20201204/247ee5755df5164dcf32d490c5fe80f0.png",
+          "path": "",
+          "path_name": "",
+          "path_type": 1
+        }, {
+          "name": "历史打卡",
+          "image": "https://uniwork.weiyoho.com/uploads/20201204/995dcbd913176b16c0f62d1be2327123.png",
+          "path": "",
+          "path_name": "",
+          "path_type": 1
+        }, {
+          "name": "实名认证",
+          "image": "https://uniwork.weiyoho.com/uploads/20201204/e1f171c23455de6cbcb6a26ad9d9ad60.png",
+          "path": "",
+          "path_name": "",
+          "path_type": 1
+        }, {
+          "name": "切换身份",
+          "image": "https://uniwork.weiyoho.com/uploads/20201204/400d2e15d25bf0d1cbfe4298b320320a.png",
+          "path": "",
+          "path_name": "",
+          "path_type": 1
+        }]
+      },
+      "decorate_id": 2
+    }],
+    "tabbar": [{
+      "id": 52,
+      "type": "tabbar",
+      "category": "tabbar",
+      "name": "底部导航",
+      "content": {
+        "style": 1,
+        "color": "#333",
+        "activeColor": "#479FF7",
+        "list": [{
+          "name": "首页",
+          "image": "/static/imgs/tabbar/home.png",
+          "activeImage": "/static/imgs/tabbar/home_sel.png",
+          "path": "/pages/index/home",
+          "path_name": "",
+          "path_type": 2
+        }, {
+          "name": "直播",
+          "image": "/static/imgs/tabbar/live.png",
+          "activeImage": "/static/imgs/tabbar/live_sel.png",
+          "path": "/pages/index/live",
+          "path_name": "",
+          "path_type": 2
+        }, {
+          "name": "课程",
+          "image": "/static/imgs/tabbar/course.png",
+          "activeImage": "/static/imgs/tabbar/course_sel.png",
+          "path": "/pages/index/course",
+          "path_name": "",
+          "path_type": 2
+        }, {
+          "name": "报告",
+          "image": "/static/imgs/tabbar/report.png",
+          "activeImage": "/static/imgs/tabbar/report_sel.png",
+          "path": "/pages/index/report",
+          "path_name": "",
+          "path_type": 2
+        }, {
+          "name": "我的",
+          "image": "/static/imgs/tabbar/my.png",
+          "activeImage": "/static/imgs/tabbar/my_sel.png",
+          "path": "/pages/index/my",
+          "path_name": "",
+          "path_type": 2
+        }],
+        "isshow": true,
+        "bgcolor": "#ffffff"
+      },
+      "decorate_id": 2
+    }],
+    "popup": [{
+      "id": 51,
+      "type": "popup",
+      "category": "popup",
+      "name": "弹窗提醒",
+      "content": {
+        "list": []
+      },
+      "decorate_id": 2
+    }],
+    "float-button": [{
+      "id": 56,
+      "type": "float-button",
+      "category": "float-button",
+      "name": "悬浮按钮",
+      "content": {
+        "image": "https://uniwork.weiyoho.com",
+        "list": []
+      },
+      "decorate_id": 2
+    }]
+  }
+}
