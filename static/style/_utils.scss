@@ -1,225 +1,12 @@
 /*utils 工具*/
-/* 颜色 */
-.bg-red {
-  background-color: $color-red !important;
-}
 
-.bg-purple {
-  background-color: $color-purple !important;
-}
-
-.bg-orange {
-  background-color: $color-orange !important;
-}
-
-.bg-blue {
-  background-color: $color-blue !important;
-}
-
-.color-red {
-  color: $color-red !important;
-}
-
-.color-purple {
-  color: $color-purple !important;
-}
-
-.color-orange {
-  color: $color-orange !important;
-}
-
-.color-blue {
-  color: $color-blue !important;
-}
-
-.text-black {
-  color: #000;
-}
-
-.text-dark {
-  color: #333;
-}
-
-.text-deep {
-  color: #555;
-}
-
-.text-weak {
-  color: #b3b3b3;
-}
-
-.text-white {
-  color: #fff;
-}
-
-/*字体*/
-.f10 {
-  font-size: 10px;
-}
-
-.f12 {
-  font-size: 12px;
-}
-
-.f14 {
-  font-size: 14px;
-}
-
-.f16 {
-  font-size: 16px;
-}
-
-.f15 {
-  font-size: 15px;
-}
-
-.f18 {
-  font-size: 18px;
-}
-
-.f17 {
-  font-size: 17px;
-}
-
-.f20 {
-  font-size: 20px;
-}
-
-.f22 {
-  font-size: 22px;
-}
-
-.f24 {
-  font-size: 24px;
+/* 字重 */
+.f700 {
+  font-weight: 700;
 }
 
 .f900 {
   font-weight: 900;
-}
-
-/* 文字对齐*/
-.tl {
-  text-align: left;
-}
-
-.tc {
-  text-align: center;
-}
-
-.tr {
-  text-align: right;
-}
-
-/*浮动与清除浮动*/
-.fl {
-  float: left;
-}
-
-.fr {
-  float: right;
-}
-
-/*#ifdef H5*/
-.fix {
-  zoom: 1;
-}
-
-.fix:after {
-  display: table;
-  content: '';
-  clear: both;
-}
-
-/*#endif*/
-
-/*显示*/
-.dn {
-  display: none;
-}
-
-.di {
-  display: inline;
-}
-
-.db {
-  display: block;
-}
-
-.dib {
-  display: inline-block;
-}
-
-.dt {
-  display: table;
-}
-
-/*#ifdef H5*/
-div.dib {
-  display: inline;
-  zoom: 1;
-}
-
-/*#endif*/
-
-.vm {
-  vertical-align: middle;
-}
-
-.vib {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/*定位*/
-.pr {
-  position: relative;
-}
-
-.pa {
-  position: absolute;
-}
-
-.pf {
-  position: fixed;
-}
-
-/*盒子模型*/
-@each $typeKey,
-$type in $spaceTypes {
-
-  @each $sizeKey,
-  $size in $spaceSizes {
-
-    // margin-top:10rpx
-    @each $directionKey,
-    $direction in $spaceDirections {
-      .#{$typeKey}#{$directionKey}#{$sizeKey} {
-        #{$type}-#{$direction}: $size;
-      }
-    }
-
-    // margin: 10rpx 0;
-    .#{$typeKey}x#{$sizeKey} {
-      #{$type}-left: $size;
-      #{$type}-right: $size;
-    }
-
-    .#{$typeKey}y#{$sizeKey} {
-      #{$type}-top: $size;
-      #{$type}-bottom: $size;
-    }
-
-    // margin: 10rpx ;
-    .#{$typeKey}a#{$sizeKey} {
-      #{$type}: $size;
-    }
-  }
-}
-
-/* 必填项 */
-.isRequired::before {
-  content: "*";
-  color: red;
 }
 
 /*按钮禁用*/
@@ -232,32 +19,10 @@ $type in $spaceTypes {
   pointer-events: none;
 }
 
-/*表单样式*/
-.form-item {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #323232;
-
-  .input {
-    display: flex;
-    width: 400rpx;
-    position: absolute;
-    left: 200rpx;
-    font-weight: 900;
-    font-size: 14px;
-  }
-}
-
-/**
- * 
- * 自定义class工具
- * 
-*/
-
-.pad {
-  padding: 0 30upx;
+/* 必填项 */
+.isRequired::before {
+  content: "*";
+  color: red;
 }
 
 // 格式化页面
@@ -271,41 +36,17 @@ $type in $spaceTypes {
   background: #bfbfbf;
 }
 
+/* 滚动区域 */
 .scroll-box {
   flex: 1;
   height: 100%;
   position: relative;
 }
 
+/* 内容区 */
 .content_box {
   flex: 1;
   overflow-y: auto;
-}
-
-/*单行文本溢出省略号*/
-.one-t {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  transition: all linear 0.2s;
-}
-
-/*多行文本溢出省略号*/
-.more-t {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  transition: all linear 0.2s;
-}
-
-
-/* 下划线 */
-.border-b {
-  width: 100%;
-  height: 2rpx;
-  background-color: #ededed;
 }
 
 /* ==================
@@ -405,32 +146,4 @@ $type in $spaceTypes {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
-
-.white {
-  color: #fff;
-}
-
-.gray {
-  color: #bbbbbb;
-}
-
-.dark {
-  color: #777777;
-}
-
-.blue {
-  color: #479FF7;
-}
-
-.green {
-  color: #01b601;
-}
-
-.red {
-  color: #FF0000;
-}
-
-.orange {
-  color: #F79347;
 }

@@ -1,0 +1,121 @@
+/*偏移模型*/
+@each $typeKey,
+$type in $spaceTypes {
+
+  @each $sizeKey,
+  $size in $spaceSizes {
+
+    // mt10 margin-top:10rpx
+    @each $directionKey,
+    $direction in $spaceDirections {
+      .#{$typeKey}#{$directionKey}#{$sizeKey} {
+        #{$type}-#{$direction}: $size;
+      }
+    }
+
+    // mx10 margin: 10rpx 0;
+    .#{$typeKey}x#{$sizeKey} {
+      #{$type}-left: $size;
+      #{$type}-right: $size;
+    }
+
+    // my10 margin: 0 10rpx;
+    .#{$typeKey}y#{$sizeKey} {
+      #{$type}-top: $size;
+      #{$type}-bottom: $size;
+    }
+
+    // ma10 margin: 10rpx ;
+    .#{$typeKey}a#{$sizeKey} {
+      #{$type}: $size;
+    }
+  }
+}
+
+/* 颜色模型 */
+@each $typeKey,
+$type in $colorTypes {
+
+  // cred  color:red;
+  // bcred background-color: red;
+  @each $sizeKey,
+  $size in $colorSizes {
+    .#{$typeKey}#{$sizeKey} {
+      #{$type}: $size;
+    }
+
+    // bcred1 background-color: rgba(red,.9);
+    @for $i from 0 to 9 {
+      .#{$typeKey}#{$sizeKey}#{$i} {
+        #{$type}: rgba($size, (1-$i/10));
+      }
+    }
+  }
+}
+
+/* 边框模型 */
+
+@each $typeKey,
+$type in $borderTypes {
+
+  @each $sizeKey,
+  $size in $colorSizes {
+    @for $i from 1 to 2 {
+
+      // bsred1 border:1 solid red
+      .b#{$typeKey}#{$sizeKey}#{$i} {
+        border: $i $type $size;
+      }
+
+      // bstred1 border-top:1 solid red
+      @each $directionKey,
+      $direction in $spaceDirections {
+        .b#{$typeKey}#{$sizeKey}#{$directionKey}#{$i} {
+          border-#{$direction}: $i $type $size;
+        }
+      }
+    }
+  }
+}
+
+// /* 字体模型 */
+// f12 font-size:12px;
+@for $i from 8 to 36 {
+  .f#{$i} {
+    font-size: $i*1px;
+  }
+}
+
+/*文本溢出省略号*/
+// more-t3
+@for $i from 1 to 5 {
+
+  .more-t#{$i} {
+    @if $i <=1 {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    @else {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: $i;
+      -webkit-box-orient: vertical;
+      transition: all linear 0.2s;
+    }
+  }
+}
+
+/* 宽高 */
+@for $i from 1 to 375 {
+  .w#{$i} {
+    width: $i*2rpx;
+  }
+
+  .h#{$i} {
+    height: $i*2rpx;
+  }
+}

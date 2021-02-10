@@ -1,29 +1,33 @@
 <template>
   <view class="page-body">
-    home
+
+    <uct-form class="mt80"
+              :list="formData.list"
+              url="system/uploadPartnerByProject"
+              @submit="submit"></uct-form>
   </view>
 </template>
 
 <script>
-
-const page = {
-
-}
 export default {
-  components: {
-  },
+  components: {},
 
-  data () {
+  data() {
     return {
-
-    }
+      formData: require("@/config/form.json"),
+    };
   },
-  computed: {
+  computed: {},
+  methods: {
+    async submit(data) {
+      setTimeout(() => {
+        uni.navigateBack({
+          delta: 1,
+        });
+      }, 1000);
+    },
   },
-  mounted () {
-
-  },
-}
+};
 </script>
 
 <style lang="scss" scoped>

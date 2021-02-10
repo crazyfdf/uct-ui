@@ -22,6 +22,10 @@ export default function api (url, data = {}) {
     {
       config.header.token = uni.getStorageSync('token');
     }
+    config.data = {
+      ...api.data,
+      ...data,
+    };
     return config
   });
 
@@ -66,7 +70,7 @@ export default function api (url, data = {}) {
 }
 
 function getApiObj (url) {
-  let apiArray = url.split(".");
+  let apiArray = url.split("/");
   let api = apiList;
   apiArray.forEach(v => {
     api = api[v];

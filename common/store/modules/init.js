@@ -20,15 +20,15 @@ const actions = {
     commit
   }, options) {
     uni.setStorageSync('mode', 'product');
-    return new Promise((resolve, reject) => {
-      api('init').then(res => {
-        commit('INIT_DATA', res.data);
-        uni.setStorageSync('sysInfo', res.data);
-        resolve(res)
-      }).catch(e => {
-        reject(e)
-      })
-    })
+    /*  return new Promise((resolve, reject) => {
+       api('init').then(res => {
+         commit('INIT_DATA', res.data);
+         uni.setStorageSync('sysInfo', res.data);
+         resolve(res)
+       }).catch(e => {
+         reject(e)
+       })
+     }) */
   },
   // 同步前端路由
   getRoutes ({

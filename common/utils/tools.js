@@ -70,38 +70,9 @@ export default {
           // #endif
         }
       })
-      // uni.navigateTo({
-      //   url: path,
-      //   fail: function () {
-      //     uni.switchTab({
-      //       url: path
-      //     })
-      //   }
-      // })
     }
-
   },
-  /**
-   * fn：检测图片协议，主要用于检测海报图片协议。
-   * param(imgPath): 图片地址。
-   */
 
-  checkImgHttp (imgPath) {
-    let newPath = '';
-    if (imgPath.indexOf('data:image/svg+xml') !== -1)
-    {
-      newPath = '/static/imgs/base_avatar.png'
-    } else
-    {
-      let pathArr = imgPath.split('://');
-      // #ifdef H5
-      let ishttps = 'https:' == window.location.protocol ? true : false;
-      ishttps ? (pathArr[0] = 'https') : (pathArr[0] = 'http');
-      // #endif
-      newPath = pathArr.join('://');
-    }
-    return newPath;
-  },
   // 打电话
   callPhone (phoneNumber = '') {
     let num = phoneNumber.toString()
@@ -112,175 +83,17 @@ export default {
       },
     });
   },
-  // 图片处理-选择图片
-  chooseImage (count = 1) {
-    return new Promise((resolve, reject) => {
-      uni.chooseImage({
-        count: count, //默认9
-        sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album'], //从相册选择
-        success: res => {
-          resolve(res.tempFilePaths);
-        }
-      });
-    }).catch(e => {
-      reject(e)
-    })
-  },
-  // 图片处理-上传图片
-  uploadImage (api, url) {
-    let config_url = API_URL;
-    uni.showLoading({
-      title: '上传中'
-    });
-    return new Promise((resolve, reject) => {
-      uni.uploadFile({
-        url: config_url + api,
-        filePath: url,
-        name: 'file',
-        success: res => {
-          res = JSON.parse(res.data);
-          if (res.code === 1)
-          {
-            uni.hideLoading()
-            uni.showToast({
-              title: '上传成功',
-              icon: 'none'
-            });
-            resolve(res.data)
-          } else
-          {
-            uni.hideLoading()
-            uni.showModal({
-              title: '上传失敗',
-              content: res.msg
-            });
-          }
-        }
-      });
-    }).catch(e => {
-      reject(e)
-    })
-  },
-  // 图片处理-预览图片
-  previewImage (urls = [], current = 0) {
-    uni.previewImage({
-      urls: urls,
-      current: current,
-      indicator: 'default',
-      loop: true,
-      fail (err) {
-        console.log('previewImage出错', urls, err)
-      },
-    })
-  },
-  // 图片处理-获取图片信息
-  getImageInfo (src = '') {
-    return new Promise((resolve, reject) => {
-      uni.getImageInfo({
-        src: src,
-        success: (image) => {
-          resolve(image)
-        },
-        fail (err) {
-          console.log('getImageInfo出错', src, err)
-        },
-      })
-    }).catch(e => {
-      reject(e)
-    })
 
-  },
-  /**
-   * 格式化时间
-   */
-  //时间格式化 天时分秒
-  format (t) {
-    let format = {
-      d: '00',
-      h: '00',
-      m: '00',
-      s: '00',
-    }
-    if (t > 0)
-    {
-      let d = Math.floor(t / 86400)
-      let h = Math.floor((t / 3600) % 24)
-      let m = Math.floor((t / 60) % 60)
-      let s = Math.floor(t % 60)
-      format.d = d < 10 ? '0' + d : d
-      format.h = h < 10 ? '0' + h : h
-      format.m = m < 10 ? '0' + m : m
-      format.s = s < 10 ? '0' + s : s
-    }
-    return format
-  },
-  //时间格式化(格式化最大为小时)
-  formatToHours (t) {
-    let format = {
-      d: '00',
-      h: '00',
-      m: '00',
-      s: '00',
-    }
-    if (t > 0)
-    {
-      let h = Math.floor(t / 3600)
-      let m = Math.floor((t / 60) % 60)
-      let s = Math.floor(t % 60)
-
-      format.h = h < 10 ? '0' + h : h
-      format.m = m < 10 ? '0' + m : m
-      format.s = s < 10 ? '0' + s : s
-    }
-    return format
-  },
-  // 年月日
-  timestamp (timestamp) {
-    let date = new Date(timestamp); //根据时间戳生成的时间对象
-    let y = date.getFullYear();
-    let m = date.getMonth() + 1;
-    let d = date.getDate();
-
-    m = m < 10 ? '0' + m : m;
-    d = d < 10 ? '0' + d : d
-
-    let dateText = y + "-" + m + "-" + d
-    return dateText
-  },
-  // 年月日，时分秒
-  // "YYYY-MM-DD HH:MM"
-  dateFormat (fmt, date) {
-    let ret;
-    const opt = {
-      "Y+": date.getFullYear().toString(), // 年
-      "M+": (date.getMonth() + 1).toString(), // 月
-      "D+": date.getDate().toString(), // 日
-      "h+": date.getHours().toString(), // 时
-      "m+": date.getMinutes().toString(), // 分
-      "s+": date.getSeconds().toString() // 秒
-      // 有其他格式化字符需求可以继续添加，必须转化成字符串
-    };
-    for (let k in opt)
-    {
-      ret = new RegExp("(" + k + ")").exec(fmt);
-      if (ret)
-      {
-        fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
-      };
-    };
-    return fmt;
-  },
   /**提示框
    *title(标题)
    *icon(图标):  success，loading，none
    *duration(延时): 0为不关闭, 毫秒数
    *options(其它参数)
    */
-  toast (title, icon = 'none', options) {
-    wx.showToast({
+  showToast (title, options = {}) {
+    uni.showToast({
       title: `${title}` || '',
-      icon: icon,
+      icon: options.icon || 'none',
       duration: (options && options.duration) || 1500,
       image: (options && options.image) || '',
       mask: (options && options.mask) || true,
@@ -317,7 +130,6 @@ export default {
     });
   },
 
-  // #ifdef MP-WEIXIN
   GetLoc () {
     return new Promise((resolve, reject) => {
       //获得地址
@@ -337,7 +149,6 @@ export default {
             get_poi: 1,
             poi_options: "page_size=20;page_index=1",
             success: function (e) {
-              console.log(e.result);
               resolve(e.result)
             },
             fail: err => {
@@ -358,5 +169,87 @@ export default {
       })
     })
   },
+
+  /* 获取设备信息 */
+  GetSystemInfo () {
+    return new Promise((resolve, reject) => {
+      try
+      {
+        if (uni.getStorageSync('platform'))
+        {
+          resolve(uni.getStorageSync('platform'))
+        } else
+        {
+          uni.getSystemInfo({
+            success: function (res) {
+              uni.setStorageSync('platform', res.platform)
+              resolve(res.platform)
+            }
+          });
+        }
+      } catch (e)
+      {
+        console.log(e);
+      }
+    })
+  },
+
+  // #ifdef APP-PLUS
+  GetAppVersion () {
+    return new Promise((resolve, reject) => {
+      try
+      {
+        if (uni.getStorageSync('version'))
+        {
+          resolve(uni.getStorageSync('version'))
+        } else
+        {
+          plus.runtime.getProperty(plus.runtime.appid, function (wgtinfo) {
+            uni.setStorageSync('version', wgtinfo.version)
+            resolve(wgtinfo.version)
+          })
+        }
+      } catch (e)
+      {
+        console.log(e);
+      }
+    })
+  },
+  //获取客户端ID
+  getClientId () {
+    //获取客户端ID和版本号
+    var clientid = '';
+    // #ifdef APP-PLUS
+    // 苹果系统
+    plus.device.getInfo({
+      success: function (e) {
+        clientid = e.uuid;
+        uni.setStorageSync('clientid', clientid);
+      },
+      fail: function (e) {
+        console.log(e);
+      }
+    });
+    // 安卓系统
+    plus.device.getAAID({
+      success: function (e) {
+        clientid = e.aaid;
+        console.log(clientid);
+        uni.setStorageSync('clientid', clientid);
+      },
+      fail: function (e) {
+        console.log(e);
+      }
+    });
+    //老版本、安卓模拟器
+    if (clientid == '')
+    {
+      clientid = plus.device.uuid;
+      uni.setStorageSync('clientid', clientid);
+    }
+    // #endif
+    return clientid;
+  }
+
   // #endif
 }

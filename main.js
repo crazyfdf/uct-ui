@@ -14,6 +14,9 @@ import { router, RouterMount } from '@/common/router'  //路径换成自己的
 Vue.use(router)
 Vue.component('mescroll-body', MescrollBody)
 
+import uView from 'uview-ui';
+Vue.use(uView);
+
 App.mpType = 'app'
 
 Vue.prototype.$rules = rules;

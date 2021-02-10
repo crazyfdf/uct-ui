@@ -3,7 +3,7 @@
   "msg": "模板数据",
   "time": "1610691692",
   "data": {
-    "home": [{
+    "course": [{
       "id": 50,
       "type": "banner",
       "category": "home",
@@ -14,18 +14,109 @@
         "list": [{
           "name": "",
           "bgcolor": "",
-          "image": "https://uniwork.weiyoho.com/uploads/20201204/77a59586994321aa2253b3fed135e853.png",
+          "image": "/static/imgs/course/1.png",
           "path": "1",
           "path_name": "首页",
           "path_type": 1
-        }, {
-          "image": "https://uniwork.weiyoho.com/uploads/20201215/45b8cfa62865fa1d8e63afb2bd6c89cf.png",
-          "path": "",
-          "path_type": 1,
-          "name": "",
-          "bgcolor": "",
-          "path_name": ""
         }]
+      },
+      "decorate_id": 2
+    }, {
+      "id": 51,
+      "type": "grid-list",
+      "category": "user",
+      "name": "宫格列表",
+      "content": {
+        "name": "",
+        "list": [{
+          "url": "/pages/course/course-list?index=1",
+          "view": {
+            "self": {
+              "style": {
+                "font-size": "12px",
+                "font-weight": "700",
+                "color": "rgba(27, 27, 27, 1)"
+              }
+            },
+            "html": "资本运营"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/course/study.png",
+              "style": {
+                "width": "170rpx",
+                "height": "170rpx"
+              }
+            }
+          }
+        }, {
+          "url": "/pages/course/course-list?index=2",
+          "view": {
+            "self": {
+              "style": {
+                "font-size": "12px",
+                "font-weight": "700",
+                "color": "rgba(27, 27, 27, 1)"
+              }
+            },
+            "html": "金融考证"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/course/stock_right.png",
+              "style": {
+                "width": "170rpx",
+                "height": "170rpx"
+              }
+            }
+          }
+        }, {
+          "url": "/pages/course/course-list?index=3",
+          "view": {
+            "self": {
+              "style": {
+                "font-size": "12px",
+                "font-weight": "700",
+                "color": "rgba(27, 27, 27, 1)"
+              }
+            },
+            "html": "财税"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/course/ipo.png",
+              "style": {
+                "width": "170rpx",
+                "height": "170rpx"
+              }
+            }
+          }
+        }, {
+          "url": "/pages/course/course-list?index=0",
+          "view": {
+            "self": {
+              "style": {
+                "font-size": "12px",
+                "font-weight": "700",
+                "color": "rgba(27, 27, 27, 1)"
+              }
+            },
+            "html": "更多课程"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/course/more.png",
+              "style": {
+                "width": "170rpx",
+                "height": "170rpx"
+              }
+            }
+          }
+        }],
+        "self": {
+          "display": "grid",
+          "grid-template-columns": "1fr 1fr 1fr 1fr"
+        }
       },
       "decorate_id": 2
     }],
@@ -49,57 +140,185 @@
       "content": {
         "name": "",
         "list": [{
-          "name": "打卡",
-          "image": "https://uniwork.weiyoho.com/uploads/20201204/d865d74d0e50bc82a9e5df541896cbc1.png",
-          "path": "1",
-          "path_name": "首页",
-          "path_type": 1
+          "url": "/pages/my/follow-list",
+          "view": {
+            "self": {
+              "style": {
+                "font-size": "12px",
+                "color": "#6C6C6C"
+              }
+            },
+            "html": "关注"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/follow.png",
+              "style": {
+                "width": "48rpx",
+                "height": "46rpx"
+              }
+            }
+          }
         }, {
-          "name": "历史投递",
-          "image": "https://uniwork.weiyoho.com/uploads/20201204/d1d2561551852259f0b62cc8dfffe1a5.png",
-          "path": "",
-          "path_name": "",
-          "path_type": 1
+          "url": "/pages/my/order-list",
+          "view": {
+            "self": {
+              "style": {
+                "font-size": "12px",
+                "color": "#6C6C6C"
+              }
+            },
+            "html": "订单"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/order.png",
+              "style": {
+                "width": "38rpx",
+                "height": "44rpx"
+              }
+            }
+          }
         }, {
-          "name": "工资表",
-          "image": "https://uniwork.weiyoho.com/uploads/20201204/495871e640251739e264dc46cfd86139.png",
-          "path": "",
-          "path_name": "",
-          "path_type": 1
-        }]
+          "url": "/pages/my/collection-list",
+          "view": {
+            "self": {
+              "style": {
+                "font-size": "12px",
+                "color": "#6C6C6C"
+              }
+            },
+            "html": "收藏"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/collection.png",
+              "style": {
+                "width": "44rpx",
+                "height": "50rpx"
+              }
+            }
+          }
+        }, {
+          "url": "/pages/my/certificate",
+          "view": {
+            "self": {
+              "style": {
+                "font-size": "12px",
+                "color": "#6C6C6C"
+              }
+            },
+            "html": "证书"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/certificate.png",
+              "style": {
+                "width": "44rpx",
+                "height": "44rpx"
+              }
+            }
+          }
+        }],
+        "self": {
+          "display": "grid",
+          "grid-template-columns": "1fr 1fr 1fr 1fr",
+          "gap": "115rpx"
+        }
       },
       "decorate_id": 2
     }, {
       "id": 55,
-      "type": "nav-list",
+      "type": "flex-list",
       "category": "user",
-      "name": "列表导航",
+      "name": "列表",
       "content": {
         "name": "",
         "list": [{
-          "name": "我的简历",
-          "image": "https://uniwork.weiyoho.com/uploads/20201204/247ee5755df5164dcf32d490c5fe80f0.png",
-          "path": "",
-          "path_name": "",
-          "path_type": 1
+          "url": "/pages/my/coupon-list",
+          "view": {
+            "self": {
+              "style": {}
+            },
+            "html": "优惠券"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/right.png",
+              "style": {
+                "width": "12rpx",
+                "height": "21rpx"
+              }
+            }
+          }
         }, {
-          "name": "历史打卡",
-          "image": "https://uniwork.weiyoho.com/uploads/20201204/995dcbd913176b16c0f62d1be2327123.png",
-          "path": "",
-          "path_name": "",
-          "path_type": 1
+          "url": "/pages/my/seeking-coverage",
+          "view": {
+            "self": {
+              "style": {}
+            },
+            "html": "寻求报道"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/right.png",
+              "style": {
+                "width": "12rpx",
+                "height": "21rpx"
+              }
+            }
+          }
         }, {
-          "name": "实名认证",
-          "image": "https://uniwork.weiyoho.com/uploads/20201204/e1f171c23455de6cbcb6a26ad9d9ad60.png",
-          "path": "",
-          "path_name": "",
-          "path_type": 1
+          "url": "/pages/my/feedback",
+          "view": {
+            "self": {
+              "style": {}
+            },
+            "html": "意见反馈"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/right.png",
+              "style": {
+                "width": "12rpx",
+                "height": "21rpx"
+              }
+            }
+          }
         }, {
-          "name": "切换身份",
-          "image": "https://uniwork.weiyoho.com/uploads/20201204/400d2e15d25bf0d1cbfe4298b320320a.png",
-          "path": "",
-          "path_name": "",
-          "path_type": 1
+          "url": "/pages/my/about-us",
+          "view": {
+            "self": {
+              "style": {}
+            },
+            "html": "关于我们"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/right.png",
+              "style": {
+                "width": "12rpx",
+                "height": "21rpx"
+              }
+            }
+          }
+        }, {
+          "url": "/pages/my/setting",
+          "view": {
+            "self": {
+              "style": {}
+            },
+            "html": "设置"
+          },
+          "image": {
+            "self": {
+              "src": "/static/imgs/my/right.png",
+              "style": {
+                "width": "12rpx",
+                "height": "21rpx"
+              }
+            }
+          }
         }]
       },
       "decorate_id": 2
