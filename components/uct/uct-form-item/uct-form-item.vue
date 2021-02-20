@@ -1,7 +1,7 @@
 <template>
   <view>
     <view class="uct-form-item"
-          :class="layout=='flex'?'uct-form-item-flex':'uct-form-item-block'">
+          :class="layout?'uct-form-item-flex':'uct-form-item-block'">
       <!-- 标题 -->
       <view v-if="item.type=='text'"
             class="text f16 f900">{{item.label}}</view>
@@ -13,25 +13,25 @@
       <form-input v-if="['input','textarea','number'].includes(item.type)"
                   :item="item"
                   class="uct-form-item-value"
-                  :class="layout=='flex'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                  :class="layout?'uct-form-item-value-flex':'uct-form-item-value-block'"
                   v-model="value"></form-input>
       <!-- 选择器 -->
       <form-select v-if="['cascader','select','time','date'].includes(item.type)"
                    :item="item"
                    class="uct-form-item-value"
-                   :class="layout=='flex'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                   :class="layout?'uct-form-item-value-flex':'uct-form-item-value-block'"
                    v-model="value"
                    @mapData="mapData"></form-select>
       <!-- 选择框 -->
       <form-check v-if="['radio','checkbox'].includes(item.type)"
                   class="uct-form-item-value"
-                  :class="layout=='flex'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                  :class="layout?'uct-form-item-value-flex':'uct-form-item-value-block'"
                   :item="item"
                   v-model="value"></form-check>
       <!-- 图片 -->
       <!--       <robby-image-upload v-model="img"
                           class="uct-form-item-value"
-                          :class="layout=='flex'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                          :class="layout?'uct-form-item-value-flex':'uct-form-item-value-block'"
                           v-if="item.type=='uploadImg'"
                           :limit="item.options.limit"
                           :header="header"
@@ -43,7 +43,7 @@
       <!-- 开关 -->
       <form-switch v-if="item.type=='switch'"
                    class="uct-form-item-value"
-                   :class="layout=='flex'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                   :class="layout?'uct-form-item-value-flex':'uct-form-item-value-block'"
                    :item="item"
                    v-model="value"></form-switch>
 
@@ -94,9 +94,9 @@ export default {
       },
     },
     layout: {
-      type: String,
+      type: Boolean,
       default() {
-        return "flex"; //flex左右布局，block上下布局
+        return false; //flex左右布局，block上下布局
       },
     },
   },
@@ -116,7 +116,7 @@ export default {
     }
   },
   computed: {
-    img: {
+    /*     img: {
       set(v) {
         if (this.item.type == "uploadImg") {
           this.imglist[this.name] = v;
@@ -127,7 +127,7 @@ export default {
       get() {
         return this.value;
       },
-    },
+    }, */
   },
   watch: {
     value(val) {

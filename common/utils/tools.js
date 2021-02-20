@@ -252,4 +252,12 @@ export default {
   }
 
   // #endif
-}
+  /* 深拷贝 */
+  deepCopy (obj) {
+    let res = obj instanceof Array ? [] : {}
+    for (const [key, value] of Object.entries(obj))
+    {
+      res[key] = typeof value == "object" ? this.deepCopy(value) : value
+    }
+    return res
+  }

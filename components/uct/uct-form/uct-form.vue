@@ -9,7 +9,7 @@
         <view class="mb40">
           <uct-form-item @mapData="mapData"
                          @upImage="upImage"
-                         layout="flex"
+                         :layout="layout"
                          :item="item"></uct-form-item>
           <!-- 按钮 -->
           <view v-if="item.type=='button'"
@@ -71,15 +71,17 @@ export default {
       iList: [],
       map: {},
       data: {},
+      layout: false,
     };
   },
   computed: {
-    formList() {
-      if (!this.list.length) {
-        return this.iList;
-      } else {
-        return this.list;
-      }
+    formList: {
+      set(val) {
+        this.layout = val.config.layout == "horizontal" ? true : false;
+      },
+      get() {
+        return !this.list.length ? this.iList : this.list;
+      },
     },
   },
   mounted() {
