@@ -15,36 +15,34 @@
 </template>
 
 <script>
-import { mapMutations, mapActions, mapState, mapGetters } from 'vuex';
+import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
 
 export default {
   computed: {
     ...mapState({
-      content: state => state.init.templateData.tabbar[0].content,
-      current: state => state.init.tabbar,
-      userInfo: state => state.user.userInfo,
-    })
+      content: (state) => state.init.templateData.tabbar[0].content,
+      current: (state) => state.init.tabbar,
+      userInfo: (state) => state.user.userInfo,
+    }),
   },
-  data () {
+  data() {
     return {
-      extClass: '',
-      tabbarItemOn: '',
+      extClass: "",
+      tabbarItemOn: "",
     };
   },
-  created () {
-    console.log(this.content.list[0].activeImage);
-    this.extClass = `color:${this.content.color};background-color: ${this.content.bgcolor};`
-    this.tabbarItemOn = `color:${this.content.activeColor}`
+  created() {
+    this.extClass = `color:${this.content.color};background-color: ${this.content.bgcolor};`;
+    this.tabbarItemOn = `color:${this.content.activeColor}`;
   },
   methods: {
-    ...mapMutations(['TAB_BAR']),
-    tabChange (index) {
-      if (index === this.current)
-      {
+    ...mapMutations(["TAB_BAR"]),
+    tabChange(index) {
+      if (index === this.current) {
         return;
       }
-      this.$store.commit('TAB_BAR', index)
-    }
+      this.$store.commit("TAB_BAR", index);
+    },
   },
 };
 </script>

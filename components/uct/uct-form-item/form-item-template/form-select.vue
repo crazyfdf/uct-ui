@@ -9,7 +9,7 @@
               :disabled="item.options.disabled"
               @change="bindChange"
               class="uct-select">
-        <view>{{value?value:item.options.placeholder}}</view>
+        <view>{{html?html:item.options.placeholder}}</view>
       </picker>
     </view>
     <!-- 日期+时间选择器 -->
@@ -24,7 +24,7 @@
                 ref="date">
       </w-picker>
       <view class="uct-select"
-            @tap="visible=true">{{value?value:item.options.placeholder}}</view>
+            @tap="visible=true">{{html?html:item.options.placeholder}}</view>
     </view>
     <!-- 时间选择器 -->
     <picker :mode="item.type"
@@ -33,7 +33,7 @@
             :disabled="item.options.disabled"
             @change="bindChange"
             class="uct-select">
-      <view>{{value?value:item.options.placeholder}}</view>
+      <view>{{html?html:item.options.placeholder}}</view>
     </picker>
     <!-- 自定义选择器 -->
     <picker :value="item.options.options.value"
@@ -42,20 +42,20 @@
             :disabled="item.options.disabled"
             @change="bindChange"
             class="uct-select">
-      <view>{{select[value]?select[value]:item.options.placeholder}}</view>
+      <view>{{select[html]?select[html]:item.options.placeholder}}</view>
     </picker>
     <!-- 地区选择器 -->
     <view v-if="item.type=='cascader'&&item.options.showSearch==false"
           @tap="visible=true">
       <w-picker :visible.sync="visible"
                 mode="region"
-                :value="value"
+                v-model="value"
                 default-type="label"
                 :hide-area="false"
                 @confirm="bindChangeCity($event,'region')"
                 @cancel="visible=false"
                 ref="region"></w-picker>
-      <view class="uct-select">{{value.length?value:item.options.placeholder}}</view>
+      <view class="uct-select">{{html?html:item.options.placeholder}}</view>
     </view>
     <!-- 打开地图选择具体地址 -->
     <view class="uct-select"
@@ -80,10 +80,21 @@ export default {
   },
   data() {
     return {
+      html: null,
       select: [],
       visible: false,
-      value: null,
     };
+  },
+  computed: {
+    value: {
+      get() {
+        return this.item.options.defaultValue;
+      },
+      set(val) {
+        this.html = val;
+        this.$emit("input", val);
+      },
+    },
   },
   created() {
     if (this.item.type == "select") {
@@ -95,27 +106,13 @@ export default {
         this.select.push(array[index].label);
       }
     }
-    if (this.item.type == "cascader" && this.item.options.showSearch == false) {
-      console.log(this.value);
-      this.value = this.value ? this.value : [];
-    }
     if (this.item.type == "cascader" && this.item.options.showSearch == true) {
       this.$Bus.$on("updateData", (content) => {
         content["model"] = this.item.model;
         this.value = content.address;
         this.$emit("mapData", content);
       });
-      this.value = this.value ? this.value : "";
     }
-  },
-  watch: {
-    value(val) {
-      if (this.item.type == "select") {
-        this.$emit("input", this.item.options.options[this.value].value);
-      } else {
-        this.$emit("input", val);
-      }
-    },
   },
   methods: {
     bindDatechange(e) {

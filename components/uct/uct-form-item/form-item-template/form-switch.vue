@@ -13,7 +13,6 @@
 
 <script>
 export default {
-  behaviors: ["uni://form-field"],
   props: {
     item: {
       type: Object,
@@ -22,9 +21,15 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      value: null,
+    };
+  },
   methods: {
     switchChange: function (e) {
       this.value = e.target.value;
+      this.$emit("input", this.value);
     },
   },
 };

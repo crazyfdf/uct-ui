@@ -159,7 +159,8 @@
             "label": "下拉框2"
           }
         ],
-        "showSearch": false
+        "showSearch": false,
+        "defaultValue": "1"
       },
       "model": "select_1612861871170",
       "key": "select_1612861871170",
@@ -260,7 +261,7 @@
       "options": {
         "disabled": false,
         "hidden": false,
-        "defaultValue": "",
+        "defaultValue": "2",
         "dynamicKey": "",
         "dynamic": false,
         "options": [{
@@ -291,7 +292,10 @@
       "options": {
         "disabled": false,
         "hidden": false,
-        "defaultValue": [],
+        "defaultValue": [
+          "1",
+          "2"
+        ],
         "dynamicKey": "",
         "dynamic": 1,
         "options": [{

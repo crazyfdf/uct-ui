@@ -11,13 +11,10 @@
              :key="item1.value">
         <view>
           <radio :value="item1.value"
-                 :checked="index1 == value" />
+                 :checked="value == item1.value" />
         </view>
         <view>{{item1.label}}</view>
       </label>
-      <input v-model="value"
-             :name="item.model"
-             style="display:none" />
     </radio-group>
     <!-- 多选框 -->
     <checkbox-group @change="checkboxChange"
@@ -28,20 +25,16 @@
              :key="item1.value">
         <view>
           <checkbox :value="item1.value"
-                    :checked="index1 == value" />
+                    :checked="value.includes(item1.value) " />
         </view>
         <view>{{item1.label}}</view>
       </label>
-      <input v-model="value"
-             :name="item.model"
-             style="display:none" />
     </checkbox-group>
   </view>
 </template>
 
 <script>
 export default {
-  behaviors: ["uni://form-field"],
   props: {
     item: {
       type: Object,
@@ -50,31 +43,44 @@ export default {
       },
     },
   },
-  watch: {
-    value(val) {
-      this.$emit("input", val);
+  data() {
+    return {};
+  },
+  computed: {
+    value: {
+      get() {
+        return this.item.options.defaultValue;
+      },
+      set(val) {
+        this.$emit("input", val);
+      },
     },
   },
   methods: {
     radioChange: function (e) {
-      for (let i = 0; i < this.item.options.options.length; i++) {
-        if (this.item.options.options[i].value === e.target.value) {
-          this.value = i;
-          break;
+      this.item.options.options.forEach((item, index) => {
+        if (item.value === e.target.value) {
+          this.value = item.value;
         }
-      }
+      });
     },
     checkboxChange: function (e) {
-      var items = this.item.options.options,
+      let items = this.item.options.options,
         values = e.detail.value;
-      for (var i = 0, lenI = items.length; i < lenI; ++i) {
-        const item = items[i];
+      items.forEach((item, index) => {
         if (values.includes(item.value)) {
           this.$set(item, "checked", true);
         } else {
           this.$set(item, "checked", false);
         }
-      }
+      });
+      this.value = items
+        .filter((item) => {
+          return item.checked;
+        })
+        .map((item) => {
+          return item.value;
+        });
     },
   },
 };

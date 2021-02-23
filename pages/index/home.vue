@@ -2,7 +2,7 @@
   <view class="page-body">
 
     <uct-form class="mt80"
-              :list="formData.list"
+              :formData="formData"
               url="system/uploadPartnerByProject"
               @submit="submit"></uct-form>
   </view>

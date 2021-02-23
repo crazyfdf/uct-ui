@@ -11,9 +11,10 @@
            :disabled="item.options.disabled" />
     <!-- 文本输入框 -->
     <textarea v-else-if="item.type=='textarea'"
-              class="uct-input"
+              class="uct-input-textare"
               :type="item.options.type"
               :name="item.model"
+              auto-height
               v-model="value"
               maxlength="9999"
               :placeholder="item.options.placeholder"
@@ -61,5 +62,12 @@ export default {
   font-weight: 900;
   border: none;
   background-color: transparent;
+  &-textarea {
+    width: auto;
+    font-size: 28rpx;
+    padding: 10rpx 0;
+    line-height: normal;
+    flex: 1;
+  }
 }
 </style>

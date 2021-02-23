@@ -1,28 +1,18 @@
 <template>
-  <view>
-    <form @submit="formSubmit"
-          @reset="formReset"
-          ref="form">
-      <slot></slot>
-      <view v-for="(item,key) in formList"
-            :key="key">
-        <view class="mb40">
-          <uct-form-item @mapData="mapData"
-                         @upImage="upImage"
-                         :layout="layout"
-                         :item="item"></uct-form-item>
-          <!-- 按钮 -->
-          <view v-if="item.type=='button'"
-                class="uct-form-item mt60">
-            <button class="submit"
-                    :form-type="item.options.handle"
-                    :type="item.options.type"
-                    :disabled="item.options.disabled"
-                    :hidden="item.options.hidden">{{item.label}}</button>
-          </view>
-        </view>
-      </view>
-    </form>
+  <view :style="{
+    'margin-top':`${top}rpx`,
+    'margin-bottom':`${bottom}rpx`
+  }">
+    <slot></slot>
+    <view v-for="(item,key) in formList"
+          :key="key">
+      <uct-form-item @mapData="mapData"
+                     class="mb40"
+                     @input="changeInput"
+                     @upImage="upImage"
+                     :layout="formData.config.layout"
+                     :item="item"></uct-form-item>
+    </view>
   </view>
 </template>
 
@@ -39,10 +29,10 @@ export default {
       },
     },
     /* 直接拿到form数据和form表单名二选一 */
-    list: {
-      type: Array,
+    formData: {
+      type: Object,
       default() {
-        return [];
+        return {};
       },
     },
     /* 通过form表单名拿到from数据 */
@@ -64,6 +54,18 @@ export default {
       type: String,
       default: "form/submit",
     },
+    top: {
+      type: Number,
+      default() {
+        return 0;
+      },
+    },
+    bottom: {
+      type: Number,
+      default() {
+        return 120;
+      },
+    },
   },
   data() {
     return {
@@ -71,21 +73,19 @@ export default {
       iList: [],
       map: {},
       data: {},
-      layout: false,
     };
   },
   computed: {
     formList: {
-      set(val) {
-        this.layout = val.config.layout == "horizontal" ? true : false;
-      },
+      set(val) {},
       get() {
-        return !this.list.length ? this.iList : this.list;
+        return !this.formData.list.length ? this.iList : this.formData.list;
       },
     },
   },
   mounted() {
-    if (!this.list.length) {
+    console.log(this.formData);
+    if (!this.formData.list.length) {
       this.$api("form/form", { name: this.name, id: this.form_id }).then(
         (res) => {
           this.iList = res.data.frmJson.list;
@@ -105,7 +105,7 @@ export default {
       obj[lat] = content.lat;
       Object.assign(this.map, obj);
     },
-    formSubmit: function (e) {
+    formSubmit(e) {
       debounce.canDoFunction({
         key: "submit", //基于此值判断是否可以操作，如两个方法传入了同样的key，则会混淆，建议传入调用此事件的方法名，简单好梳理
         time: 5000, //如果传入time字段，则为定时器后，自动解除锁定状态，单位（毫秒）
@@ -117,9 +117,9 @@ export default {
     },
     changeInput(name, value) {
       this.data[name] = value;
-      console.log(name, value);
+      console.log(this.data);
     },
-    formReset: function (e) {
+    formReset(e) {
       console.log("清空数据");
     },
   },
@@ -191,7 +191,4 @@ function submit(e) {
 </script>
 
 <style scoped lang="scss">
-.submit {
-  width: 100%;
-}
 </style>
