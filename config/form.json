@@ -471,7 +471,7 @@
     "wrapperCol": {
       "span": 20
     },
-    "hideRequiredMark": false,
+    "hideRequiredMark": true,
     "customStyle": ""
   }
 }

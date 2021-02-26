@@ -249,7 +249,7 @@ export default {
     }
     // #endif
     return clientid;
-  }
+  },
 
   // #endif
   /* 深拷贝 */

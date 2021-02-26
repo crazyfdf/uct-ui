@@ -1,7 +1,7 @@
 <template>
   <view>
     <view class="uct-form-item"
-          :class="layout=='horizontal'?'uct-form-item-flex':'uct-form-item-block'">
+          :class="config.layout=='horizontal'?'uct-form-item-flex':'uct-form-item-block'">
       <!-- 标题 -->
       <view v-if="item.type=='text'"
             class="text f16 f900">{{item.label}}</view>
@@ -13,41 +13,31 @@
       <form-input v-if="['input','textarea','number'].includes(item.type)"
                   :item="item"
                   class="uct-form-item-value"
-                  :class="layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                  :class="config.layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
                   v-model="value"></form-input>
       <!-- 选择器 -->
       <form-select v-if="['cascader','select','time','date'].includes(item.type)"
                    :item="item"
                    class="uct-form-item-value"
-                   :class="layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                   :class="config.layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
                    v-model="value"
                    @mapData="mapData"></form-select>
       <!-- 选择框 -->
       <form-check v-if="['radio','checkbox'].includes(item.type)"
                   :item="item"
                   class="uct-form-item-value"
-                  :class="layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                  :class="config.layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
                   v-model="value"></form-check>
       <!-- 上传文件 -->
       <form-file v-if="['uploadFile','uploadImg'].includes(item.type)"
                  :item="item"
                  class="uct-form-item-value"
-                 :class="layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"></form-file>
-      <!--       <robby-image-upload v-model="img"
-                          class="uct-form-item-value"
-                          :class="layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
-                          v-if="item.type=='uploadImg'"
-                          :limit="item.options.limit"
-                          :header="header"
-                          @delete="deleteImage"
-                          @add="addImage"
-                          :showUploadProgress="true"
-                          :server-url="item.options.action"></robby-image-upload> -->
+                 :class="config.layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"></form-file>
       <!-- 开关 -->
       <form-switch v-if="item.type=='switch'"
                    :item="item"
                    class="uct-form-item-value"
-                   :class="layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
+                   :class="config.layout=='horizontal'?'uct-form-item-value-flex':'uct-form-item-value-block'"
                    v-model="value"></form-switch>
 
       <!-- 警告提示 -->
@@ -62,16 +52,21 @@
                     class="uct-divider"
                     v-model="value"></form-divider>
       <!-- 按钮 -->
-      <button style="width:100%"
-              v-if="item.type=='button'"
-              :form-type="item.options.handle"
-              :type="item.options.type"
-              :disabled="item.options.disabled"
-              :hidden="item.options.hidden">{{item.label}}</button>
+      <uct-button style="width:100%"
+                  v-if="item.type=='button'"
+                  :form-type="item.options.handle"
+                  :type="item.options.type"
+                  :rotate="true"
+                  :bgColor="item.options.type|color"
+                  :disabled="item.options.disabled"
+                  @click="handle"
+                  :hidden="item.options.hidden"
+                  :text="item.label"></uct-button>
     </view>
 
     <!-- 提示语 -->
-    <view v-if="errorMessage">{{errorMessage}}</view>
+    <view v-show="config.hideRequiredMark&&errorMessage"
+          class="cred">{{errorMessage}}</view>
   </view>
 </template>
 
@@ -82,11 +77,20 @@ import FormInput from "./form-item-template/form-input.vue";
 import FormSelect from "./form-item-template/form-select.vue";
 import FormSwitch from "./form-item-template/form-switch.vue";
 import FormUploadImg from "./form-item-template/form-uploadImg.vue";
-import RobbyImageUpload from "@/components/robby-image-upload/robby-image-upload.vue";
 import FormCheck from "./form-item-template/form-check.vue";
 import FormFile from "./form-item-template/form-file.vue";
+import filter from "@/common/utils/filter.js";
 
+const formType = {
+  submit: (that) => {
+    that.$emit("formSubmit");
+  },
+  reset: (that) => {
+    that.$emit("formReset");
+  },
+};
 export default {
+  filters: filter,
   components: {
     FormInput,
     FormSwitch,
@@ -94,7 +98,6 @@ export default {
     FormUploadImg,
     FormSelect,
     FormAlert,
-    RobbyImageUpload,
     FormCheck,
     FormFile,
   },
@@ -105,10 +108,10 @@ export default {
         return {};
       },
     },
-    layout: {
-      type: String,
+    config: {
+      type: Object,
       default() {
-        return "vertical"; //horizontal左右布局，vertical上下布局
+        return { layout: "vertical", hideRequiredMark: false }; //horizontal左右布局，vertical上下布局
       },
     },
   },
@@ -127,23 +130,12 @@ export default {
       this.img = this.value;
     }
   },
-  computed: {
-    /*     img: {
-      set(v) {
-        if (this.item.type == "uploadImg") {
-          this.imglist[this.name] = v;
-          this.$emit("upImage", this.imglist);
-          // this.$emit('input', this.imglist)
-        }
-      },
-      get() {
-        return this.value;
-      },
-    }, */
-  },
   watch: {
     value(val) {
-      this.$emit("input", this.item.model, val);
+      let data = {};
+      data[`${this.item.model}`] = val;
+      this.$emit("input", data);
+      this.rule(data);
     },
   },
   methods: {
@@ -151,6 +143,27 @@ export default {
     addImage: function (e) {},
     mapData(content) {
       this.$emit("mapData", content);
+    },
+    handle() {
+      formType[this.item.options.handle](this);
+    },
+    rule(data) {
+      let that = this;
+      let rules = {};
+      if (that.item.rules) {
+        for (let item1 of that.item.rules) {
+          item1.name = that.item.model;
+          item1.type = item1.pattern;
+        }
+        rules = that.$rules.rules(data, that.item.rules);
+      }
+      if (!rules.isOk) {
+        that.errorMessage = rules.message;
+        return false;
+      } else {
+        that.errorMessage = "";
+        return true;
+      }
     },
   },
 };

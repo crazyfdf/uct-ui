@@ -1,3 +1,14 @@
+/* 颜色配置 */
+const colorType = {
+  1: "rgba(255, 43, 43, 1);",
+  2: "rgba(255, 102, 102, 1);",
+  3: "rgba(255, 191, 43, 1);",
+  primary: "#1464c7",
+  danger: "red",
+  dashed: "white",
+  default: "rgba(181, 181, 181, 1);",
+}
+
 export default {
   /**
   * 格式化时间
@@ -54,23 +65,7 @@ export default {
       return arg
     }
   },
-  color (index) {
-    let tcolor = "rgba(181, 181, 181, 1)";
-    switch (index)
-    {
-      case 1:
-        tcolor = "rgba(255, 43, 43, 1);";
-        break;
-      case 2:
-        tcolor = "rgba(255, 102, 102, 1);";
-        break;
-      case 3:
-        tcolor = "rgba(255, 191, 43, 1);";
-        break;
-      default:
-        tcolor = "rgba(181, 181, 181, 1);";
-        break;
-    }
-    return "color:" + tcolor;
+  color (type) {
+    return colorType[type];
   },
 }

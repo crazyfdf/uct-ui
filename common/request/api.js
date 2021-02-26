@@ -35,6 +35,7 @@ export default {
         // mobileno:'18354694321'//手机号码
       }
     },
+
     /** 50007 获取广告配置数据 ↓ **/
     getAdConfig: {
       url: 'system/getAdConfig',
