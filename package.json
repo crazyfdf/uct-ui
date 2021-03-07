@@ -4,6 +4,7 @@
   "description": "小程序派单平台",
   "main": "main.js",
   "dependencies": {
+    "@dcloudio/uni-ui": "^1.2.11",
     "uni-read-pages": "^1.0.5",
     "uni-simple-router": "^2.0.0-alpha.3",
     "uview-ui": "^1.8.3",
