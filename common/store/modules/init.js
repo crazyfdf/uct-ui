@@ -1,7 +1,7 @@
 // 初始化数据模块
 import api from '@/common/request/index'
 import store from '@/common/store'
-import Router from '@/common/router';
+import Router from '@/components/router';
 import {
   INIT_DATA,
   PAGE_ROUTES,

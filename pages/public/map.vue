@@ -70,209 +70,202 @@
 </template>
 
 <script>
-const app = getApp()
-var QQMapWX = require('@/components/map/qqmap-wx-jssdk.min.js')
-var qqmapsdk = new QQMapWX({
-  key: 'LXCBZ-NNIKD-UZ64F-H6AFI-UNJLH-OCFGE'
-})
+import qqmapsdk from "@/config/env.js";
 export default {
-  data () {
+  data() {
     return {
-      detail: '',
+      detail: "",
       map: {
         longitude: 0,
         latitude: 0,
         showLocation: true,
-        iconPath: '/static/imgs/public/icon_position.png',
+        iconPath: "/static/imgs/public/icon_position.png",
         width: 40,
         height: 40,
         scale: 16,
-        controls: [{
-          id: 'map',
-          iconPath: '/static/imgs/public/icon_position.png',
-          position: { left: 1200, top: 1200, width: 40, height: 40 },
-          clickable: false
-        }]
+        controls: [
+          {
+            id: "map",
+            iconPath: "/static/imgs/public/icon_position.png",
+            position: { left: 1200, top: 1200, width: 40, height: 40 },
+            clickable: false,
+          },
+        ],
       },
       list: [],
       oftenList: [],
       address: {
-        title: '',
-        address: ''
+        title: "",
+        address: "",
       },
       checked: 0,
       scrollTop: 0,
-      mapStatus: 1 // 控制选择地址时 地图不加载附近列表
-    }
+      mapStatus: 1, // 控制选择地址时 地图不加载附近列表
+    };
   },
-  created () {
-    this.getLocation()
-    let map = this.map
+  created() {
+    this.getLocation();
+    let map = this.map;
     uni.setNavigationBarTitle({
-      title: '搜索地址'
-    })
+      title: "搜索地址",
+    });
   },
 
   methods: {
     // 查询现在的位置
-    getLocation () {
-      let this_ = this
+    getLocation() {
+      let this_ = this;
       uni.getLocation({
-        type: 'gcj02', // 返回国测局坐标
+        type: "gcj02", // 返回国测局坐标
         geocode: true,
         success: function (res) {
-          this_.initMap(res)
+          this_.initMap(res);
         },
         fail: function (e) {
           console.log(err);
-        }
-      })
+        },
+      });
     },
     // 初始化我的位置
-    async initMap (res) {
+    async initMap(res) {
       this.position = {
         longitude: res.longitude,
-        latitude: res.latitude
-      }
+        latitude: res.latitude,
+      };
       this.address.address = await this.getAddressList(1);
       this.map = Object.assign({}, this.map, {
         longitude: res.longitude,
         latitude: res.latitude,
-      })
+      });
     },
-    getAddress () {
-      let that = this
+    getAddress() {
+      let that = this;
       uni.getLocation({
-        type: 'gcj02',
+        type: "gcj02",
         success: function (res) {
-          let map = that.data.map
-          map.longitude = res.longitude
-          map.latitude = res.latitude
-          that.getWidthHeight(e => {
-            map.controls[0].position.top = e.height / 2 - 35
-            map.controls[0].position.left = e.width / 2 - 20
+          let map = that.data.map;
+          map.longitude = res.longitude;
+          map.latitude = res.latitude;
+          that.getWidthHeight((e) => {
+            map.controls[0].position.top = e.height / 2 - 35;
+            map.controls[0].position.left = e.width / 2 - 20;
             that.setData({
               map: map,
               position: {
                 longitude: res.longitude,
-                latitude: res.latitude
-              }
-            })
-            that.getAddressList(1)
-          })
+                latitude: res.latitude,
+              },
+            });
+            that.getAddressList(1);
+          });
         },
-        fail: err => {
+        fail: (err) => {
           console.log(err);
-        }
-      })
+        },
+      });
     },
 
-    getWidthHeight (fn) {
-      var query = uni.createSelectorQuery()
-      query.select('#map').boundingClientRect()
-      query.exec(res => {
-        fn(res[0])
-      })
+    getWidthHeight(fn) {
+      var query = uni.createSelectorQuery();
+      query.select("#map").boundingClientRect();
+      query.exec((res) => {
+        fn(res[0]);
+      });
     },
-    getAddressList (s = 0) {
-      let that = this
-      let position = that.position
+    getAddressList(s = 0) {
+      let that = this;
+      let position = that.position;
       qqmapsdk.reverseGeocoder({
         location: {
           latitude: position.latitude,
-          longitude: position.longitude
+          longitude: position.longitude,
         },
         get_poi: 1,
         poi_options: "page_size=20;page_index=1",
         success: function (e) {
-          if (s)
-          {
-            e.result.pois[0].select = 1
+          if (s) {
+            e.result.pois[0].select = 1;
             that.setData({
               list: e.result.pois,
               address: e.result.pois[0],
-              checked: 0
-            })
-          } else
-          {
+              checked: 0,
+            });
+          } else {
             that.setData({
-              list: e.result.pois
-            })
+              list: e.result.pois,
+            });
           }
 
           setTimeout(() => {
-            that.scrollTop = 1
-          }, 1000)
+            that.scrollTop = 1;
+          }, 1000);
         },
-        fail: err => {
+        fail: (err) => {
           console.log(err);
-        }
-      })
+        },
+      });
     },
-    mapChange (e) {
-      let that = this
-      clearTimeout(this.timer)
+    mapChange(e) {
+      let that = this;
+      clearTimeout(this.timer);
       this.timer = setTimeout(() => {
-        if (e.type == 'end')
-        {
-          that.mapCtx = uni.createMapContext('map')
+        if (e.type == "end") {
+          that.mapCtx = uni.createMapContext("map");
           that.mapCtx.getCenterLocation({
-            success: res => {
+            success: (res) => {
               that.setData({
                 position: {
                   latitude: res.latitude,
-                  longitude: res.longitude
-                }
-              })
-              if (that.mapStatus)
-              { // 防止地图点击时 进行多次加载
-                that.getAddressList(1)
-              } else
-              {
-                that.mapStatus = 1
+                  longitude: res.longitude,
+                },
+              });
+              if (that.mapStatus) {
+                // 防止地图点击时 进行多次加载
+                that.getAddressList(1);
+              } else {
+                that.mapStatus = 1;
               }
-            }
-          })
+            },
+          });
         }
-      }, 200)
-
+      }, 200);
     },
-    bindAddress (index) {
-      let list = this.list
-      let map = this.map
-      map.latitude = list[index].location.lat
-      map.longitude = list[index].location.lng
+    bindAddress(index) {
+      let list = this.list;
+      let map = this.map;
+      map.latitude = list[index].location.lat;
+      map.longitude = list[index].location.lng;
       this.setData({
         map: map,
         checked: index,
         address: list[index],
-        mapStatus: 0
-      })
+        mapStatus: 0,
+      });
     },
-    setData (obj) {
-      Object.assign(this, obj)
+    setData(obj) {
+      Object.assign(this, obj);
     },
-    addressSearch () {
+    addressSearch() {
       uni.navigateTo({
-        url: '/pages/public/address-search'
-      })
+        url: "/pages/public/address-search",
+      });
     },
-    submit () {
-      let that = this
-      let detail = that.detail || ''
-      let address = that.address
+    submit() {
+      let that = this;
+      let detail = that.detail || "";
+      let address = that.address;
       let a = {
         address: address.title + detail,
         lat: address.location.lat,
-        lng: address.location.lng
-      }
-      this.$Bus.$emit("updateData", a)
+        lng: address.location.lng,
+      };
+      this.$Bus.$emit("updateData", a);
       uni.navigateBack({
-        delta: 1
-      })
-    }
-  }
-}
+        delta: 1,
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss">

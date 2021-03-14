@@ -8,19 +8,19 @@
  */
 import api from '@/common/request/index'
 import store from '@/common/store'
-import router from '@/common/router'
+import router from '@/components/router'
 import {
   API_URL
-} from '@/env'
+} from '@/config/env'
 
 export default class Wechat {
 
   async login () {
     let token = '';
-    if (router.$Route.path.indexOf('public/login') == -1)
-    {
-      uni.setStorageSync('fromLogin', router.$Route);
-    }
+    /*     if (router.$Route.path.indexOf('public/login') == -1)
+        {
+          uni.setStorageSync('fromLogin', router.$Route);
+        } */
     // #ifdef MP-WEIXIN
     // store.commit('FORCE_OAUTH', true);
     this.login_hawk();
@@ -56,28 +56,42 @@ export default class Wechat {
 
   wxOpenPlatformLogin () {
     let that = this;
+
     return new Promise((resolve, reject) => {
-      uni.login({
-        provider: 'weixin',
-        success: function (loginRes) {
-          if (loginRes.errMsg === "login:ok")
+      //app第三方登录
+      console.log("App微信拉起授权")
+      let that = this
+      uni.getProvider({
+        service: 'oauth',
+        success: function (res) {
+          console.log(res.provider);
+          //支持微信、qq和微博等
+          if (~res.provider.indexOf('weixin'))
           {
-            let authResult = loginRes.authResult;
-            uni.getUserInfo({
+            uni.login({
               provider: 'weixin',
-              success: function (infoRes) {
-                if (infoRes.errMsg === "getUserInfo:ok")
+              success: function (loginRes) {
+                console.log(loginRes);
+                if (loginRes.errMsg === "login:ok")
                 {
-                  let userInfo = infoRes.userInfo;
-                  api('user.wxOpenPlatformLogin', {
-                    authResult: authResult,
-                    userInfo: userInfo
-                  }).then(res => {
-                    if (res.code === 1)
-                    {
-                      resolve(res.data.token);
+                  resolve(loginRes.authResult);
+                  /* let authResult = loginRes.authResult;
+                  uni.getUserInfo({
+                    provider: 'weixin',
+                    success: function (infoRes) {
+                      console.log(infoRes);
+                      resolve(infoRes.userInfo);
+                    },
+                    fail: function (res) {
+                      api('dev.debug', {
+                        info: res
+                      })
                     }
-                  });
+                  }); */
+                }
+                else
+                {
+                  console.log('未授权登录');
                 }
               },
               fail: function (res) {
@@ -87,13 +101,8 @@ export default class Wechat {
               }
             });
           }
-        },
-        fail: function (res) {
-          api('dev.debug', {
-            info: res
-          })
         }
-      });
+      })
     });
   }
 
@@ -152,8 +161,11 @@ export default class Wechat {
             api('user.login_hawk', {
               code,
             }).then(res => {
-              uni.showLoading({
-                title: `${res.msg}`
+              uni.showToast({
+                title: `${res.msg}`,
+                icon: 'none',
+                duration: 1000,
+                mask: true
               });
               if (res.code === 1)
               {

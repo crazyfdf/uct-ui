@@ -1,30 +1,17 @@
 import Vue from 'vue'
 import App from './App'
-import tools from '@/common/utils/tools'
 import store from '@/common/store'
-import api from '@/common/request/index'
-import rules from '@/common/utils/rules'
-import form from '@/common/request/formName'
-// import MescrollBody from "@/components/mescroll-uni/mescroll-body.vue"
-import {
-  API_URL
-} from './env.js'
-
-import { router, RouterMount } from '@/common/router'  //路径换成自己的
-Vue.use(router)
-// Vue.component('mescroll-body', MescrollBody)
-
+import { router, RouterMount } from '@/components/router'  //路径换成自己的
 import uView from 'uview-ui';
+import uct from '@/components/uct'
+
+Vue.use(uct);
+Vue.use(router)
 Vue.use(uView);
 
 App.mpType = 'app'
 
-Vue.prototype.$rules = rules;
-Vue.prototype.$api = api;
-Vue.prototype.$tools = tools;
 Vue.prototype.$store = store;
-Vue.prototype.$API_URL = API_URL;
-Vue.prototype.$form = form;
 Vue.prototype.$Bus = new Vue()
 
 const app = new Vue({

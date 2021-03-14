@@ -8,7 +8,7 @@
 
 import store from '@/common/store'
 import api from '@/common/request/index'
-import Router from '@/common/router'
+import Router from '@/components/router'
 // #ifdef H5
 import wxsdk from '@/common/wechat/sdk'
 // #endif

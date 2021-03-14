@@ -1,8 +1,6 @@
 // 用户数据模块
 import api from '@/common/request/index'
 import store from '@/common/store'
-import router from '@/common/router.js'
-import tools from '@/common/utils/tools'
 
 import {
   USER_INFO,
@@ -35,7 +33,6 @@ const actions = {
     let fromLogin = uni.getStorageSync('fromLogin');
     if (fromLogin)
     {
-      tools.routerTo(fromLogin.path, fromLogin.query, true);
       uni.removeStorageSync('fromLogin')
     } else
     {

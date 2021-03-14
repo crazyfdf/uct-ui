@@ -4,7 +4,7 @@
     "custom": {
       "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
       "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue", // 匹配node_modules内的vue文件
-      "^uct-(.*)": "@/components/uct/uct-$1/uct-$1.vue" // 匹配components目录内的vue文件
+      "^uct-(.*)": "@/components/uct/components/uct-$1/uct-$1.vue" // 匹配components目录内的vue文件
     }
   },
   "pages": [{
@@ -12,67 +12,44 @@
     "name": "index",
     "aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
     "style": {
-      "navigationBarTitleText": "首页",
-      "enablePullDownRefresh": true
+      "navigationBarTitleText": "首页"
     }
   }],
   "subPackages": [{
-      // 公共public
-      "root": "pages/public",
-      "pages": [{
-        "path": "webview",
-        "style": {
-          "navigationBarTitleText": "" //外部链接
-        }
-      }, {
-        "path": "login",
-        "name": "login",
-        "style": {
-          "navigationBarTitleText": "登入",
-          "navigationStyle": "custom"
-        }
-      }, {
-        "path": "map",
-        "name": "map",
-        "style": {
-          "navigationBarTitleText": "地图"
-        }
-      }, {
-        "path": "address-search",
-        "name": "address-search",
-        "style": {
-          "navigationBarTitleText": "搜索地址"
-        }
-      }, {
-        "path": "template",
-        "name": "template",
-        "style": {
-          "navigationBarTitleText": "通用组件"
-        }
-      }]
-    },
-
-    // 直播live
-    {
-      "root": "pages/live",
-      "pages": [{
-        "path": "live-details",
-        "style": {
-          "navigationBarTitleText": "职位详情"
-        }
-      }]
-    },
-    // 我的user
-    {
-      "root": "pages/user",
-      "pages": [{
-        "path": "user",
-        "style": {
-          "navigationBarTitleText": "职位详情"
-        }
-      }]
-    }
-  ],
+    // 公共public
+    "root": "pages/public",
+    "pages": [{
+      "path": "webview",
+      "style": {
+        "navigationBarTitleText": "" //外部链接
+      }
+    }, {
+      "path": "login",
+      "name": "login",
+      "style": {
+        "navigationBarTitleText": "登入",
+        "navigationStyle": "custom"
+      }
+    }, {
+      "path": "map",
+      "name": "map",
+      "style": {
+        "navigationBarTitleText": "地图"
+      }
+    }, {
+      "path": "address-search",
+      "name": "address-search",
+      "style": {
+        "navigationBarTitleText": "搜索地址"
+      }
+    }, {
+      "path": "template",
+      "name": "template",
+      "style": {
+        "navigationBarTitleText": "通用组件"
+      }
+    }]
+  }],
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",

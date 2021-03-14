@@ -53,5 +53,13 @@
                 "desc" : "为方便给您提供更好的服务"
             }
         }
+    },
+    "h5" : {
+        "router" : {
+            "mode" : "history"
+        },
+        "sdkConfigs" : {
+            "maps" : {}
+        }
     }
 }

@@ -31,75 +31,71 @@
 </template>
 
 <script>
-const app = getApp()
-var QQMapWX = require('@/components/map/qqmap-wx-jssdk.min.js')
-var qqmapsdk = new QQMapWX({
-  key: 'LXCBZ-NNIKD-UZ64F-H6AFI-UNJLH-OCFGE'
-})
+import qqmapsdk from "@/config/env.js";
 export default {
-  data () {
+  data() {
     return {
-      list: []
-    }
+      list: [],
+    };
   },
-  created () {
+  created() {
     uni.setNavigationBarTitle({
-      title: '搜索地址'
-    })
+      title: "搜索地址",
+    });
   },
   methods: {
-    searchList (n) {
-      let that = this
+    searchList(n) {
+      let that = this;
       qqmapsdk.getSuggestion({
         keyword: n,
-        success: res => {
-          console.log(res)
+        success: (res) => {
+          console.log(res);
           that.setData({
-            list: res.data
-          })
+            list: res.data,
+          });
         },
-        fail: err => {
+        fail: (err) => {
           uni.showToast({
-            icon: 'none',
-            title: `${err}`
-          })
-        }
-      })
+            icon: "none",
+            title: `${err}`,
+          });
+        },
+      });
     },
-    bindInput (e) {
-      let val = e.detail.value
-      this.searchList(val)
+    bindInput(e) {
+      let val = e.detail.value;
+      this.searchList(val);
     },
-    bindConfirm (e) {
-      let val = e.detail.value
-      this.searchList(val)
+    bindConfirm(e) {
+      let val = e.detail.value;
+      this.searchList(val);
     },
-    address (item) {
+    address(item) {
       console.log(item);
-      let pages = getCurrentPages()
-      let prePages = pages[pages.length - 2].$vm
+      let pages = getCurrentPages();
+      let prePages = pages[pages.length - 2].$vm;
       console.log(prePages);
-      let list = prePages.list
-      let map = prePages.map
-      map.longitude = item.location.lng
-      map.latitude = item.location.lat
-      prePages.address = item
-      prePages.list = list
-      prePages.map = map
+      let list = prePages.list;
+      let map = prePages.map;
+      map.longitude = item.location.lng;
+      map.latitude = item.location.lat;
+      prePages.address = item;
+      prePages.list = list;
+      prePages.map = map;
       prePages.position = {
         longitude: item.location.lng,
-        latitude: item.location.lat
-      }
-      prePages.checked = 0
+        latitude: item.location.lat,
+      };
+      prePages.checked = 0;
       uni.navigateBack({
-        delta: 1
-      })
+        delta: 1,
+      });
     },
-    setData (obj) {
-      Object.assign(this, obj)
+    setData(obj) {
+      Object.assign(this, obj);
     },
-  }
-}
+  },
+};
 </script>
 
 <style>
