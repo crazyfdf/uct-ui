@@ -5,6 +5,10 @@ import tools from './libs/utils/tools'
 import {
   API_URL
 } from './common/config/env.js'
+import uView from 'uview-ui';
+
+Vue.use(uView);
+
 const $uct = {
   api,
   API_URL,

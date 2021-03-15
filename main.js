@@ -2,12 +2,10 @@ import Vue from 'vue'
 import App from './App'
 import store from '@/common/store'
 import { router, RouterMount } from '@/components/router'  //路径换成自己的
-import uView from 'uview-ui';
 import uct from '@/components/uct'
 
 Vue.use(uct);
 Vue.use(router)
-Vue.use(uView);
 
 App.mpType = 'app'
 
