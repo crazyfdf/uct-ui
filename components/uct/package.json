@@ -2,13 +2,22 @@
   "name": "uct",
   "version": "1.0.0",
   "description": "UCT，是uni-app生态优秀的业务组件框架，全面的组件和便捷的工具会让您信手拈来，如鱼得水",
+  "author": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "styleguide": "vue-styleguidist server",
+    "vuepress": "vuepress dev docs",
+    "comeMd": "vue-docgen --watch",
+    "docs": "concurrently \"vue-docgen --watch\" \"vuepress dev docs\"",
+    "docs:build": "vue-docgen && vuepress build docs"
+  },
   "main": "index.js",
   "dependencies": {
     "uview-ui": "^1.8.3"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "vue-styleguidist": "^4.35.0",
+    "vuepress": "^1.8.2"
   },
-  "author": "",
   "license": "ISC"
 }

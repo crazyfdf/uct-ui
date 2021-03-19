@@ -1,0 +1,52 @@
+Arguments: 
+  E:\node\node.exe E:\node\node_modules\yarn\bin\yarn.js add -D vuepress
+
+PATH: 
+  C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;E:\nvm;E:\node;E:\Git\cmd;E:\SVN\bin;C:\Users\weiyoho\AppData\Local\Microsoft\WindowsApps;E:\Microsoft VS Code\bin;E:\nvm;E:\node
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.15.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: unexpected end of file
+      at Zlib.zlibOnError [as onerror] (zlib.js:182:17)
+
+npm manifest: 
+  {
+    "name": "package",
+    "version": "1.0.0",
+    "description": "小程序派单平台",
+    "main": "main.js",
+    "dependencies": {
+      "@dcloudio/uni-ui": "^1.2.11",
+      "uni-read-pages": "^1.0.5",
+      "uni-simple-router": "^2.0.0-alpha.3",
+      "uview-ui": "^1.8.3",
+      "vue-jsonp": "^2.0.0",
+      "vuex": "^3.6.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "docs:dev": "vuepress dev docs",
+      "docs:build": "vuepress build docs"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://gitee.com/UCT/uniwork_miniprogram.git"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
