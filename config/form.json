@@ -464,14 +464,14 @@
     }
   ],
   "config": {
-    "layout": "vertical",
+    "layout": "horizontal",
     "labelCol": {
       "span": 4
     },
     "wrapperCol": {
       "span": 20
     },
-    "hideRequiredMark": true,
+    "hideRequiredMark": false,
     "customStyle": ""
   }
 }

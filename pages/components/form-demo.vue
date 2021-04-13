@@ -1,6 +1,9 @@
 <template>
   <view class="page-body">
-    <uct-form class="mt80"
+    <uct-nav :isBack="false">
+      <view slot="center">表单模板</view>
+    </uct-nav>
+    <uct-form class=" mb140 px40"
               :formData="formData"
               url="system/uploadPartnerByProject"
               @submit="submit"></uct-form>

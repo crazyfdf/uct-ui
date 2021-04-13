@@ -12,7 +12,8 @@
     "name": "index",
     "aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
     "style": {
-      "navigationBarTitleText": "首页"
+      "navigationBarTitleText": "首页",
+      "navigationStyle": "custom"
     }
   }],
   "subPackages": [{

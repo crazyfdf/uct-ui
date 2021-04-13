@@ -1,10 +1,20 @@
+/*
+ * @Author: your name
+ * @Date: 2021-03-13 07:55:05
+ * @LastEditTime: 2021-04-09 17:17:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \UC-font\components\uct\index.js
+ */
 import Vue from 'vue'
 import rule from './libs/utils/rules'
 import api from './common/request/index'
 import tools from './libs/utils/tools'
 import {
   API_URL
-} from './common/config/env.js'
+} from './libs/config/env.js'
+import config from './libs/config/config.js'
+import lodash from './libs/lodash/lodash.js'
 import uView from 'uview-ui';
 
 Vue.use(uView);
@@ -23,6 +33,14 @@ const $uct = {
   GetSystemInfo: tools.GetSystemInfo,
   GetAppVersion: tools.GetAppVersion,
   getClientId: tools.getClientId,
+  Container: lodash.Container,
+  Either: lodash.Either,
+  IO: lodash.IO,
+  IOMonad: lodash.IOMonad,
+  Maybe: lodash.Maybe,
+  curry: lodash.curry,
+  compose: lodash.compose,
+  config,
 }
 const install = Vue => {
   Vue.prototype.$uct = $uct

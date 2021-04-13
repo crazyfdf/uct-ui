@@ -4,6 +4,8 @@
     <!-- 文字输入框 -->
     <input v-if="item.type=='input'"
            class="uct-input"
+           :class="value?'c-black':'c-black-7'"
+           :style="[getStyle]"
            :type="item.options.type"
            :name="item.model"
            v-model="value"
@@ -11,7 +13,9 @@
            :disabled="item.options.disabled" />
     <!-- 文本输入框 -->
     <textarea v-else-if="item.type=='textarea'"
-              class="uct-input-textare"
+              class="uct-input-textarea"
+              :class="value?'c-black':'c-black-7'"
+              :style="[getStyle]"
               :type="item.options.type"
               :name="item.model"
               auto-height
@@ -22,6 +26,8 @@
     <!-- 数字输入框 -->
     <input v-else-if="item.type=='number'"
            class="uct-input"
+           :class="value?'c-black':'c-black-7'"
+           :style="[getStyle]"
            :type="item.type"
            :name="item.model"
            v-model="value"
@@ -44,11 +50,26 @@ export default {
   data() {
     return {
       value: "",
+      inputHeight: 80, // input的高度
+      textareaHeight: 100, // textarea的高度
     };
   },
   watch: {
     value(val) {
       this.$emit("input", val);
+    },
+  },
+  computed: {
+    getStyle() {
+      let style = {};
+      // 如果没有自定义高度，就根据type为input还是textare来分配一个默认的高度
+      style.minHeight = this.height
+        ? this.height + "rpx"
+        : this.item.type == "textarea"
+        ? this.textareaHeight + "rpx"
+        : this.inputHeight + "rpx";
+      style.fontSize = "14px";
+      return style;
     },
   },
 };
@@ -58,13 +79,10 @@ export default {
 .uct-input {
   display: flex;
   flex: 1 auto;
-  font-size: 14px;
-  font-weight: 900;
   border: none;
   background-color: transparent;
   &-textarea {
     width: auto;
-    font-size: 28rpx;
     padding: 10rpx 0;
     line-height: normal;
     flex: 1;

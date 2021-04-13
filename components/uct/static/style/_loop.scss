@@ -40,13 +40,13 @@ $type in $colorTypes {
   // bcred background-color: red;
   @each $sizeKey,
   $size in $colorSizes {
-    .#{$typeKey}#{$sizeKey} {
+    .#{$typeKey}-#{$sizeKey} {
       #{$type}: $size;
     }
 
     // bcred1 background-color: rgba(red,.9);
     @for $i from 0 to 9 {
-      .#{$typeKey}#{$sizeKey}#{$i} {
+      .#{$typeKey}-#{$sizeKey}-#{$i} {
         #{$type}: rgba($size, (1-$i/10));
       }
     }
@@ -110,12 +110,12 @@ $type in $borderTypes {
 }
 
 /* 宽高 */
-@for $i from 1 to 375 {
-  .w#{$i} {
-    width: $i*2rpx;
-  }
+// @for $i from 1 to 375 {
+//   .w#{$i} {
+//     width: $i*2rpx;
+//   }
 
-  .h#{$i} {
-    height: $i*2rpx;
-  }
-}
+//   .h#{$i} {
+//     height: $i*2rpx;
+//   }
+// }

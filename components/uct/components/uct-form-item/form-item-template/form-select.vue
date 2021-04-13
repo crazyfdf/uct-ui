@@ -1,19 +1,26 @@
 <template>
-  <view class='form-select'
+  <view class="form-select"
         v-show="!item.options.hidden">
     <!-- 选择器 -->
     <!-- 日期选择器 -->
-    <view v-if="item.type=='date'&&item.options.showTime==false">
+    <view v-if="item.type == 'date' && item.options.showTime == false"
+          class="x-sbc"
+          style="width:100%">
       <picker :mode="item.type"
               v-model="value"
+              :class="html?'c-black':'c-black-7'"
               :disabled="item.options.disabled"
               @change="bindChange"
               class="uct-select">
-        <view>{{html?html:item.options.placeholder}}</view>
+        <view>{{ html ? html : item.options.placeholder }}</view>
       </picker>
+      <image src="../../../static/imgs/public/right.png"
+             style="width: 15rpx;height: 27rpx" />
     </view>
     <!-- 日期+时间选择器 -->
-    <view v-if="item.type=='date'&&item.options.showTime==true">
+    <view v-if="item.type == 'date' && item.options.showTime == true"
+          class="x-sbc"
+          style="width:100%">
       <w-picker :visible.sync="visible"
                 mode="date"
                 :value="value"
@@ -24,48 +31,79 @@
                 ref="date">
       </w-picker>
       <view class="uct-select"
-            @tap="visible=true">{{html?html:item.options.placeholder}}</view>
+            :class="html?'c-black':'c-black-7'"
+            @tap="visible = true">{{
+        html ? html : item.options.placeholder
+      }}</view>
+      <image src="../../../static/imgs/public/right.png"
+             style="width: 15rpx;height: 27rpx" />
     </view>
     <!-- 时间选择器 -->
-    <picker :mode="item.type"
-            v-if="item.type=='time'"
-            v-model="value"
-            :disabled="item.options.disabled"
-            @change="bindChange"
-            class="uct-select">
-      <view>{{html?html:item.options.placeholder}}</view>
-    </picker>
+    <view class="x-sbc"
+          style="width:100%"
+          v-if="item.type == 'time'">
+      <picker :mode="item.type"
+              v-model="value"
+              :class="html?'c-black':'c-black-7'"
+              :disabled="item.options.disabled"
+              @change="bindChange"
+              class="uct-select">
+        <view>{{ html ? html : item.options.placeholder }}</view>
+      </picker>
+      <image src="../../../static/imgs/public/right.png"
+             style="width: 15rpx;height: 27rpx" />
+    </view>
     <!-- 自定义选择器 -->
-    <picker :value="item.options.options.value"
-            v-if="item.type=='select'"
-            :range="select"
-            :disabled="item.options.disabled"
-            @change="bindChange"
-            class="uct-select">
-      <view>{{select[html]?select[html]:item.options.placeholder}}</view>
-    </picker>
+    <view class="x-sbc"
+          style="width:100%"
+          v-if="item.type == 'select'">
+      <picker v-model="value"
+              :range="select"
+              :class="html||html==0?'c-black':'c-black-7'"
+              :disabled="item.options.disabled"
+              @change="bindChange"
+              class="uct-select">
+        <view>{{ select[html] ? select[html] : item.options.placeholder }}</view>
+      </picker>
+      <image src="../../../static/imgs/public/right.png"
+             style="width: 15rpx;height: 27rpx" />
+    </view>
     <!-- 地区选择器 -->
-    <view v-if="item.type=='cascader'&&item.options.showSearch==false"
-          @tap="visible=true">
+    <view v-if="item.type == 'cascader' && item.options.showSearch == false"
+          @tap="visible = true"
+          class="x-sbc"
+          style="width:100%">
       <w-picker :visible.sync="visible"
                 mode="region"
                 v-model="value"
                 default-type="label"
                 :hide-area="false"
-                @confirm="bindChangeCity($event,'region')"
-                @cancel="visible=false"
+                @confirm="bindChangeCity($event, 'region')"
+                @cancel="visible = false"
                 ref="region"></w-picker>
-      <view class="uct-select">{{html?html:item.options.placeholder}}</view>
+      <view class="uct-select"
+            :class="html?'c-black':'c-black-7'">{{
+        html ? html : item.options.placeholder
+      }}</view>
+      <image src="../../../static/imgs/public/right.png"
+             style="width: 15rpx;height: 27rpx" />
     </view>
     <!-- 打开地图选择具体地址 -->
-    <view class="uct-select"
-          v-if="item.type=='cascader'&&item.options.showSearch==true"
-          @tap="openMap">{{value?value:item.options.placeholder}}</view>
+    <view class="uct-select x-sbc"
+          style="width:100%"
+          :class="value?'c-black':'c-black-7'"
+          v-if="item.type == 'cascader' && item.options.showSearch == true"
+          @tap="openMap">{{ value ? value : item.options.placeholder }}
+      <image src="../../../static/imgs/public/right.png"
+             style="width: 15rpx;height: 27rpx" />
+    </view>
+
   </view>
 </template>
 
 <script>
 import WPicker from "./module/w-picker/w-picker";
+
 export default {
   components: {
     WPicker,
@@ -92,7 +130,11 @@ export default {
       },
       set(val) {
         this.html = val;
-        this.$emit("input", val);
+        if (this.item.type == "select") {
+          this.$emit("input", this.item.options.options[val].value);
+        } else {
+          this.$emit("input", val);
+        }
       },
     },
   },
@@ -134,10 +176,11 @@ export default {
 
 <style scoped lang="scss">
 .uct-select {
+  min-height: 80rpx;
+  align-items: center;
   display: flex;
   flex: 1 auto;
   font-size: 14px;
-  font-weight: 900;
   border: none;
   background-color: transparent;
 }

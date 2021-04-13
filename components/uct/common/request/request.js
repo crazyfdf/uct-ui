@@ -1,6 +1,6 @@
 import {
   API_URL
-} from '../config/env'
+} from '../../libs/config/env'
 
 export default class Request {
   config = {

@@ -1,62 +1,94 @@
+<!--
+ * @Author: 祸灵
+ * @Date: 2021-02-24 16:18:53
+ * @LastEditTime: 2021-04-09 17:28:31
+ * @LastEditors: Please set LastEditors
+ * @Description: 通用列表组件
+ * @FilePath: \uni-front\components\uct\uct-scroll\uct-scroll.vue
+-->
 <template>
   <view>
     <!-- 搜索栏 -->
-    <i-search :placeholder="searchOptions.placeholder"
-              v-if="search"
-              class="search"
-              :style="{top:searchOptions.searchTop}"
-              @search="searchChange"></i-search>
+    <uct-search v-if="search"
+                class="search"
+                :style="{top:searchTop}"
+                placeholder="请输入搜索关键字"
+                @search="searchChange"></uct-search>
     <!-- tabbar -->
-    <!-- 当设置tab-width,指定每个tab宽度时,则不使用flex布局,改用水平滑动 -->
-    <me-tabs v-model="tabNowIndex"
-             class="top-warp"
-             v-if="tabs.length"
-             :tabs="tabs"
-             :style="{top:`${tabOptions.top}rpx`}"
-             :bcColor="tabOptions.bcColor"
-             :blColor="tabOptions.blColor"
-             :cColor="tabOptions.cColor"
-             :tabWidth="tabOptions.tabWidth"
-             @change="tabChange"></me-tabs>
-    <!-- list内容 -->
-    <mescroll-uni ref="mescrollRef"
-                  @init="mescrollInit"
-                  @down="downCallback"
-                  @up="upCallback"
-                  @downCallback=""
-                  :down="scrollOptions.downOption"
-                  :up="scrollOptions.upOption"
-                  :top="scrollOptions.top"
-                  :bottom="scrollOptions.bottom">
-      <!-- 在scorll-view上的自定义内容 -->
-      <slot name="more"></slot>
-      <view class="scroll">
+    <view class="top-warp">
+      <!-- 当设置tab-width,指定每个tab宽度时,则不使用flex布局,改用水平滑动 -->
+      <uct-tabs :value="tabNowIndex"
+                v-if="tabs.length>1"
+                :tabs="tabs"
+                :height="tabsHeight"
+                :bcColor="bcColor"
+                :blColor="blColor"
+                :cColor="cColor"
+                :tabRight="tabRight"
+                @change="tabChange"></uct-tabs>
+      <slot name="moreTab"></slot>
+    </view>
+
+    <!-- list内容懒加载 -->
+    <uct-scroll-item v-show="tabIndex === index"
+                     v-if="lazy"
+                     :ref="'uctscroll'+index"
+                     v-for="(item,index) in tabs"
+                     :key="index"
+                     @downCallback="$emit('downCallback')"
+                     @success="(list)=>$emit('success',list)"
+                     :url="item.url"
+                     :api="item.api"
+                     :more="item.more"
+                     :tabIndex="tabIndex"
+                     :index="index"
+                     :downOption="downOption"
+                     :upOption="upOption"
+                     :top="top1"
+                     :bottom="bottom">
+      <slot></slot>
+    </uct-scroll-item>
+    <!-- list内容不使用懒加载 -->
+    <view v-if="!lazy">
+      <uct-scroll-item v-if="tabIndex === index"
+                       :ref="'uctscroll'+index"
+                       v-for="(item,index) in tabs"
+                       :key="index"
+                       @downCallback="$emit('downCallback')"
+                       @success="(list)=>$emit('success',list)"
+                       :url="item.url"
+                       :api="item.api"
+                       :more="item.more"
+                       :tabIndex="tabIndex"
+                       :index="index"
+                       :downOption="downOption"
+                       :upOption="upOption"
+                       :top="top1"
+                       :bottom="bottom">
         <slot></slot>
-      </view>
-    </mescroll-uni>
+      </uct-scroll-item>
+    </view>
   </view>
 </template>
 
 <script>
-import iSearch from "./i-search.vue";
-import MeTabs from "./me-tabs/me-tabs.vue";
-import MescrollUni from "./mescroll-uni/mescroll-uni.vue";
-import MescrollMixin from "./mescroll-uni/mescroll-mixins.js";
-import uctScroll from "./mixin/uct-scroll.js";
+/**
+ * @description:
+ * @param {*}
+ * @return {*}
+ */
 export default {
-  mixins: [MescrollMixin, uctScroll], // 使用mixin
-
-  components: {
-    MeTabs,
-    iSearch,
-    MescrollUni,
-  },
   props: {
     tabs: {
-      // 为了请求数据,演示用,可根据自己的项目判断是否要传
       type: Array,
       default() {
         return [];
+      },
+    },
+    lazy: {
+      type: Boolean | String,
+      default() {
+        return true;
       },
     },
     search: {
@@ -65,49 +97,93 @@ export default {
         return false;
       },
     },
-    url: {
-      type: String,
-      default() {
-        return "";
-      },
-    },
-    more: {
-      type: Object | Boolean,
-      default() {
-        return {};
-      },
-    },
     tabIndex: {
       type: Number,
       default: 0,
     },
-  },
-  data() {
-    return {
-      list: [], //返回的数据
-      searchPage: {
-        num: 1, // 当前页码,默认0,回调之前会加1,即callback(page)会从1开始
-        size: 10, // 每页数据的数量
-        time: null, // 加载第一页数据服务器返回的时间; 防止用户翻页时,后台新增了数据从而导致下一页数据重复;
+    top: {
+      type: Number | String,
+      default() {
+        return 0;
       },
-    };
-  },
-  computed: {
-    tabNowIndex: {
-      set(v) {
-        this.$emit("change", v);
+    },
+    bottom: {
+      type: Number,
+      default() {
+        return 120;
       },
-      get() {
-        return this.tabIndex;
+    },
+    tabsHeight: {
+      type: Number,
+      default() {
+        return 80;
+      },
+    },
+    tabRight: {
+      type: Number,
+      default: 0,
+    },
+    bcColor: {
+      type: String,
+      default: "#fff",
+    },
+    cColor: {
+      type: String,
+      default: "#000",
+    },
+    blColor: {
+      type: String,
+      default: "#479ff7",
+    },
+    searchTop: "top:80rpx",
+    downOption: {
+      type: Object,
+      default() {
+        return {
+          auto: false, // 不自动加载 (mixin已处理第一个tab触发downCallback)
+        };
+      },
+    },
+    upOption: {
+      type: Object,
+      default() {
+        return {
+          auto: false, // 不自动加载
+          noMoreSize: 4, //如果列表已无数据,可设置列表的总数量要大于半页才显示无更多数据;避免列表数据过少(比如只有一条数据),显示无更多数据会不好看; 默认5
+          empty: {
+            tip: "~ 空空如也 ~", // 提示
+          },
+        };
       },
     },
   },
-  watch: {
-    more: {
-      handler(newData, oldData) {
-        this.upCallback(this.searchPage);
-      },
-      deep: true,
+  data() {
+    return {};
+  },
+  computed: {
+    tabNowIndex(v) {
+      return this.tabIndex;
+    },
+    /**
+     * @description: scroll的离页面顶部的距离，this.baseTop为导航栏的高度，单位rpx
+     * @param {*}
+     * @return {*}
+     */
+    top1(v) {
+      if (this.tabs.length > 1 && this.tabs[this.tabIndex].nav !== false) {
+        return (
+          (this.$uct.config.navHeight + this.$uct.config.statusBarHeight) * 2 +
+          this.tabsHeight +
+          this.top
+        );
+      } else if (this.tabs[this.tabIndex].nav === false) {
+        return this.$uct.config.statusBarHeight * 2 + this.top;
+      } else {
+        return (
+          (this.$uct.config.navHeight + this.$uct.config.statusBarHeight) * 2 +
+          this.top
+        );
+      }
     },
   },
   methods: {
@@ -118,48 +194,16 @@ export default {
         this.$emit("change", i);
       }
     },
-    /*上拉加载的回调: 其中page.num:当前页 从1开始, page.size:每页数据条数,默认10 */
-    upCallback(page) {
-      if (this.more) {
-        let pageNum = page.num; // 页码, 默认从1开始
-        let pageSize = page.size; // 页长, 默认每页10条
-        let url = this.url;
-
-        this.$api(url, { p: pageNum, s: pageSize, ...this.more })
-          .then((res) => {
-            let curPageData = res.result.content;
-            //联网成功的回调,隐藏下拉刷新和上拉加载的状态;
-            this.mescroll.endSuccess(curPageData.length);
-            //设置列表数据
-            if (page.num == 1) this.list = []; //如果是第一页需手动制空列表
-            this.list = this.list.concat(curPageData); //追加新数据
-            this.$emit("success", this.list);
-          })
-          .catch(() => {
-            //联网失败, 结束加载
-            this.mescroll.endErr();
-          });
-      } else {
-        this.mescroll.endSuccess(true);
-      }
-    },
-    /* 下拉刷新回调需自定义时使用 */
-    downCallback() {
-      this.$emit("downCallback");
-    },
     reload() {
-      this.list = [];
-      this.upCallback({ num: 1, size: 10 });
+      this.$refs[`uctscroll${this.tabIndex}`][0].downCallback();
     },
-    searchChange(value) {
-      if (this.more) {
+    /*     searchChange(value) {
         let pageNum = this.searchPage.num; // 页码, 默认从1开始
         let pageSize = this.searchPage.size; // 页长, 默认每页10条
         let url = this.url;
         this.more.value = value;
         this.upCallback(this.searchPage);
-      }
-    },
+    }, */
   },
 };
 </script>
@@ -171,15 +215,14 @@ export default {
   top: 0;
   z-index: 2;
 }
-.scroll {
-  // margin: 0 40rpx;
-}
 .top-warp {
-  z-index: 1;
-  position: fixed;
-  left: 0;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
-  // background-color: white;
+  left: 0;
+  z-index: 1;
 }
 .top-warp .tip {
   height: 120rpx;

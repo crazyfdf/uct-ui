@@ -1,14 +1,12 @@
 <template>
-  <view :style="{
-    'margin-top':`${top}rpx`,
-    'margin-bottom':`${bottom}rpx`
-  }">
+  <view>
     <slot></slot>
-    <view v-for="(item,key) in formList"
+    <view v-for="(item,index) in formList"
           v-if="formList.length"
-          :key="key">
+          :key="index">
       <uct-form-item @mapData="mapData"
                      class="mb40"
+                     :ref="`formItem${index}`"
                      @input="changeInput"
                      @upImage="upImage"
                      :config="formData.config"
@@ -21,9 +19,15 @@
 
 <script>
 import "../../libs/utils/aop.js";
+
+/**
+ * 表单组件，此组件为一个表单组件，是专门为表单而设计的，利用它可以快速实现表单验证，提交，增删改查等功能。
+ */
+
 export default {
   props: {
     /* form提交其他参数 */
+
     more: {
       type: Object,
       default() {
@@ -55,18 +59,6 @@ export default {
     url: {
       type: String,
       default: "",
-    },
-    top: {
-      type: Number,
-      default() {
-        return 0;
-      },
-    },
-    bottom: {
-      type: Number,
-      default() {
-        return 120;
-      },
     },
   },
   data() {
@@ -148,54 +140,57 @@ export default {
     },
     /* 提交表单前的判断条件 */
     rules() {
-      let that = this;
-      let rules = {};
-      for (let item of that.formList) {
-        if (item.rules) {
-          for (let item1 of item.rules) {
-            item1.name = item.model;
-            item1.type = item1.pattern;
-          }
-        } else if (item.list) {
-          for (let item2 of item.list) {
-            if (item2.rules) {
-              for (let item3 of item2.rules) {
-                item3.name = item2.model;
-                item3.type = item3.pattern;
+      if (this.formData.config.hideRequiredMark) {
+        let that = this;
+        let rules = {};
+        for (let item of that.formList) {
+          if (item.rules) {
+            for (let item1 of item.rules) {
+              item1.name = item.model;
+              item1.type = item1.pattern;
+            }
+          } else if (item.list) {
+            for (let item2 of item.list) {
+              if (item2.rules) {
+                for (let item3 of item2.rules) {
+                  item3.name = item2.model;
+                  item3.type = item3.pattern;
+                }
+              } else {
+                continue;
               }
-            } else {
-              continue;
+              rules = that.$uct.rules(that.data, item2.rules);
+              if (!rules.isOk) {
+                break;
+              }
             }
-            rules = that.$uct.rules(that.data, item2.rules);
-            console.log(rules);
             if (!rules.isOk) {
-              break;
+              uni.showToast({
+                icon: "none",
+                title: rules.message,
+              });
+              return false;
             }
+          } else {
+            continue;
           }
+          rules = that.$uct.rules(that.data, item.rules);
           if (!rules.isOk) {
-            uni.showToast({
-              icon: "none",
-              title: rules.message,
-            });
-            return false;
+            break;
           }
-        } else {
-          continue;
         }
-        rules = that.$rules.rules(that.data, item.rules);
-        console.log(that.data, item.rules, rules);
         if (!rules.isOk) {
-          break;
+          uni.showToast({
+            icon: "none",
+            title: rules.message,
+          });
+          return false;
         }
+        return true;
       }
-      if (!rules.isOk) {
-        uni.showToast({
-          icon: "none",
-          title: rules.message,
-        });
-        return false;
-      }
-      return true;
+      this.formList.forEach((item, index) => {
+        this.$refs[`formItem${index}`][0].rule();
+      });
     },
   },
 };

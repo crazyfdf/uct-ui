@@ -26,10 +26,9 @@ page {
 .page-body {
   width: 100vw;
   height: 100vh;
-  padding: 30rpx;
   font-size: 14px;
   overflow-x: hidden;
-  background-color: #f2f4f5;
+  // background-color: #f2f4f5;
   box-sizing: border-box;
 }
 @import "uview-ui/index.scss";
