@@ -1,6 +1,6 @@
 <template>
   <view class='page-body'>
-    <uct-nav :isBack="false">
+    <uct-nav>
       <view slot="center">列表模板</view>
     </uct-nav>
     <uct-scroll :tabs="tabs"

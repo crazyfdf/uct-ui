@@ -30,7 +30,7 @@ export default {
           borColor: "#1afa29",
         };
         switch (this.item.options.type) {
-          case "scolor.uccess":
+          case "success":
             color.bgColor = "#1afa291A";
             color.borColor = "#1afa29";
             break;

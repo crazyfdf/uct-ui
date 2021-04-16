@@ -1,10 +1,11 @@
 {
   "name": "package",
   "version": "1.0.0",
-  "description": "小程序派单平台",
+  "description": "<p align=\"center\">\r     <img alt=\"logo\" src=\"https://uviewui.com/common/logo.png\" width=\"120\" height=\"120\" style=\"margin-bottom: 10px;\">\r </p>\r <h3 align=\"center\" style=\"margin: 30px 0 30px;font-weight: bold;font-size:40px;\">uct-ui</h3>\r <h3 align=\"center\">多平台快速开发的UI框架</h3>",
   "main": "main.js",
   "dependencies": {
     "@dcloudio/uni-ui": "^1.2.11",
+    "lodash": "^4.17.21",
     "uni-read-pages": "^1.0.5",
     "uni-simple-router": "^2.0.0-alpha.3",
     "uview-ui": "^1.8.3",

@@ -26,18 +26,28 @@ $spaceSizes: (2: 2rpx,
 /* ==================
        自定义颜色变量   
  ==================== */
-$colorTypes: (bc: background-color, c: color);
+$uct-black: black;
+$uct-white:#fff;
+$uct-gray: #bbbbbb;
+$uct-dark: #777777;
+$uct-blue: #1464C7;
+$uct-skyblue: #4E92E7;
+$uct-green: #01b601;
+$uct-red: #FF0000;
+$uct-orange: #F79347;
+$uct-yellow:#FFBF2B;
 
-$colorSizes: (black: black,
-  white:#fff,
-  gray: #bbbbbb,
-  dark: #777777,
-  blue: #1464C7,
-  skyblue: #4E92E7,
-  green: #01b601,
-  red: #FF0000,
-  orange: #F79347,
-  yellow:#FFBF2B);
+$colorTypes: (bc: background-color, c: color);
+$colorSizes: (black: $uct-black,
+  white:$uct-white,
+  gray: $uct-gray,
+  dark: $uct-dark,
+  blue: $uct-blue,
+  skyblue: $uct-skyblue,
+  green: $uct-green,
+  red: $uct-red,
+  orange: $uct-orange,
+  yellow:$uct-yellow);
 
 /* ==================
        边框变量   

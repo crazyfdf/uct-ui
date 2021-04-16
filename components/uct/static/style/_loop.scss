@@ -36,15 +36,15 @@ $type in $spaceTypes {
 @each $typeKey,
 $type in $colorTypes {
 
-  // cred  color:red;
-  // bcred background-color: red;
+  // c-red  color:red;
+  // bc-red background-color: red;
   @each $sizeKey,
   $size in $colorSizes {
     .#{$typeKey}-#{$sizeKey} {
       #{$type}: $size;
     }
 
-    // bcred1 background-color: rgba(red,.9);
+    // bc-red-1 background-color: rgba(red,.9);
     @for $i from 0 to 9 {
       .#{$typeKey}-#{$sizeKey}-#{$i} {
         #{$type}: rgba($size, (1-$i/10));
@@ -62,16 +62,16 @@ $type in $borderTypes {
   $size in $colorSizes {
     @for $i from 1 to 2 {
 
-      // bsred1 border:1 solid red
-      .b#{$typeKey}#{$sizeKey}#{$i} {
-        border: $i $type $size;
+      // bs-1-red border:1 solid red
+      .b#{$typeKey}-#{$i}-#{$sizeKey} {
+        border: $i*1px $type $size;
       }
 
-      // bstred1 border-top:1 solid red
+      // bs-t-red1 border-top:1 solid red
       @each $directionKey,
       $direction in $spaceDirections {
-        .b#{$typeKey}#{$sizeKey}#{$directionKey}#{$i} {
-          border-#{$direction}: $i $type $size;
+        .b#{$typeKey}-#{$sizeKey}-#{$i}-#{$directionKey} {
+          border-#{$direction}: $i*1px $type $size;
         }
       }
     }

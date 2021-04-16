@@ -7,50 +7,109 @@
       "^uct-(.*)": "@/components/uct/components/uct-$1/uct-$1.vue" // 匹配components目录内的vue文件
     }
   },
-  "pages": [{
-    "path": "pages/index",
-    "name": "index",
-    "aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
-    "style": {
-      "navigationBarTitleText": "首页",
-      "navigationStyle": "custom"
-    }
-  }],
-  "subPackages": [{
-    // 公共public
-    "root": "pages/public",
-    "pages": [{
-      "path": "webview",
+  "pages": [
+    // 演示-组件
+    {
+      "path": "pages/index",
+      "name": "index",
+      "aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
       "style": {
-        "navigationBarTitleText": "" //外部链接
-      }
-    }, {
-      "path": "login",
-      "name": "login",
-      "style": {
-        "navigationBarTitleText": "登入",
+        "navigationBarTitleText": "组件",
         "navigationStyle": "custom"
       }
-    }, {
-      "path": "map",
-      "name": "map",
-      "style": {
-        "navigationBarTitleText": "地图"
-      }
-    }, {
-      "path": "address-search",
-      "name": "address-search",
-      "style": {
-        "navigationBarTitleText": "搜索地址"
-      }
-    }, {
-      "path": "template",
-      "name": "template",
-      "style": {
-        "navigationBarTitleText": "通用组件"
-      }
-    }]
-  }],
+    }
+  ],
+  "subPackages": [{
+      // 演示-组件
+      "root": "pages/componentsA",
+      "pages": [{
+        "path": "button",
+        "name": "button",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "按钮"
+        }
+      }, {
+        "path": "empty",
+        "name": "empty",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "空页面"
+        }
+      }, {
+        "path": "form",
+        "name": "form",
+        "style": {
+          "navigationBarTitleText": "表单",
+          "navigationStyle": "custom"
+        }
+      }, {
+        "path": "form-item",
+        "name": "form-item",
+        "style": {
+          "navigationBarTitleText": "子表单",
+          "navigationStyle": "custom"
+        }
+      }, {
+        "path": "scroll",
+        "name": "scroll",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "列表"
+        }
+      }, {
+        "path": "scroll-item",
+        "name": "scroll-item",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "子列表"
+        }
+      }, {
+        "path": "navbar",
+        "name": "navbar",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "导航栏"
+        }
+      }, {
+        "path": "tabbar",
+        "name": "tabbar",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "列表导航栏"
+        }
+      }]
+    },
+    {
+      // 演示-模板页面
+      "root": "pages/public",
+      "pages": [{
+        "path": "webview",
+        "style": {
+          "navigationBarTitleText": "webview" //外部链接
+        }
+      }, {
+        "path": "login",
+        "name": "login",
+        "style": {
+          "navigationBarTitleText": "登入",
+          "navigationStyle": "custom"
+        }
+      }, {
+        "path": "map",
+        "name": "map",
+        "style": {
+          "navigationBarTitleText": "地图"
+        }
+      }, {
+        "path": "address-search",
+        "name": "address-search",
+        "style": {
+          "navigationBarTitleText": "搜索地址"
+        }
+      }]
+    }
+  ],
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "uni-app",

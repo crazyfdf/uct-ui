@@ -10,16 +10,13 @@
         <slot v-if="custom"></slot>
         <view v-else
               class="u-navbar-inner">
-          <view class="u-back-left">
-            <slot name="left"
-                  v-if="isBack">
-              <image style="width:21rpx"
+          <view class="u-slot-left">
+            <slot name="left">
+              <image style="width:20rpx;height:36rpx"
                      @tap="goBack"
                      mode="widthFix"
-                     src="/static/imgs/home/back.png" />
+                     src="/static/imgs/public/back.png" />
             </slot>
-            <view v-else
-                  style="width:21rpx"></view>
           </view>
           <view class="u-slot-content f16 f700"
                 :style="{maxWidth:titleWidth+'px'}">
@@ -318,8 +315,13 @@ export default {
   font-size: 32rpx;
   flex: 1;
 }
-
-.u-navbar-right {
+.u-slot-left {
+  flex: 1;
+  @include vue-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.u-slot-right {
   flex: 1;
   @include vue-flex;
   align-items: center;

@@ -1,42 +1,76 @@
 <template>
-  <view>
-    <view>
-      <form-demo v-show="current==0"></form-demo>
-      <scroll-demo v-show="current==1"></scroll-demo>
+  <view class="wrap">
+    <page-nav :desc="desc"
+              title="nav.components"></page-nav>
+    <view class="list-wrap">
+      <u-cell-group title-bg-color="rgb(243, 244, 246)"
+                    :title="item.title"
+                    v-for="(item, index) in list"
+                    :key="index">
+        <u-cell-item :titleStyle="{fontWeight: 500}"
+                     @click="openPage(item1.path)"
+                     :title="item1.title"
+                     v-for="(item1, index1) in item.list"
+                     :key="index1">
+          <image slot="icon"
+                 class="u-cell-icon"
+                 :src="getIcon(item1.icon)"
+                 mode="widthFix"></image>
+        </u-cell-item>
+      </u-cell-group>
     </view>
-    <uct-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;"></uct-tabbar>
+    <u-gap height="70"></u-gap>
+    <!-- <u-tabbar :list="vuex_tabbar" :mid-button="true"></u-tabbar> -->
   </view>
 </template>
 
 <script>
-import { mapMutations, mapActions, mapState, mapGetters } from "vuex";
-import ScrollDemo from "./components/scroll-demo.vue";
-import FormDemo from "./components/form-demo.vue";
+import list from "./components.config.js";
+import pageNav from "@/components/page-nav/page-nav.vue";
 export default {
   components: {
-    FormDemo,
-    ScrollDemo,
-  },
-  computed: {
-    ...mapState({
-      current: (state) => state.init.tabbar,
-      userInfo: (state) => state.user.userInfo,
-    }),
+    pageNav,
   },
   data() {
-    return {};
+    return {
+      list: list,
+      desc:
+        "众多组件覆盖开发过程的各个需求，组件功能丰富，多端兼容。让你快速集成，开箱即用。",
+    };
   },
-  onPullDownRefresh() {
-    uni.redirectTo({
-      url: "/pages/index",
+  computed: {
+    getIcon() {
+      return (path) => {
+        return "https://cdn.uviewui.com/uview/example/" + path + ".png";
+      };
+    },
+  },
+  onShow() {
+    uni.setNavigationBarTitle({
+      title: 123,
     });
-    setTimeout(function () {
-      uni.stopPullDownRefresh();
-    }, 1000);
   },
-  methods: {},
+  created() {},
+  methods: {
+    openPage(path) {
+      this.$u.route({
+        url: path,
+      });
+    },
+  },
 };
 </script>
 
-<style scoped lang="scss">
+<style>
+/* page {
+		background-color: rgb(240, 242, 244);
+	} */
+</style>
+
+<style lang="scss" scoped>
+.u-cell-icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 8rpx;
+}
 </style>
