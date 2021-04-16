@@ -1,8 +1,8 @@
 /*
  * @Author: 祸灵
  * @Date: 2021-04-04 12:19:14
- * @LastEditTime: 2021-04-04 15:46:59
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-04-16 13:24:50
+ * @LastEditors: 祸灵
  * @Description: 函子
  * @FilePath: \UC-font\components\uct\libs\lodash\functor.js
  */
@@ -15,15 +15,15 @@
  * @return {*}
  */
 class Container {
-  static of (value) {
-    return new Container(value)
+  static of(value) {
+    return new Container(value);
   }
   constructor(value) {
-    this._value = value
+    this._value = value;
   }
 
-  map (fn) {
-    return Container.of(fn(this._value))
+  map(fn) {
+    return Container.of(fn(this._value));
   }
 }
 
@@ -37,20 +37,19 @@ class Container {
  * @return {*}
  */
 class Maybe {
-  static of (value) {
-    return new Maybe(value)
+  static of(value) {
+    return new Maybe(value);
   }
   constructor(value) {
-    this._value = value
+    this._value = value;
   }
-  map (fn) {
-    return this.isNothing() ? Maybe.of(null) : Maybe.of((fn(this._value)))
+  map(fn) {
+    return this.isNothing() ? Maybe.of(this._value) : Maybe.of(fn(this._value));
   }
-  isNothing () {
-    return [null, undefined].includes(this._value)
+  isNothing() {
+    return [null, undefined].includes(this._value);
   }
 }
-
 
 /**
  * Either类似if...else...的处理
@@ -63,18 +62,16 @@ class Maybe {
  */
 
 class Either {
-  static of (value) {
-    return new Either(value)
+  static of(value) {
+    return new Either(value);
   }
   constructor(value) {
-    this._value = value
+    this._value = value;
   }
-  map (fn) {
-    try
-    {
-      return Either.of(fn(this._value))
-    } catch (e)
-    {
+  map(fn) {
+    try {
+      return Either.of(fn(this._value));
+    } catch (e) {
       console.log(`error: ${e.message}`);
     }
   }
@@ -86,29 +83,29 @@ class Either {
  * 把不纯的操作交给调用者来处理
  * let r = IO.of(process).map(p => p.execPath);
  * console.log(r._value());//E:\node\node.exe
- * 
+ *
  * 存在问题：使用函数组合时需要多次调用._value()
  * const fs = require('fs')
  * let readFile = (fileName) => new IO(() => fs.readFileSync(fileName, 'utf-8'))
  * let print = (x) => new IOMonad(() => x)
  * let cat = compose(readFile, print)
  * let r = cat('D:\\UCToo/UC-font/components/uct/libs/lodash/curry.js')._value()._value()
- * 
+ *
  * @description: IO函子
  * @param {*}
  * @return {*}
  */
 
-const compose = require('./compose.js')
+const compose = require("./compose.js");
 class IO {
-  static of (value) {
-    return new IO(() => value)
+  static of(value) {
+    return new IO(() => value);
   }
   constructor(fn) {
-    this._value = fn
+    this._value = fn;
   }
-  map (fn) {
-    return new IO(compose(this._value, fn))
+  map(fn) {
+    return new IO(compose(this._value, fn));
   }
 }
 
@@ -124,20 +121,20 @@ class IO {
  */
 
 class IOMonad {
-  static of (value) {
-    return new IOMonad(() => value)
+  static of(value) {
+    return new IOMonad(() => value);
   }
   constructor(fn) {
-    this._value = fn
+    this._value = fn;
   }
-  map (fn) {
-    return new IOMonad(compose(this._value, fn))
+  map(fn) {
+    return new IOMonad(compose(this._value, fn));
   }
-  join () {
-    return this._value()
+  join() {
+    return this._value();
   }
-  flatMap (fn) {
-    return this.map(fn).join()
+  flatMap(fn) {
+    return this.map(fn).join();
   }
 }
 module.exports = {
@@ -145,5 +142,5 @@ module.exports = {
   Maybe,
   Either,
   IO,
-  IOMonad
-}
+  IOMonad,
+};

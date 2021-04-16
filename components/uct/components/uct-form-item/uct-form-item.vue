@@ -22,44 +22,32 @@
       <form-input v-if="['input', 'textarea', 'number'].includes(item.type)"
                   :item="item"
                   class="uct-form-item-value"
-                  :class="{'uct-form-item-value-border':isborderBottom,'uct-form-item-value-flex':config.layout == 'horizontal','uct-form-item-value-block':config.layout == 'vertical'}"
+                  :class="{'uct-form-item-value-border':isborder,'uct-form-item-value-flex':config.layout == 'horizontal','uct-form-item-value-block':config.layout == 'vertical'}"
                   v-model="value"></form-input>
       <!-- 选择器 -->
       <form-select v-if="['cascader', 'select', 'time', 'date'].includes(item.type)"
                    :item="item"
                    class="uct-form-item-value"
-                   :class="{'uct-form-item-value-border':isborderBottom,'uct-form-item-value-flex':config.layout == 'horizontal','uct-form-item-value-block':config.layout == 'vertical'}"
+                   :class="{'uct-form-item-value-border':isborder,'uct-form-item-value-flex':config.layout == 'horizontal','uct-form-item-value-block':config.layout == 'vertical'}"
                    v-model="value"
                    @mapData="mapData"></form-select>
       <!-- 选择框 -->
       <form-check v-if="['radio', 'checkbox'].includes(item.type)"
                   :item="item"
                   class="uct-form-item-value"
-                  :class="
-          config.layout == 'horizontal'
-            ? 'uct-form-item-value-flex'
-            : 'uct-form-item-value-block'"
-                  v-model="
-                  value"></form-check>
+                  :class="config.layout == 'horizontal'? 'uct-form-item-value-flex': 'uct-form-item-value-block'"
+                  v-model="value"></form-check>
       <!-- 上传文件 -->
       <form-file v-if="['uploadFile', 'uploadImg'].includes(item.type)"
                  :item="item"
                  @fileValue="(val) => $emit('fileValue', val)"
                  class="uct-form-item-value"
-                 :class="
-          config.layout == 'horizontal'
-            ? 'uct-form-item-value-flex'
-            : 'uct-form-item-value-block'
-        "></form-file>
+                 :class="config.layout == 'horizontal'? 'uct-form-item-value-flex': 'uct-form-item-value-block'"></form-file>
       <!-- 开关 -->
       <form-switch v-if="item.type == 'switch'"
                    :item="item"
                    class="uct-form-item-value"
-                   :class="
-          config.layout == 'horizontal'
-            ? 'uct-form-item-value-flex'
-            : 'uct-form-item-value-block'
-        "
+                   :class="config.layout == 'horizontal'? 'uct-form-item-value-flex': 'uct-form-item-value-block'"
                    v-model="value"></form-switch>
 
       <!-- 警告提示 -->
@@ -112,7 +100,13 @@ const formType = {
     that.$emit("formReset");
   },
 };
+
+/**
+ * 表单子组件，为uct-form表单组件提供支持，内部包括标题，输入框，选择器，选择框，上传文件，分割线，开关，警告提示，提示语，下划线等组件。
+ * @displayName FormItem子表单
+ */
 export default {
+  name: "uct-form-item",
   filters: filter,
   components: {
     FormInput,
@@ -124,28 +118,50 @@ export default {
     FormFile,
   },
   props: {
+    /**  horizontal左右布局，vertical上下布局
+     * @values {"type": "input",
+      "label": "输入框",
+      "icon": "icon-write",
+      "options": {"type": "text",
+        "width": "100%",
+        "defaultValue": "",
+        "placeholder": "请输入",
+        "clearable": false,
+        "maxLength": null,
+        "hidden": false,
+        "disabled": false},
+      "model": "input_1612861962073",
+      "key": "input_1612861962073",
+      "rules": [{"required": false,
+        "message": "必填项"}]},
+     */
     item: {
       type: Object,
       default() {
         return {};
       },
     },
+    /**  horizontal左右布局，vertical上下布局 */
     config: {
       type: Object,
       default() {
-        return { layout: "vertical", hideRequiredMark: false }; //horizontal左右布局，vertical上下布局
+        return { layout: "vertical", hideRequiredMark: false };
       },
     },
-    // 是否显示表单域的下划线边框
-    isborderBottom: {
+    /** 是否显示表单域的边框 */
+    isborder: {
       type: Boolean,
       default: true,
     },
-    // title的自定义样式
+    /** title的自定义样式 */
     customStyle: {
       type: Object,
       default() {
-        return {};
+        return {
+          backgroundColor: "rgba(246, 246, 246, 1)",
+          padding: "20rpx 40rpx",
+          width: "100vw",
+        };
       },
     },
   },
@@ -176,6 +192,12 @@ export default {
   watch: {
     value(val) {
       this.data[`${this.item.model}`] = val;
+      /**
+       * 当组件内容发生改变时传递参数
+       * @event input
+       * @property {object} data {key:value}
+       * @params {object} data
+       */
       this.$emit("input", this.data);
       this.rule();
     },
@@ -193,9 +215,6 @@ export default {
     getTitleStyle() {
       let style = {};
       style = Object.assign(style, this.customStyle);
-      style.backgroundColor = "rgba(246, 246, 246, 1)";
-      style.padding = "20rpx 40rpx";
-      style.width = "100vw";
       return style;
     },
   },

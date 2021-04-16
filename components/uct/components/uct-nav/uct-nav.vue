@@ -1,35 +1,38 @@
 <template>
   <view class="">
-    <view class="u-navbar"
+    <view class="uct-navbar"
           :style="[navbarStyle]"
-          :class="{ 'u-navbar-fixed': isFixed, 'u-border-bottom': borderBottom }">
-      <view class="u-status-bar"
+          :class="{ 'uct-navbar-fixed': isFixed, 'uct-border-bottom': borderBottom }">
+      <view class="uct-status-bar"
             :style="{ height: $uct.config.statusBarHeight + 'px' }"></view>
-      <view class="u-navbar-inner"
+      <view class="uct-navbar-inner"
             :style="[navbarInnerStyle]">
+        <!-- @slot 自定义导航栏内容插槽，设置custom为true是生效 -->
         <slot v-if="custom"></slot>
         <view v-else
-              class="u-navbar-inner">
-          <view class="u-slot-left">
+              class="uct-navbar-inner">
+          <view class="uct-slot-left pl40">
+            <!-- @slot 导航栏左插槽，默认返回按钮 -->
             <slot name="left">
               <image style="width:20rpx;height:36rpx"
                      @tap="goBack"
-                     mode="widthFix"
-                     src="/static/imgs/public/back.png" />
+                     src="../../static/imgs/public/back.png" />
             </slot>
           </view>
-          <view class="u-slot-content f16 f700"
-                :style="{maxWidth:titleWidth+'px'}">
+          <view class="uct-slot-content f16 f700"
+                :style="{maxWidth:titleWidth+'rpx'}">
+            <!-- @slot 导航栏居中插槽，内容最大宽度为titleWidth 单位rpx -->
             <slot name="center"></slot>
           </view>
-          <view class="u-slot-right">
+          <view class="uct-slot-right pr40">
+            <!-- @slot 导航栏右插槽 -->
             <slot name="right"></slot>
           </view>
         </view>
       </view>
     </view>
     <!-- 解决fixed定位后导航栏塌陷的问题 -->
-    <view class="u-navbar-placeholder"
+    <view class="uct-navbar-placeholder"
           v-if="isFixed && !immersive"
           :style="{ width: '100%', height: Number(navbarHeight) + $uct.config.statusBarHeight + 'px' }"></view>
   </view>
@@ -44,126 +47,68 @@ let menuButtonInfo = {};
 menuButtonInfo = uni.getMenuButtonBoundingClientRect();
 // #endif
 /**
- * navbar 自定义导航栏
- * @description 此组件一般用于在特殊情况下，需要自定义导航栏的时候用到，一般建议使用uniapp自带的导航栏。
- * @tutorial https://www.uviewui.com/components/navbar.html
- * @property {String Number} height 导航栏高度(不包括状态栏高度在内，内部自动加上)，注意这里的单位是px（默认44）
- * @property {String} back-icon-color 左边返回图标的颜色（默认#606266）
- * @property {String} back-icon-name 左边返回图标的名称，只能为uView自带的图标（默认arrow-left）
- * @property {String Number} back-icon-size 左边返回图标的大小，单位rpx（默认30）
- * @property {String} back-text 返回图标右边的辅助提示文字
- * @property {Object} back-text-style 返回图标右边的辅助提示文字的样式，对象形式（默认{ color: '#606266' }）
- * @property {String} title 导航栏标题，如设置为空字符，将会隐藏标题占位区域
- * @property {String Number} title-width 导航栏标题的最大宽度，内容超出会以省略号隐藏，单位rpx（默认250）
- * @property {String} title-color 标题的颜色（默认#606266）
- * @property {String Number} title-size 导航栏标题字体大小，单位rpx（默认32）
- * @property {Function} custom-back 自定义返回逻辑方法
- * @property {String Number} z-index 固定在顶部时的z-index值（默认980）
- * @property {Boolean} is-back 是否显示导航栏左边返回图标和辅助文字（默认true）
- * @property {Object} background 导航栏背景设置，见官网说明（默认{ background: '#ffffff' }）
- * @property {Boolean} is-fixed 导航栏是否固定在顶部（默认true）
- * @property {Boolean} immersive 沉浸式，允许fixed定位后导航栏塌陷，仅fixed定位下生效（默认false）
- * @property {Boolean} border-bottom 导航栏底部是否显示下边框，如定义了较深的背景颜色，可取消此值（默认true）
- * @example <u-navbar back-text="返回" title="剑未配妥，出门已是江湖"></u-navbar>
+ * navbar 自定义导航栏,此组件一般用于在特殊情况下，需要自定义导航栏的时候用到，一般建议使用uniapp自带的导航栏。
+ * @displayName Navbar导航栏
  */
 export default {
-  name: "u-navbar",
+  name: "uct-navbar",
   props: {
-    // 导航栏高度，单位px，非rpx
+    /** 导航栏高度，单位px，非rpx */
     height: {
       type: [String, Number],
       default: "",
     },
-    // 返回箭头的颜色
-    backIconColor: {
-      type: String,
-      default: "#606266",
-    },
-    // 左边返回的图标
-    backIconName: {
-      type: String,
-      default: "nav-back",
-    },
-    // 左边返回图标的大小，rpx
-    backIconSize: {
-      type: [String, Number],
-      default: "44",
-    },
-    // 返回的文字提示
-    backText: {
-      type: String,
-      default: "",
-    },
-    // 返回的文字的 样式
-    backTextStyle: {
-      type: Object,
-      default() {
-        return {
-          color: "#606266",
-        };
-      },
-    },
-    // 导航栏标题
-    title: {
-      type: String,
-      default: "",
-    },
-    // 标题的宽度，如果需要自定义右侧内容，且右侧内容很多时，可能需要减少这个宽度，单位rpx
+    /** 标题的宽度，如果需要自定义右侧内容，且右侧内容很多时，可能需要减少这个宽度，单位rpx */
     titleWidth: {
       type: [String, Number],
-      default: "250",
+      default: "500",
     },
-    // 标题的颜色
+    /** 标题的颜色 */
     titleColor: {
       type: String,
       default: "#606266",
     },
-    // 标题字体是否加粗
+    /** 标题字体是否加粗 */
     titleBold: {
       type: Boolean,
       default: false,
     },
-    // 标题的字体大小
+    /** 标题的字体大小 */
     titleSize: {
       type: [String, Number],
       default: 32,
     },
-    isBack: {
-      type: [Boolean, String],
-      default: true,
-    },
-    // 对象形式，因为用户可能定义一个纯色，或者线性渐变的颜色
+    /** 对象形式，因为用户可能定义一个纯色，或者线性渐变的颜色 */
     background: {
       type: String,
-      default() {
-        return "#ffffff";
-      },
+      default: "#ffffff",
     },
-    // 导航栏是否固定在顶部
+    /** 导航栏是否固定在顶部 */
     isFixed: {
       type: Boolean,
       default: true,
     },
-    // 是否沉浸式，允许fixed定位后导航栏塌陷，仅fixed定位下生效
+    /** 是否沉浸式，允许fixed定位后导航栏塌陷，仅fixed定位下生效 */
     immersive: {
       type: Boolean,
       default: false,
     },
-    // 是否显示导航栏的下边框
+    /** 是否显示导航栏的下边框 */
     borderBottom: {
       type: Boolean,
       default: true,
     },
+    /** 导航栏层级 */
     zIndex: {
       type: [String, Number],
       default: "",
     },
-    // 自定义返回逻辑
+    /** 自定义返回逻辑 */
     customBack: {
       type: Function,
       default: null,
     },
-    // 是否自定义
+    /** 是否自定义 */
     custom: {
       type: Boolean,
       default: false,
@@ -256,11 +201,11 @@ export default {
   flex-direction: $direction;
   /* #endif */
 }
-.u-navbar {
+.uct-navbar {
   width: 100%;
 }
 
-.u-navbar-fixed {
+.uct-navbar-fixed {
   position: fixed;
   left: 0;
   right: 0;
@@ -268,11 +213,11 @@ export default {
   z-index: 991;
 }
 
-.u-status-bar {
+.uct-status-bar {
   width: 100%;
 }
 
-.u-navbar-inner {
+.uct-navbar-inner {
   width: 100%;
   @include vue-flex;
   justify-content: space-between;
@@ -280,7 +225,7 @@ export default {
   align-items: center;
 }
 
-.u-back-wrap {
+.uct-back-wrap {
   @include vue-flex;
   align-items: center;
   flex: 1;
@@ -288,12 +233,12 @@ export default {
   padding: 14rpx 14rpx 14rpx 24rpx;
 }
 
-.u-back-text {
+.uct-back-text {
   padding-left: 4rpx;
   font-size: 30rpx;
 }
 
-.u-navbar-content-title {
+.uct-navbar-content-title {
   @include vue-flex;
   align-items: center;
   justify-content: center;
@@ -306,30 +251,29 @@ export default {
   flex-shrink: 0;
 }
 
-.u-navbar-centent-slot {
+.uct-navbar-centent-slot {
   flex: 1;
 }
 
-.u-title {
+.uct-title {
   line-height: 60rpx;
   font-size: 32rpx;
   flex: 1;
 }
-.u-slot-left {
+.uct-slot-left {
   flex: 1;
   @include vue-flex;
   align-items: center;
   justify-content: flex-start;
 }
-.u-slot-right {
+.uct-slot-right {
   flex: 1;
   @include vue-flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-.u-slot-content {
-  flex: 1;
+.uct-slot-content {
   @include vue-flex;
   align-items: center;
   justify-content: center;

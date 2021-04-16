@@ -19,6 +19,7 @@
         <text v-if="rotate1"
               class="cuIcon cuIcon-loading1"></text>
         <view v-if="!rotate1">
+          <!-- @slot 按钮内容文本 -->
           <slot name="text">{{ text }}</slot>
         </view>
       </view>

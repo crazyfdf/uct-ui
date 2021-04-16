@@ -26,13 +26,38 @@ import MescrollEmpty from '@/components/mescroll-uni/components/mescroll-empty.v
 <script>
 // 引入全局配置
 import GlobalOption from "./mescroll-uni-option.js";
+
+/**
+ * 空布局组件，当列表或者页面内容为空白时可使用，可快速实现空白页图片提示，文字提示，按钮操作功能
+ * @displayName Empty空布局
+ */
 export default {
+  name: "uct-empty",
   props: {
-    // empty的配置项: 默认为GlobalOption.up.empty
+    /**  empty的配置项: 默认为GlobalOption.up.empty
+     * 列表第一页无任何数据时,显示的空布局 (需配置warpId才生效)
+warpId : 父布局的id (1.3.5版本支持传入dom元素)
+icon : 空布局的图标路径
+tip : 提示文本
+btntext : 按钮文本
+btnClick : 点击按钮的回调
+supportTap: 如果您的运行环境支持tap,则可配置true,可减少点击延时,快速响应事件;默认false,通过onclick添加点击事件; (v 1.3.0 新增) (注:微信和PC无法响应tap事件)
+     * @values {warpId : null ,
+  icon : null ,
+  tip : "暂无相关数据~" ,
+  btntext : "" ,
+  btnClick : null
+  supportTap : false}
+     */
     option: {
       type: Object,
       default() {
-        return {};
+        return {
+          use: true, // 是否显示空布局
+          icon: "/static/imgs/public/mescroll-empty.png", // 图标路径 (建议放入static目录, 如 /static/img/mescroll-empty.png )
+          tip: "~ 空空如也 ~", // 提示
+          btnText: "", //button的内容文字，为空时不显示button
+        };
       },
     },
   },
@@ -54,6 +79,10 @@ export default {
   methods: {
     // 点击按钮
     emptyClick() {
+      /**
+       * 点击按钮回调
+       * @event emptyclick
+       */
       this.$emit("emptyclick");
     },
   },

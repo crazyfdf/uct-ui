@@ -3,13 +3,13 @@
  * @Author: 祸灵
  * @LastEditors: 祸灵
  * @Date: 2021-04-15 11:46:21
- * @LastEditTime: 2021-04-15 16:52:50
+ * @LastEditTime: 2021-04-16 10:42:09
  * @Description: 
 -->
 <template>
   <view class='empty-demo'>
     <uct-nav>
-      <view slot="center">空页面</view>
+      <view slot="center">Empty空页面</view>
     </uct-nav>
     <uct-empty :option="empty"
                @emptyclick="back"></uct-empty>

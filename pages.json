@@ -23,6 +23,13 @@
       // 演示-组件
       "root": "pages/componentsA",
       "pages": [{
+        "path": "css",
+        "name": "css",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "CSS"
+        }
+      }, {
         "path": "button",
         "name": "button",
         "style": {
@@ -70,13 +77,6 @@
         "style": {
           "navigationStyle": "custom",
           "navigationBarTitleText": "导航栏"
-        }
-      }, {
-        "path": "tabbar",
-        "name": "tabbar",
-        "style": {
-          "navigationStyle": "custom",
-          "navigationBarTitleText": "列表导航栏"
         }
       }]
     },

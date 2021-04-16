@@ -31,41 +31,59 @@
 </template>
 
 <script>
+/**
+ * 列表导航栏,专门为列表页而设计的，利用它可以列表导航布局水平滚动，flex布局，内容切换等功能。
+ * @displayName Tabbar列表导航栏
+ */
 export default {
+  name: "uct-tabs",
   props: {
+    /** 列表配置信息
+     * @values ['全部', '待付款'] 或 [{name:'全部'}, {name:'待付款'}] */
     tabs: {
-      // 支持格式: ['全部', '待付款'] 或 [{name:'全部'}, {name:'待付款'}]
       type: Array,
       default() {
         return [];
       },
     },
+    /** 取name的字段 */
     nameKey: {
-      // 取name的字段
       type: String,
       default: "name",
     },
+    /** 当前显示的下标 (使用v-model语法糖: 1.props需为value; 2.需回调input事件) */
     value: {
-      // 当前显示的下标 (使用v-model语法糖: 1.props需为value; 2.需回调input事件)
       type: [String, Number],
       default: 0,
     },
-    fixed: Boolean, // 是否悬浮,默认false
-    tabWidth: Number, // 每个tab的宽度,默认不设置值,为flex平均分配; 如果指定宽度,则不使用flex,每个tab居左,超过则水平滑动(单位默认rpx)
-    tabRight: Number, //tab的偏移量
+    /** 是否悬浮,默认false */
+    fixed: { type: Boolean, default: false },
+    /** 每个tab的宽度 */
+    tabWidth: {
+      type: Number,
+      default: 0,
+    },
+    /** tab的偏移量,默认为0,为flex平均分配; 如果指定偏移量,则不使用flex,每个tab居左,超过则水平滑动(单位默认rpx) */
+    tabRight: {
+      type: Number,
+      default: 0,
+    },
+    /** 高度,单位rpx */
     height: {
-      // 高度,单位rpx
       type: Number,
       default: 80,
     },
+    /** 列表栏背景颜色 */
     bcColor: {
       type: String,
       default: "transparent",
     },
+    /** 列表栏字体颜色 */
     cColor: {
       type: String,
       default: "#000",
     },
+    /** 列表栏下划线颜色 */
     blColor: {
       type: String,
       default: "#479ff7",
@@ -120,7 +138,19 @@ export default {
     },
     tabClick(i) {
       if (this.value != i) {
+        /**
+         * 切换列表默认通过v-model语法糖将下标更改，父组件使用v-model或:value
+         * @event input
+         * @property {number} i 切换的列表下标
+         * @params {number} i
+         */
         this.$emit("input", i);
+        /**
+         * 切换列表默认事件回调
+         * @event change
+         * @property {number} i 切换的列表下标
+         * @params {number} i
+         */
         this.$emit("change", i);
       }
     },

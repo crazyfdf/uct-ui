@@ -1,6 +1,7 @@
 <template>
   <view>
-    <slot></slot>
+    <!-- @slot 自定义的其他表单组件，提交参数通过more传递 -->
+    <slot name='more'></slot>
     <view v-for="(item,index) in formList"
           v-if="formList.length"
           :key="index">
@@ -21,40 +22,39 @@
 import "../../libs/utils/aop.js";
 
 /**
- * 表单组件，此组件为一个表单组件，是专门为表单而设计的，利用它可以快速实现表单验证，提交，增删改查等功能。
+ * 表单业务组件，专门为表单而设计的，利用它可以快速实现表单验证、提交、增删改查等功能。
+ * @displayName Form表单
  */
 
 export default {
   props: {
-    /* form提交其他参数 */
+    /** form提交其他参数
+     * @values {key:value}
+     */
     more: {
       type: Object,
       default() {
         return {};
       },
     },
-    /* 直接拿到form数据和form表单名二选一 */
+    /** 直接拿到form数据和form表单名二选一 */
     formData: {
       type: Object,
       default() {
         return {};
       },
     },
-    /* 通过form表单名拿到from数据 */
+    /** 通过form表单名拿到from数据 */
     name: {
       type: String,
-      default() {
-        return "";
-      },
+      default: "",
     },
-    /* form id 修改拿到初始值用 */
+    /** form id 修改表单时拿到初始值用 */
     form_id: {
       type: String,
-      default() {
-        return "";
-      },
+      default: "",
     },
-    /* 提交url */
+    /** 提交url */
     url: {
       type: String,
       default: "",
@@ -113,24 +113,35 @@ export default {
     changeInput(data) {
       Object.assign(this.data, data);
     },
-    /* 提交表单 */
+
     submit() {
-      let that = this;
-      if (that.form_id) {
-        that.more.id = that.form_id;
+      if (this.form_id) {
+        this.more.id = this.form_id;
       }
-      let data = Object.assign(that.data, that.more);
-      console.log(that.data);
-      that.$tools.showLoading("正在提交", true, 1000);
-      if (that.url) {
-        that.$api(that.url, { ...data }).then((res) => {
+      let data = Object.assign(this.data, this.more);
+      console.log(this.data);
+      this.$tools.showLoading("正在提交", true, 1000);
+      if (this.url) {
+        this.$api(this.url, { ...data }).then((res) => {
           console.log(res);
           if (res.code == "000") {
-            that.$emit("submit", data);
+            /**
+             * 表单提交事件
+             * @event submit
+             * @property {Object} data 表单提交数据
+             * @params  {Object} data
+             */
+            this.$emit("submit", data);
           }
         });
       } else {
-        that.$emit("submit", data);
+        /**
+         * 表单提交事件
+         * @event submit
+         * @property {object} data 表单提交数据
+         * @params {object} data
+         */
+        this.$emit("submit", data);
       }
     },
     /* 清除表单 */

@@ -1,7 +1,8 @@
 <template>
   <view class='navbar'>
     <uct-nav>
-      <view slot="left">返回</view>
+      <view slot="left"
+            @click="goBack">返回</view>
       <view slot="center">Navbar导航栏</view>
       <view slot="right">更多</view>
     </uct-nav>
@@ -10,12 +11,13 @@
 
 <script>
 export default {
-  components: {},
-  props: {},
-  data() {
-    return {};
+  methods: {
+    goBack() {
+      uni.navigateBack({
+        delta: 1,
+      });
+    },
   },
-  methods: {},
 };
 </script>
 
