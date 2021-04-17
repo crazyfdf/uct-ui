@@ -1,23 +1,5 @@
 export default [
   {
-    groupName: "基础组件",
-    groupName_en: "Basic components",
-    list: [
-      {
-        path: "/pages/componentsA/css",
-        icon: "color",
-        title: "CSS 样式",
-        title_en: "CSS",
-      },
-      {
-        path: "/pages/componentsA/button",
-        icon: "button",
-        title: "Button 按钮",
-        title_en: "Button",
-      },
-    ],
-  },
-  {
     groupName: "列表组件",
     groupName_en: "Scroll components",
     list: [
@@ -36,7 +18,13 @@ export default [
       {
         path: "/pages/componentsA/navbar",
         icon: "navbar",
-        title: "Navbar 导航栏",
+        title: "Navbar 头部导航栏",
+        title_en: "Navbar",
+      },
+      {
+        path: "/pages/componentsA/tabbar",
+        icon: "tabbar",
+        title: "Tabbar 列表导航栏",
         title_en: "Navbar",
       },
       {
@@ -56,6 +44,12 @@ export default [
         icon: "form",
         title: "Form 表单",
         title_en: "Form",
+      },
+      {
+        path: "/pages/componentsA/button",
+        icon: "button",
+        title: "Button 按钮",
+        title_en: "Button",
       },
       {
         path: "/pages/componentsA/calendar",

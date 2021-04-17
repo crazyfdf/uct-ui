@@ -2,19 +2,24 @@
  * @Version: 1.0.0
  * @Author: 祸灵
  * @LastEditors: 祸灵
- * @Date: 2021-04-13 16:08:09
- * @LastEditTime: 2021-04-16 11:38:43
+ * @Date: 2021-04-16 17:13:53
+ * @LastEditTime: 2021-04-16 17:20:35
  * @Description: 
 -->
-##  Scroll使用方法
-``` vue
-uct-tabs class="px40"
+<template>
+  <view class='tabbar'>
+    <uct-nav>
+      <view slot="center">Tabbar列表导航栏</view>
+    </uct-nav>
+    <uct-tabs class="px40"
               :tabs="tabs"
               :tabRight="tabRight"
+              @change="changeTabIndex"
               v-model="tabIndex"></uct-tabs>
-```
+  </view>
+</template>
 
-```js
+<script>
 export default {
   data() {
     return {
@@ -40,5 +45,7 @@ export default {
     },
   },
 };
+</script>
 
-```
+<style scoped lang="scss">
+</style>

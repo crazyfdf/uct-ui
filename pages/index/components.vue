@@ -4,7 +4,7 @@
               title="nav.components"></page-nav>
     <view class="list-wrap">
       <u-cell-group title-bg-color="rgb(243, 244, 246)"
-                    :title="item.title"
+                    :title="item.groupName"
                     v-for="(item, index) in list"
                     :key="index">
         <u-cell-item :titleStyle="{fontWeight: 500}"

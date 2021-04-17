@@ -78,6 +78,13 @@
           "navigationStyle": "custom",
           "navigationBarTitleText": "导航栏"
         }
+      }, {
+        "path": "tabbar",
+        "name": "tabbar",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "列表导航栏"
+        }
       }]
     },
     {
