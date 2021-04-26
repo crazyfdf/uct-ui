@@ -3,17 +3,41 @@
     <!-- @slot 自定义的其他表单组件，提交参数通过more传递 -->
     <slot name='more'></slot>
     <view v-for="(item,index) in formList"
+          class="pa20"
           v-if="formList.length"
+          v-show="!item.options.hidden"
           :key="index">
-      <uct-form-item @mapData="mapData"
-                     class="mb40"
-                     :ref="`formItem${index}`"
+      <!-- 大标题 -->
+      <uct-title v-if="item.type == 'text'"
+                 class="f16 f900"
+                 :titleStyle="titleStyle"
+                 :item="item"></uct-title>
+      <!-- 警告提示 -->
+      <uct-alert v-if="item.type == 'alert'"
+                 :item="item"></uct-alert>
+
+      <!-- 分割线 -->
+      <uct-divider v-if="item.type == 'divider'"
+                   :item="item"></uct-divider>
+      <!-- 按钮 -->
+      <uct-button v-if="item.type == 'button'"
+                  :form-type="item.options.handle"
+                  :type="item.options.type"
+                  :rotate="true"
+                  :bgColor="$uct.color(item.options.type)"
+                  :disabled="item.options.disabled"
+                  @click="handle(item.options.handle)"
+                  :hidden="item.options.hidden"
+                  :text="item.label"></uct-button>
+      <!-- 增删改查组件 -->
+      <uct-form-item v-if="['input', 'textarea', 'number','cascader', 'select', 'time', 'date','radio', 'checkbox','uploadFile', 'uploadImg','switch','rate'].includes(item.type)"
+                     @mapData="mapData"
+                     :ref="item.key"
                      @input="changeInput"
                      @upImage="upImage"
                      :config="formData.config"
                      :item="item"
-                     @fileValue="fileValue"
-                     @formSubmit="formSubmit"></uct-form-item>
+                     @fileValue="fileValue"></uct-form-item>
     </view>
   </view>
 </template>
@@ -37,7 +61,23 @@ export default {
         return {};
       },
     },
-    /** 直接拿到form数据和form表单名二选一 */
+    /** 直接拿到form数据和form表单名二选一
+     * @values {"list": [],
+                "config": {"layout": "horizontal",
+                  "labelCol": {"xs": 4,
+                    "sm": 4,
+                    "md": 4,
+                    "lg": 4,
+                    "xl": 4,
+                    "xxl": 4},
+                  "wrapperCol": {"xs": 18,
+                    "sm": 18,
+                    "md": 18,
+                    "lg": 18,
+                    "xl": 18,
+                    "xxl": 18},
+                  "hideRequiredMark": false,
+                  "customStyle": ""}} */
     formData: {
       type: Object,
       default() {
@@ -59,6 +99,13 @@ export default {
       type: String,
       default: "",
     },
+    /** title的自定义样式 */
+    titleStyle: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   data() {
     return {
@@ -79,19 +126,46 @@ export default {
         }
       },
     },
+    formItemList() {
+      return this.formList.filter((item) =>
+        [
+          "input",
+          "textarea",
+          "number",
+          "cascader",
+          "select",
+          "time",
+          "date",
+          "radio",
+          "checkbox",
+          "uploadFile",
+          "uploadImg",
+          "switch",
+        ].includes(item.type)
+      );
+    },
   },
   mounted() {
     /* 判断当前表单数据是由外部传入还是api传入 */
     if (!Object.keys(this.formData).length && this.url != "") {
-      this.$api("form/form", { name: this.name, id: this.form_id }).then(
-        (res) => {
+      this.$uct
+        .api(this.url, { name: this.name, id: this.form_id })
+        .then((res) => {
           this.apiList = res.data.frmJson.list;
-        }
-      );
+        });
     }
-    console.log(this.$uct);
   },
   methods: {
+    handle(type) {
+      switch (type) {
+        case "submit":
+          this.formSubmit();
+          break;
+        case "reset":
+          this.formReset();
+          break;
+      }
+    },
     upImage(img) {},
     fileValue(val) {
       Object.assign(this.data, val);
@@ -113,16 +187,16 @@ export default {
     changeInput(data) {
       Object.assign(this.data, data);
     },
-
+    /** 提交表单 */
     submit() {
       if (this.form_id) {
         this.more.id = this.form_id;
       }
       let data = Object.assign(this.data, this.more);
       console.log(this.data);
-      this.$tools.showLoading("正在提交", true, 1000);
+      this.$uct.showLoading("正在提交", true, 1000);
       if (this.url) {
-        this.$api(this.url, { ...data }).then((res) => {
+        this.$uct.api(this.url, { ...data }).then((res) => {
           console.log(res);
           if (res.code == "000") {
             /**
@@ -197,10 +271,15 @@ export default {
           return false;
         }
         return true;
+      } else {
+        let flag = true;
+        this.formItemList.forEach((item, index) => {
+          if (!this.$refs[item.key][0].rule()) {
+            flag = false;
+          }
+        });
+        return flag;
       }
-      this.formList.forEach((item, index) => {
-        this.$refs[`formItem${index}`][0].rule();
-      });
     },
   },
 };

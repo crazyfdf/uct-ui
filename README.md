@@ -1,7 +1,7 @@
 # uniwork_miniprogram
 
 #### 介绍
-小程序派单平台
+xxxx
 
 #### 软件架构
 软件架构说明

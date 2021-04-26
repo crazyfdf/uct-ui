@@ -138,6 +138,33 @@
       }]
     },
     {
+      "type": "date",
+      "label": "日期+时间选择框",
+      "options": {
+        "width": "100%",
+        "defaultValue": "",
+        "rangeDefaultValue": [],
+        "range": false,
+        "showTime": true,
+        "disabled": false,
+        "hidden": false,
+        "clearable": false,
+        "placeholder": "请选择",
+        "rangePlaceholder": [
+          "开始时间",
+          "结束时间"
+        ],
+        "format": "YYYY-MM-DD"
+      },
+      "model": "date_1619165315951",
+      "key": "date_1619165315951",
+      "help": "",
+      "rules": [{
+        "required": false,
+        "message": "必填项"
+      }]
+    },
+    {
       "type": "select",
       "label": "自定义选择器",
       "icon": "icon-xiala",
@@ -160,7 +187,7 @@
           }
         ],
         "showSearch": false,
-        "defaultValue": "1"
+        "defaultValue": "2"
       },
       "model": "select_1612861871170",
       "key": "select_1612861871170",
@@ -342,16 +369,15 @@
     {
       "type": "alert",
       "label": "警告提示",
-      "icon": "icon-zu",
       "options": {
         "type": "success",
-        "description": "",
-        "showIcon": false,
-        "banner": false,
+        "description": "这是success的警告提示",
+        "showIcon": true,
+        "banner": true,
         "hidden": false,
-        "closable": false
+        "closable": true
       },
-      "key": "alert_1612862024192"
+      "key": "alert_1619342193554"
     },
     {
       "type": "rate",
@@ -419,7 +445,7 @@
       "model": "uploadImg_1611652615076",
       "key": "uploadImg_1611652615076",
       "rules": [{
-        "required": true,
+        "required": false,
         "message": "必填项"
       }]
     },

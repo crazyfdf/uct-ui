@@ -12,85 +12,84 @@ const rulesDate = {
   /*  数字取值范围 */
   // {name: 'xxx', type: 'range', min: 6, max: 6, message: 'xxx'}
   range: (data, rule) => {
-    let val = data[rule.name]
-    if (val)
-    {
-      if (numberReg.test(val))
-      {
-        if (rule.min && val < rule.min)
-        {
-          return { isOk: false, message: rule.message }
-        } else if (rule.max && val > rule.max)
-        {
-          return { isOk: false, message: rule.message }
+    let val = data[rule.name];
+    if (val) {
+      if (numberReg.test(val)) {
+        if (rule.min && val < rule.min) {
+          return { isOk: false, message: rule.message };
+        } else if (rule.max && val > rule.max) {
+          return { isOk: false, message: rule.message };
         }
-      } else
-      {
-        return { isOk: false, message: rule.message }
+      } else {
+        return { isOk: false, message: rule.message };
       }
     }
   },
   /* 字符串长度取值范围 */
   // {name: 'xxx', type: 'lengthRange', min: 6, max: 6, message: 'xxx'}
   lengthRange: (data, rule) => {
-    let le = data[rule.name] ? data[rule.name].length : 0
-    if (rule.min && le < rule.min)
-    {
-      return { isOk: false, message: rule.message }
-    } else if (rule.max && le > rule.max)
-    {
-      return { isOk: false, message: rule.message }
+    let le = data[rule.name] ? data[rule.name].length : 0;
+    if (rule.min && le < rule.min) {
+      return { isOk: false, message: rule.message };
+    } else if (rule.max && le > rule.max) {
+      return { isOk: false, message: rule.message };
     }
   },
   /* 自定义正则表达式 */
   // {name: 'xxx', type: '/^1[0-9]{10,10}$/', message: 'xxx'}
-}
+};
 export default {
+  /**
+   * @description: 类型校验
+   * @param {string} type 判断类型可选：number,int,phone,telephone,email,pwd,inviteCode,idCard
+   * @param {*} val 判断的值
+   * @return {*} 返回判断的结果:true|false
+   */
   isRule: (type, val) => {
-    if (rulesDate[type] && typeof rulesDate[type] !== "function")
-    {
-      return rulesDate[type].test(val)
+    if (rulesDate[type] && typeof rulesDate[type] !== "function") {
+      return rulesDate[type].test(val);
     }
   },
   rules: (data, rules) => {
-    let res = { isOk: true, message: '' }
-    if (!rules || !rules.length) { return res }
-    for (let rule of rules)
-    {
+    let res = { isOk: true, message: "" };
+    if (!rules || !rules.length) {
+      return res;
+    }
+    for (let rule of rules) {
       // rule: {name:'', type:'', message:'', min:1, max:2, eq:'', required:Boolean, regex:''}
-      if (!rule || !rule.name || (!rule.type && !rule.required)) { continue }
+      if (!rule || !rule.name || (!rule.type && !rule.required)) {
+        continue;
+      }
       // 如果值不存在
-      if ((!data[rule.name] && data[rule.name] !== 0) || data[rule.name] == "[]")
-      {
+      if ((!data[rule.name] && data[rule.name] !== 0) || data[rule.name] == "[]") {
         // 如果是必填项就返回错误提示，required可以作为type是为了不同的type能给用户不同的提示
-        if (rule.type === 'required' || rule.required)
-        {
-          return { isOk: false, message: rule.message }
+        if (rule.type === "required" || rule.required) {
+          return { isOk: false, message: rule.message };
         }
         // 如果不是必填项就跳过
-        continue
+        continue;
       }
       // 验证类型是否在已定义的rulesDate中
-      if (rulesDate[rule.type] != undefined)
-      {
-        if (typeof rulesDate[rule.type] == "function") { res = rulesDate[rule.type](data, rule) }
-        else
-        {
-          if (!rulesDate[rule.type].test(data[rule.name])) { res = { isOk: false, message: rule.message } }
+      if (rulesDate[rule.type] != undefined) {
+        if (typeof rulesDate[rule.type] == "function") {
+          res = rulesDate[rule.type](data, rule);
+        } else {
+          if (!rulesDate[rule.type].test(data[rule.name])) {
+            res = { isOk: false, message: rule.message };
+          }
         }
+      } else if (rule.type && !rule.type.test(data[rule.name])) {
+        res = { isOk: false, message: rule.message };
       }
-      else if (rule.type && !rule.type.test(data[rule.name])) { res = { isOk: false, message: rule.message } }
     }
 
     // 发现任何一个错误就立即返回，后面的不再判断
-    if (!res.isOk)
-    {
-      if (!res.message)
-      {
-        res.message = '请正确输入所有数据' //默认提示
+    if (!res.isOk) {
+      if (!res.message) {
+        res.message = "请正确输入所有数据"; //默认提示
       }
-      return res
+      return res;
     }
-    return res
-  }
-}
+    return res;
+  },
+};

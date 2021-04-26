@@ -20,21 +20,89 @@
     }
   ],
   "subPackages": [{
-      // 演示-组件
-      "root": "pages/componentsA",
+      // 演示-工具
+      "root": "pages/index/example/tools",
       "pages": [{
-        "path": "css",
-        "name": "css",
-        "style": {
-          "navigationStyle": "custom",
-          "navigationBarTitleText": "CSS"
+          "path": "css",
+          "name": "css",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "CSS"
+          }
+        },
+        {
+          "path": "debounce",
+          "name": "debounce",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "debounce"
+          }
+        },
+        {
+          "path": "deepClone",
+          "name": "deepClone",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "deepClone"
+          }
+        },
+        {
+          "path": "timeFormat",
+          "name": "timeFormat",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "timeFormat"
+          }
+        },
+        {
+          "path": "route",
+          "name": "route",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "route"
+          }
+        },
+        {
+          "path": "rule",
+          "name": "rule",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "rule"
+          }
+        },
+        {
+          "path": "callPhone",
+          "name": "callPhone",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "callPhone"
+          }
+        },
+        {
+          "path": "unit",
+          "name": "unit",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "unit"
+          }
         }
-      }, {
+      ]
+    }, {
+      // 演示-组件
+      "root": "pages/index/example/components",
+      "pages": [{
         "path": "button",
         "name": "button",
         "style": {
           "navigationStyle": "custom",
           "navigationBarTitleText": "按钮"
+        }
+      }, {
+        "path": "save-img",
+        "name": "save-img",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "分享图"
         }
       }, {
         "path": "empty",
@@ -99,8 +167,7 @@
         "path": "login",
         "name": "login",
         "style": {
-          "navigationBarTitleText": "登入",
-          "navigationStyle": "custom"
+          "navigationBarTitleText": "登入"
         }
       }, {
         "path": "map",
@@ -113,6 +180,12 @@
         "name": "address-search",
         "style": {
           "navigationBarTitleText": "搜索地址"
+        }
+      }, {
+        "path": "avatar-cropper",
+        "name": "avatar-cropper",
+        "style": {
+          "navigationBarTitleText": "头像裁剪"
         }
       }]
     }

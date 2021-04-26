@@ -2,8 +2,10 @@
 <template>
   <view class="me-tabs"
         :class="{'tabs-fixed': fixed}"
-        :style="{height: tabHeightVal,backgroundColor: bcColor}">
+        :style="{height: tabHeightVal,backgroundColor: bcColor,paddingLeft:`${px}rpx`,paddingRight:`${px}rpx`}">
     <scroll-view v-if="tabs.length"
+                 style="width: 100vw;"
+                 @scroll="scroll"
                  :id="viewId"
                  :scroll-left="scrollLeft"
                  scroll-x
@@ -45,6 +47,13 @@ export default {
       default() {
         return [];
       },
+    },
+    /**
+     * 标题左右间距
+     */
+    px: {
+      type: Number,
+      default: 40,
     },
     /** 取name的字段 */
     nameKey: {
@@ -175,17 +184,6 @@ export default {
           })
           .exec();
       }, 100);
-      /*       let tabLeft = this.tabWidthPx * this.value + this.tabWidthPx / 2; // 当前tab中心点到左边的距离
-      let diff = tabLeft - this.warpWidth / 2; // 如果超过tabs容器的一半,则滚动差值
-      this.scrollLeft = diff;
-      // #ifdef MP-TOUTIAO
-      this.scrollTimer && clearTimeout(this.scrollTimer);
-      this.scrollTimer = setTimeout(() => {
-        // 字节跳动小程序,需延时再次设置scrollLeft,否则tab切换跨度较大时不生效
-        this.scrollLeft = Math.ceil(diff);
-      }, 400);
-      // #endif 
-      */
     },
     initWarpRect() {
       return new Promise((resolve) => {
@@ -203,6 +201,9 @@ export default {
             .exec();
         }, 20);
       });
+    },
+    scroll: function (e) {
+      this.oldScrollLeft = e.detail.scrollLeft;
     },
   },
   mounted() {

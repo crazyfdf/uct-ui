@@ -1,22 +1,15 @@
 <template>
   <view class="nav-wrap">
     <view class="nav-title">
-      <image class="logo"
-             src="https://cdn.uviewui.com/uview/common/logo.png"
-             mode="widthFix"></image>
+      <image class="logo" src="/static/imgs/logo/logo.png" mode="widthFix"></image>
       <view class="nav-info">
-        <view class="nav-title__text">
-          uct-ui
-        </view>
-        <view class="nav-slogan">
-          多平台快速开发的UI框架
-        </view>
+        <view class="nav-title__text"> uct-ui </view>
+        <view class="nav-slogan"> 多平台快速开发的UI框架 </view>
       </view>
     </view>
     <view class="nav-desc">
-      {{desc}}
+      {{ desc }}
     </view>
-
   </view>
 </template>
 

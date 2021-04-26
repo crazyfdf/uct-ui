@@ -4,7 +4,7 @@
           :style="[navbarStyle]"
           :class="{ 'uct-navbar-fixed': isFixed, 'uct-border-bottom': borderBottom }">
       <view class="uct-status-bar"
-            :style="{ height: $uct.config.statusBarHeight + 'px' }"></view>
+            :style="{ height: statusBarHeight + 'px' }"></view>
       <view class="uct-navbar-inner"
             :style="[navbarInnerStyle]">
         <!-- @slot 自定义导航栏内容插槽，设置custom为true是生效 -->
@@ -16,7 +16,7 @@
             <slot name="left">
               <image style="width:20rpx;height:36rpx"
                      @tap="goBack"
-                     src="../../static/imgs/public/back.png" />
+                     :src="require('../../static/imgs/public/back.png')" />
             </slot>
           </view>
           <view class="uct-slot-content f16 f700"
@@ -34,7 +34,7 @@
     <!-- 解决fixed定位后导航栏塌陷的问题 -->
     <view class="uct-navbar-placeholder"
           v-if="isFixed && !immersive"
-          :style="{ width: '100%', height: Number(navbarHeight) + $uct.config.statusBarHeight + 'px' }"></view>
+          :style="{ width: '100%', height: Number(navbarHeight) + statusBarHeight + 'px' }"></view>
   </view>
 </template>
 
@@ -117,6 +117,7 @@ export default {
   data() {
     return {
       menuButtonInfo: menuButtonInfo,
+      statusBarHeight: this.$uct.config.statusBarHeight,
     };
   },
   computed: {

@@ -21,7 +21,7 @@
         <view class='color-99'>{{item.address}}</view>
       </view>
       <view class='icon_img_tip'
-            v-if='pageStatus && list.length == 0'>
+            v-if='list.length == 0'>
         <image src='/icon/icon_tip.png' />
         <view>快去添加地址吧~~</view>
       </view>
@@ -46,6 +46,7 @@ export default {
   methods: {
     searchList(n) {
       let that = this;
+      console.log(qqmapsdk);
       qqmapsdk.getSuggestion({
         keyword: n,
         success: (res) => {

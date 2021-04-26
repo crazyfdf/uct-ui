@@ -1,18 +1,17 @@
 <template>
-  <view>
+  <view class="scroll">
     <!-- list内容 -->
     <mescroll-uni :ref="'mescrollRef'+index"
+                  :fixed="fixed"
                   @init="mescrollInit"
                   @down="downCallback"
                   @up="upCallback"
                   :down="downOption"
                   :up="upOption"
-                  :top="top1"
+                  :top="top"
                   :bottom="bottom">
-      <view class="scroll">
-        <!-- @slot 列表内容 -->
-        <slot></slot>
-      </view>
+      <!-- @slot 列表内容 -->
+      <slot></slot>
     </mescroll-uni>
   </view>
 </template>
@@ -38,10 +37,13 @@ export default {
       type: Number | Boolean,
       default: false,
     },
-    /** 是否自定义导航栏 */
-    isNav: {
+    /**
+     * 是否通过fixed固定scroll的高度, 默认false
+     * @values true,false //false时为relative
+     */
+    fixed: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     /** 列表下标 */
     index: {
@@ -68,12 +70,12 @@ export default {
     /** 列表离顶部距离 */
     top: {
       type: Number | String,
-      default: 40,
+      default: 20,
     },
     /** 列表离底部距离 */
     bottom: {
       type: Number,
-      default: 40,
+      default: 20,
     },
     /** 列表下拉配置 */
     downOption: {
@@ -118,18 +120,6 @@ export default {
      * @param {*}
      * @return {*}
      */
-    top1(v) {
-      if (this.tabIndex !== false) {
-        return this.top;
-      } else if (this.isNav === false) {
-        return this.$uct.config.statusBarHeight * 2 + this.top;
-      } else {
-        return (
-          (this.$uct.config.navHeight + this.$uct.config.statusBarHeight) * 2 +
-          this.top
-        );
-      }
-    },
   },
   watch: {
     more: {

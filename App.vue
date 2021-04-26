@@ -1,16 +1,10 @@
 <script>
 import Vue from "vue";
-import { mapMutations, mapActions, mapState } from "vuex";
 
 export default {
-  methods: {
-    ...mapActions(["getAppInit", "getTemplate"]),
-    init(options) {
-      return Promise.all([this.getAppInit(options), this.getTemplate(options)]);
-    },
-  },
+  methods: {},
   onLaunch: function (options) {
-    this.init(options);
+    console.log(this.$uct);
   },
 };
 </script>
