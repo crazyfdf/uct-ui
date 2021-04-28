@@ -6,11 +6,7 @@
       <!-- 标题name -->
       <view class="uct-form-item-title f700"
             v-if="item.rules && item.rules.length"
-            :class="
-          item.rules[0].required ||item.rules[1] 
-            ? 'isRequired'
-            : ''
-        ">{{ item.label }}</view>
+            :class="item.rules[0].required? 'isRequired': ''">{{ item.label }}</view>
       <!-- 输入框 -->
       <uct-form-input v-if="['input', 'textarea', 'number'].includes(item.type)"
                       :item="item"
@@ -33,7 +29,7 @@
       <!-- 上传文件 -->
       <uct-form-file v-if="['uploadFile', 'uploadImg'].includes(item.type)"
                      :item="item"
-                     @fileValue="(val) => $emit('fileValue', val)"
+                     v-model="value"
                      class="uct-form-item-value"
                      :class="config.layout == 'horizontal'? 'uct-form-item-value-flex': 'uct-form-item-value-block'"></uct-form-file>
       <!-- 评分 -->
@@ -107,9 +103,6 @@ export default {
   data() {
     return {
       value: null,
-      header: {
-        token: uni.getStorageSync("token"),
-      },
       errorMessage: "", //错误信息
       data: {},
     };
@@ -142,6 +135,10 @@ export default {
     },
     /* 单个校验 */
     rule() {
+      // 排除据第一次校验，未要求输入数值为空的情况
+      if (!this.item.rules[0].required && !this.value) {
+        return true;
+      }
       let that = this;
       let rules = {};
       if (that.item.rules) {

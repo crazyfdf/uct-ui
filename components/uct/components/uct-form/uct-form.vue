@@ -36,8 +36,7 @@
                      @input="changeInput"
                      @upImage="upImage"
                      :config="formData.config"
-                     :item="item"
-                     @fileValue="fileValue"></uct-form-item>
+                     :item="item"></uct-form-item>
     </view>
   </view>
 </template>
@@ -165,10 +164,6 @@ export default {
           this.formReset();
           break;
       }
-    },
-    upImage(img) {},
-    fileValue(val) {
-      Object.assign(this.data, val);
     },
     /*  */
     mapData(content) {

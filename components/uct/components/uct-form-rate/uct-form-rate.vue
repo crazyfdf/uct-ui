@@ -6,8 +6,25 @@
 </template>
 
 <script>
+/**
+ * 表单的评分组件
+ * @displayName Rate评分
+ */
 export default {
   props: {
+    /** 评分配置
+     * @values {"type": "rate",
+      "label": "评分",
+      "icon": "icon-pingfen_moren",
+      "options": {"defaultValue": 0,
+        "max": 5,
+        "disabled": false,
+        "hidden": false,
+        "allowHalf": false},
+      "model": "rate_1612861359410",
+      "key": "rate_1612861359410",
+      "rules": [{"required": false,
+        "message": "必填项"}]} */
     item: {
       type: Object,
       default() {

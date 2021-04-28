@@ -28,11 +28,31 @@ const type = {
   file: ["FILE", "82", 2],
 };
 
+/**
+ * 表单上传文件，包括上传图片、上传文件组件。
+ * @displayName File上传文件
+ */
 export default {
   components: {
     lFile,
   },
   props: {
+    /** 上传文件配置
+     * @values {"type": "uploadImg",
+      "label": "图片上传：",
+      "icon": "icon-image",
+      "options": {"defaultValue": "[]",
+        "multiple": false,
+        "hidden": false,
+        "disabled": false,
+        "width": "100%",
+        "data": "{}",
+        "limit": 3,
+        "placeholder": "上传",
+        "fileName": "image",
+        "headers": {},
+        "action": "http://cdn.kcz66.com/upload-img.txt",
+        "listType": "picture-card"} */
     item: {
       type: Object,
       default() {
@@ -60,7 +80,13 @@ export default {
   watch: {
     value: {
       handler(val) {
-        this.$emit("fileValue", val);
+        /**
+         * 输入框输入事件
+         * @event input 通过v-model语法糖传值，父组件使用v-model或:value
+         * @property {string} val 输入框输入值
+         * @params {string} val
+         */
+        this.$emit("input", val);
       },
       deep: true,
     },

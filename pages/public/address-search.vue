@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import qqmapsdk from "@/config/env.js";
 export default {
   data() {
     return {
@@ -46,8 +45,8 @@ export default {
   methods: {
     searchList(n) {
       let that = this;
-      console.log(qqmapsdk);
-      qqmapsdk.getSuggestion({
+      console.log(this.$uct.qqmapsdk);
+      this.$uct.qqmapsdk.getSuggestion({
         keyword: n,
         success: (res) => {
           console.log(res);

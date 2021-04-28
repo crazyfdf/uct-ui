@@ -62,12 +62,12 @@ export default [
       //   title: "Order 订单列表",
       //   title_en: "Order",
       // },
-      {
-        path: "/pages/public/avatar-cropper",
-        icon: "image",
-        title: "AvatarCropper 头像裁剪",
-        title_en: "AvatarCropper",
-      },
+      // {
+      //   path: "/pages/public/avatar-cropper",
+      //   icon: "image",
+      //   title: "AvatarCropper 头像裁剪",
+      //   title_en: "AvatarCropper",
+      // },
       {
         path: "http://www.baidu.com",
         icon: "link",

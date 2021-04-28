@@ -81,9 +81,9 @@
     <!-- 打开地图选择具体地址 -->
     <view class="uct-select x-sbc"
           style="width:100%"
-          :class="value?'c-black':'c-black-7'"
+          :class="html?'c-black':'c-black-7'"
           v-if="item.type == 'cascader' && item.options.showSearch == true"
-          @tap="openMap">{{ value ? value : item.options.placeholder }}
+          @tap="openMap">{{ html ? html : item.options.placeholder }}
       <image :src="require('../../static/imgs/public/right.png')"
              style="width: 15rpx;height: 27rpx" />
     </view>
@@ -142,9 +142,6 @@ export default {
         return this.item.options.defaultValue;
       },
       set(val) {
-        if (this.item.type !== "select") {
-          this.html = val;
-        }
         /**
          * 选择器选择事件
          * @event input 通过v-model语法糖传值，父组件使用v-model或:value
@@ -197,10 +194,10 @@ export default {
         break;
       case "cascader":
         if (this.item.options.showSearch) {
-          this.$Bus.$on("updateData", (content) => {
-            content["model"] = this.item.model;
-            this.value = content.address;
-            this.$emit("mapData", content);
+          // 地图选择地址后的回调
+          this.$uct.Bus.$on("updateData", (content) => {
+            this.value = content;
+            this.html = content.address;
           });
         }
         break;
@@ -208,14 +205,14 @@ export default {
   },
   methods: {
     bindDateTimechange(e) {
-      this.value =
+      this.html = this.value =
         e.year + "-" + e.month + "-" + e.day + " " + e.hour + ":" + e.minute;
     },
     bindDatechange(e) {
-      this.value = e.year + "-" + e.month + "-" + e.day;
+      this.html = this.value = e.year + "-" + e.month + "-" + e.day;
     },
     bindTimechange(e) {
-      this.value = e.hour + ":" + e.minute;
+      this.html = this.value = e.hour + ":" + e.minute;
     },
     bindChange(e) {
       this.value = this.item.options.options[e[0]].value;
@@ -224,7 +221,8 @@ export default {
     },
     // 选择地区回调
     bindChangeCity(e) {
-      this.value = e.province.label + "-" + e.city.label + "-" + e.area.label;
+      this.html = this.value =
+        e.province.label + "-" + e.city.label + "-" + e.area.label;
     },
     // 打开地图
     openMap() {

@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import qqmapsdk from "@/config/env.js";
 export default {
   data() {
     return {
@@ -106,9 +105,6 @@ export default {
   created() {
     this.getLocation();
     let map = this.map;
-    uni.setNavigationBarTitle({
-      title: "搜索地址",
-    });
   },
 
   methods: {
@@ -175,7 +171,7 @@ export default {
     getAddressList(s = 0) {
       let that = this;
       let position = that.position;
-      qqmapsdk.reverseGeocoder({
+      this.$uct.qqmapsdk.reverseGeocoder({
         location: {
           latitude: position.latitude,
           longitude: position.longitude,
@@ -259,7 +255,7 @@ export default {
         lat: address.location.lat,
         lng: address.location.lng,
       };
-      this.$Bus.$emit("updateData", a);
+      this.$uct.Bus.$emit("updateData", a);
       uni.navigateBack({
         delta: 1,
       });

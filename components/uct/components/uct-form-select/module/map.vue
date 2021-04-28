@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import { qqmapsdk } from "../../../libs/config/env.js";
 export default {
   data() {
     return {
@@ -175,7 +174,7 @@ export default {
     getAddressList(s = 0) {
       let that = this;
       let position = that.position;
-      qqmapsdk.reverseGeocoder({
+      this.$uct.qqmapsdk.reverseGeocoder({
         location: {
           latitude: position.latitude,
           longitude: position.longitude,
@@ -523,7 +522,7 @@ map {
 }
 
 .foot-border {
-  border-b1ottom: 1px solid #eee;
+  border-bottom: 1px solid #eee;
   line-height: 32rpx;
 }
 

@@ -10,8 +10,23 @@
 </template>
 
 <script>
+/**
+ * 表单的开关组件
+ * @displayName Switch开关
+ */
 export default {
   props: {
+    /** 开关配置
+     * @values {"type": "switch",
+      "label": "开关",
+      "icon": "icon-kaiguan3",
+      "options": {"defaultValue": false,
+        "hidden": false,
+        "disabled": false},
+      "model": "switch_1612862020078",
+      "key": "switch_1612862020078",
+      "rules": [{"required": false,
+        "message": "必填项"}]} */
     item: {
       type: Object,
       default() {
@@ -27,6 +42,12 @@ export default {
   methods: {
     switchChange: function (e) {
       this.value = e.target.value;
+      /**
+       * 输入框输入事件
+       * @event input 通过v-model语法糖传值，父组件使用v-model或:value
+       * @property {string} val 输入框输入值
+       * @params {string} val
+       */
       this.$emit("input", this.value);
     },
   },

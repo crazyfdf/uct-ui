@@ -1,19 +1,28 @@
 <template>
-  <view class="uct-see-img" @longpress="logoTime">
-    <u-mask :show="show" v-if="show && lazyLoad" @click="show = false">
-      <view class="y-c" style="height:100vh">
-        <u-image :widht="586" :height="820" mode="scaleToFill" :src="url"></u-image>
+  <view class="uct-see-img"
+        @longpress="logoTime">
+    <u-mask :show="show"
+            v-if="show && lazyLoad"
+            @click="show = false">
+      <view class="y-c"
+            style="height:100vh">
+        <u-image :width="586"
+                 :height="820"
+                 mode="aspectFit"
+                 :src="url"></u-image>
         <view class="mt20 f16 c-white">长按保存图片至相册</view>
       </view>
     </u-mask>
     <!-- nvue不能使用uview -->
-    <uni-popup ref="popup" v-if="!lazyLoad" type="center">
-      <view class="y-c" style="height:100vh;margin-top:-80rpx" @longpress="logoTime">
-        <image
-          :src="url"
-          :lazy-load="true"
-          style="width:586rpx;height:820rpx;background-size: 100%;"
-        />
+    <uni-popup ref="popup"
+               v-if="!lazyLoad"
+               type="center">
+      <view class="y-c"
+            style="height:100vh;margin-top:-80rpx"
+            @longpress="logoTime">
+        <image :src="url"
+               :lazy-load="true"
+               style="width:586rpx;height:820rpx;background-size: 100%;" />
         <text class="mt20 f16 c-white">长按保存图片至相册</text>
       </view>
     </uni-popup>
@@ -61,7 +70,7 @@ export default {
       let that = this;
       uni.saveImageToPhotosAlbum({
         filePath: this.url,
-        success: function() {
+        success: function () {
           that.closeImg();
           uni.showToast({
             title: "保存成功",

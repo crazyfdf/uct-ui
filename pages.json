@@ -140,6 +140,27 @@
           "navigationBarTitleText": "子列表"
         }
       }, {
+        "path": "line",
+        "name": "line",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "线条"
+        }
+      }, {
+        "path": "card",
+        "name": "card",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "卡片"
+        }
+      }, {
+        "path": "divider",
+        "name": "divider",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "分割线"
+        }
+      }, {
         "path": "navbar",
         "name": "navbar",
         "style": {

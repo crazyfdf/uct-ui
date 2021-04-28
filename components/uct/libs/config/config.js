@@ -1,4 +1,4 @@
-// 此版本发布于2020-12-17
+// 此版本发布于2021-04-21
 let version = "0.0.1";
 let systemInfo = uni.getSystemInfoSync();
 function navHeight() {

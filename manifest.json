@@ -59,8 +59,17 @@
             "mode" : "history"
         },
         "sdkConfigs" : {
-            "maps" : {}
+            "maps" : {
+                "qqmap" : {
+                    "key" : "LXCBZ-NNIKD-UZ64F-H6AFI-UNJLH-OCFGE"
+                }
+            }
         },
-        "template" : ""
+        "template" : "",
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
+        }
     }
 }
