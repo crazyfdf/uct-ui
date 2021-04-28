@@ -1,5 +1,33 @@
 {
   "list": [{
+      "type": "card",
+      "label": "卡片布局",
+      "list": [{
+        "type": "input",
+        "label": "输入框",
+        "icon": "icon-write",
+        "options": {
+          "type": "text",
+          "width": "100%",
+          "defaultValue": "",
+          "placeholder": "请输入",
+          "clearable": false,
+          "maxLength": null,
+          "hidden": false,
+          "disabled": false
+        },
+        "model": "input_1619598295673",
+        "key": "input_1619598295673",
+        "help": "",
+        "prefix": "",
+        "suffix": "",
+        "rules": [{
+          "required": false,
+          "message": "必填项"
+        }]
+      }],
+      "key": "card_1619595796400"
+    }, {
       "type": "text",
       "label": "input",
       "options": {

@@ -81,12 +81,12 @@ export default [
         title: "UploadImg 上传图片",
         title_en: "Upload",
       },
-      {
-        path: "/pages/index/example/components/form-item?type=uploadFile",
-        icon: "upload",
-        title: "UploadFile 上传文件",
-        title_en: "UploadFile",
-      },
+      // {
+      //   path: "/pages/index/example/components/form-item?type=uploadFile",
+      //   icon: "upload",
+      //   title: "UploadFile 上传文件",
+      //   title_en: "UploadFile",
+      // },
       {
         path: "/pages/index/example/components/form-item?type=checkbox",
         icon: "checkbox",

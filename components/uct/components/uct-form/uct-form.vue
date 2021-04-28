@@ -5,8 +5,19 @@
     <view v-for="(item,index) in formList"
           class="pa20"
           v-if="formList.length"
-          v-show="!item.options.hidden"
+          v-show="!(item.options&&item.options.hidden)||!item.options"
           :key="index">
+      <!-- Form布局组件 -->
+      <!-- card布局 -->
+      <uct-card v-if="item.type == 'card'"
+                :item="item">
+        <uct-form @dataItem="dataItem"
+                  v-if="item.list&&item.list.length"
+                  :_formConfig="formData.config"
+                  :_formList="item.list"></uct-form>
+      </uct-card>
+      <!-- Form布局组件END -->
+
       <!-- 大标题 -->
       <uct-title v-if="item.type == 'text'"
                  class="f16 f900"
@@ -31,11 +42,9 @@
                   :text="item.label"></uct-button>
       <!-- 增删改查组件 -->
       <uct-form-item v-if="['input', 'textarea', 'number','cascader', 'select', 'time', 'date','radio', 'checkbox','uploadFile', 'uploadImg','switch','rate'].includes(item.type)"
-                     @mapData="mapData"
                      :ref="item.key"
                      @input="changeInput"
-                     @upImage="upImage"
-                     :config="formData.config"
+                     :config="config"
                      :item="item"></uct-form-item>
     </view>
   </view>
@@ -50,6 +59,7 @@ import "../../libs/utils/aop.js";
  */
 
 export default {
+  name: "uct-form",
   props: {
     /** form提交其他参数
      * @values {key:value}
@@ -60,7 +70,7 @@ export default {
         return {};
       },
     },
-    /** 直接拿到form数据和form表单名二选一
+    /** form数据
      * @values {"list": [],
                 "config": {"layout": "horizontal",
                   "labelCol": {"xs": 4,
@@ -83,16 +93,6 @@ export default {
         return {};
       },
     },
-    /** 通过form表单名拿到from数据 */
-    name: {
-      type: String,
-      default: "",
-    },
-    /** form id 修改表单时拿到初始值用 */
-    form_id: {
-      type: String,
-      default: "",
-    },
     /** 提交url */
     url: {
       type: String,
@@ -105,26 +105,50 @@ export default {
         return {};
       },
     },
+    /** 通过api拿到的表单数据(递归组件需要) */
+    _formList: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    /** 内部form递归组件的配置(递归组件需要) */
+    _formConfig: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   data() {
     return {
-      apiList: [], //api传入的表单数据
       data: {}, //当前表单的提交数据
     };
   },
   computed: {
+    config: {
+      set(val) {},
+      get() {
+        if (Object.keys(this.formData).length) {
+          return this.formData.config;
+        } else {
+          console.log(11);
+          return this._formConfig;
+        }
+      },
+    },
     formList: {
       set(val) {},
       get() {
         if (Object.keys(this.formData).length) {
+          this.config = this.formData.config;
           return this.formData.list;
-        } else if (this.url) {
-          return this.apiList;
         } else {
-          return [];
+          return this._formList;
         }
       },
     },
+    /* 增删改查组件数据 */
     formItemList() {
       return this.formList.filter((item) =>
         [
@@ -144,16 +168,6 @@ export default {
       );
     },
   },
-  mounted() {
-    /* 判断当前表单数据是由外部传入还是api传入 */
-    if (!Object.keys(this.formData).length && this.url != "") {
-      this.$uct
-        .api(this.url, { name: this.name, id: this.form_id })
-        .then((res) => {
-          this.apiList = res.data.frmJson.list;
-        });
-    }
-  },
   methods: {
     handle(type) {
       switch (type) {
@@ -165,15 +179,6 @@ export default {
           break;
       }
     },
-    /*  */
-    mapData(content) {
-      let lng = `${content.model}_lng`;
-      let lat = `${content.model}_lat`;
-      let obj = {};
-      obj[lng] = content.lng;
-      obj[lat] = content.lat;
-      Object.assign(this.data, obj);
-    },
     /* 提交表单 */
     formSubmit() {
       this.submit.before(this.rules)();
@@ -181,6 +186,17 @@ export default {
     /* 监听表单内容发生改变 */
     changeInput(data) {
       Object.assign(this.data, data);
+      /**
+       * 递归表单内部数据改变事件
+       * @event dataItem
+       * @property {Object} data 内部表单数据
+       * @params  {Object} data
+       */
+      this.$emit("dataItem", this.data);
+    },
+
+    dataItem(data) {
+      this.data = Object.assign(this.data, data);
     },
     /** 提交表单 */
     submit() {

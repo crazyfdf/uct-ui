@@ -45,7 +45,6 @@ export default {
   methods: {
     searchList(n) {
       let that = this;
-      console.log(this.$uct.qqmapsdk);
       this.$uct.qqmapsdk.getSuggestion({
         keyword: n,
         success: (res) => {
