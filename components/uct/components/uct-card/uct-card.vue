@@ -72,120 +72,120 @@
 export default {
   name: "uct-card",
   props: {
-    // 卡片css
+    /** 卡片css */
     className: {
       type: Array,
       default() {
         return [];
       },
     },
-    // 标题
+    /** 标题 */
     title: {
       type: String,
       default: "",
     },
-    // 标题颜色
+    /** 标题颜色 */
     titleColor: {
       type: String,
       default: "#303133",
     },
-    // 标题字体大小，单位rpx
+    /** 标题字体大小，单位rpx */
     titleSize: {
       type: [Number, String],
       default: "30",
     },
-    // 副标题
+    /** 副标题 */
     subTitle: {
       type: String,
       default: "",
     },
-    // 副标题颜色
+    /** 副标题颜色 */
     subTitleColor: {
       type: String,
       default: "#909399",
     },
-    // 副标题字体大小，单位rpx
+    /** 副标题字体大小，单位rpx */
     subTitleSize: {
       type: [Number, String],
       default: "26",
     },
-    // 用于标识点击了第几个
+    /** 用于标识点击了第几个 */
     index: {
       type: [Number, String, Object],
       default: "",
     },
-    // 用于隔开上下左右的边距，带单位的写法，如："30rpx 30rpx"，"20rpx 20rpx 30rpx 30rpx"
+    /** 用于隔开上下左右的边距，带单位的写法，如： */"30rpx 30rpx"，"20rpx 20rpx 30rpx 30rpx"
     margin: {
       type: String,
       default: "0",
     },
-    // card卡片的圆角
+    /** card卡片的圆角 */
     borderRadius: {
       type: [Number, String],
       default: "16",
     },
-    // 头部自定义样式，对象形式
+    /** 头部自定义样式，对象形式 */
     headStyle: {
       type: Object,
       default() {
         return {};
       },
     },
-    // 主体自定义样式，对象形式
+    /** 主体自定义样式，对象形式 */
     bodyStyle: {
       type: Object,
       default() {
         return {};
       },
     },
-    // 底部自定义样式，对象形式
+    /** 底部自定义样式，对象形式 */
     footStyle: {
       type: Object,
       default() {
         return {};
       },
     },
-    // 头部是否下边框
+    /** 头部是否下边框 */
     headBorderBottom: {
       type: Boolean,
       default: true,
     },
-    // 底部是否有上边框
+    /** 底部是否有上边框 */
     footBorderTop: {
       type: Boolean,
       default: true,
     },
-    // 标题左边的缩略图
+    /** 标题左边的缩略图 */
     thumb: {
       type: String,
       default: "",
     },
-    // 缩略图宽高，单位rpx
+    /** 缩略图宽高，单位rpx */
     thumbWidth: {
       type: [String, Number],
       default: "60",
     },
-    // 缩略图是否为圆形
+    /** 缩略图是否为圆形 */
     thumbCircle: {
       type: Boolean,
       default: false,
     },
-    // 给head，body，foot的内边距
+    /** 给head，body，foot的内边距 */
     padding: {
       type: [String, Number],
       default: "30",
     },
-    // 是否显示头部
+    /** 是否显示头部 */
     showHead: {
       type: Boolean,
       default: true,
     },
-    // 是否显示尾部
+    /** 是否显示尾部 */
     showFoot: {
       type: Boolean,
       default: true,
     },
-    // 卡片外围阴影，字符串形式
+    /** 卡片外围阴影，字符串形式 */
     boxShadow: {
       type: String,
       default: "none",

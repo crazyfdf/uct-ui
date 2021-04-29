@@ -140,13 +140,6 @@
           "navigationBarTitleText": "子列表"
         }
       }, {
-        "path": "line",
-        "name": "line",
-        "style": {
-          "navigationStyle": "custom",
-          "navigationBarTitleText": "线条"
-        }
-      }, {
         "path": "card",
         "name": "card",
         "style": {

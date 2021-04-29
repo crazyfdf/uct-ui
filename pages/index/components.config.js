@@ -105,18 +105,24 @@ export default [
         title: "Switch 开关选择器",
         title_en: "Switch",
       },
+      {
+        path: "/pages/index/example/components/form-item?type=slider",
+        icon: "slider",
+        title: "Slider 滑动选择器",
+        title_en: "Slider",
+      },
     ],
   },
   {
     groupName: "布局组件",
     groupName_en: "Layout components",
     list: [
-      {
-        path: "/pages/index/example/components/line",
-        icon: "line",
-        title: "Line 线条",
-        title_en: "Line",
-      },
+      // {
+      //   path: "/pages/index/example/components/line",
+      //   icon: "line",
+      //   title: "Line 线条",
+      //   title_en: "Line",
+      // },
       {
         path: "/pages/index/example/components/card",
         icon: "card",

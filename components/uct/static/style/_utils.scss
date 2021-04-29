@@ -19,6 +19,40 @@
   pointer-events: none;
 }
 
+/* start--Retina 屏幕下的 1px 边框--start */
+.uct-border,
+.uct-border-bottom,
+.uct-border-left,
+.uct-border-right,
+.uct-border-top,
+.uct-border-top-bottom {
+	position: relative
+}
+
+.uct-border-bottom:after,
+.uct-border-left:after,
+.uct-border-right:after,
+.uct-border-top-bottom:after,
+.uct-border-top:after,
+.uct-border:after {
+  /* #ifndef APP-NVUE */
+  content: " ";
+  /* #endif */
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  // 多加0.1%，能解决有时候边框缺失的问题
+  width: 199.8%;
+  height: 199.7%;
+  transform: scale(0.5, 0.5);
+  border: 1px solid $uct-border-color;
+  z-index: 2;
+}
+
 /* 必填项 */
 .isRequired::before {
   content: "*";
