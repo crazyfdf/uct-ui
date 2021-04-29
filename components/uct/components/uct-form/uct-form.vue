@@ -43,7 +43,7 @@
                   :hidden="item.options.hidden"
                   :text="item.label"></uct-button>
       <!-- 增删改查组件 -->
-      <uct-form-item v-if="['input', 'textarea', 'number','cascader', 'select', 'time', 'date','radio', 'checkbox','uploadFile', 'uploadImg','switch','rate','slider'].includes(item.type)"
+      <uct-form-item v-if="['input', 'textarea', 'number','cascader','treeSelect', 'select', 'time', 'date','radio', 'checkbox','uploadFile', 'uploadImg','switch','rate','slider'].includes(item.type)"
                      :ref="item.key"
                      @input="changeInput"
                      :config="config"

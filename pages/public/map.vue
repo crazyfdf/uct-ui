@@ -117,7 +117,7 @@ export default {
         success: function (res) {
           this_.initMap(res);
         },
-        fail: function (e) {
+        fail: function (err) {
           console.log(err);
         },
       });

@@ -262,15 +262,16 @@
       }]
     },
     {
-      "type": "cascader",
+      "type": "treeSelect",
       "label": "地图选择器",
-      "icon": "icon-guanlian",
       "options": {
         "disabled": false,
+        "multiple": false,
         "hidden": false,
-        "showSearch": true,
-        "placeholder": "请选择",
         "clearable": false,
+        "showSearch": false,
+        "treeCheckable": false,
+        "placeholder": "请选择",
         "dynamicKey": "",
         "dynamic": true,
         "options": [{
@@ -291,8 +292,11 @@
           }
         ]
       },
-      "model": "cascader_1612861792023",
-      "key": "cascader_1612861792023",
+      "model": "treeSelect_1619678235345",
+      "key": "treeSelect_1619678235345",
+      "help": "",
+      "prefix": "",
+      "suffix": "",
       "rules": [{
         "required": false,
         "message": "必填项"

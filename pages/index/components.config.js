@@ -58,6 +58,12 @@ export default [
         title_en: "Calendar",
       },
       {
+        path: "/pages/index/example/components/form-item?type=time",
+        icon: "calendar",
+        title: "Time 日期选择器",
+        title_en: "Calendar",
+      },
+      {
         path: "/pages/index/example/components/form-item?type=select",
         icon: "select",
         title: "Select 自定义选择器",
@@ -67,6 +73,12 @@ export default [
         path: "/pages/index/example/components/form-item?type=cascader",
         icon: "picker",
         title: "Cascader 地区选择器",
+        title_en: "Picker",
+      },
+      {
+        path: "/pages/index/example/components/form-item?type=treeSelect",
+        icon: "picker",
+        title: "TreeSelect 地图选择器",
         title_en: "Picker",
       },
       {

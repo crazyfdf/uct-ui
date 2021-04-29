@@ -14,7 +14,7 @@
                       :class="{'uct-form-item-value-border':isborder,'uct-form-item-value-flex':config.layout == 'horizontal','uct-form-item-value-block':config.layout == 'vertical'}"
                       v-model="value"></uct-form-input>
       <!-- 选择器 -->
-      <uct-form-select v-if="['cascader', 'select', 'time', 'date'].includes(item.type)"
+      <uct-form-select v-if="['cascader','treeSelect', 'select', 'time', 'date'].includes(item.type)"
                        :item="item"
                        class="uct-form-item-value"
                        :class="{'uct-form-item-value-border':isborder,'uct-form-item-value-flex':config.layout == 'horizontal','uct-form-item-value-block':config.layout == 'vertical'}"

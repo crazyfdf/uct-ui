@@ -66,8 +66,8 @@
 
 <script>
 /**
- * @display Card 卡片
- * @description 卡片组件一般用于多个列表条目，且风格统一的场景
+ * @displayName Card 卡片
+ * 卡片组件一般用于多个列表条目，且风格统一的场景
  */
 export default {
   name: "uct-card",
@@ -114,7 +114,7 @@ export default {
       type: [Number, String, Object],
       default: "",
     },
-    /** 用于隔开上下左右的边距，带单位的写法，如： */"30rpx 30rpx"，"20rpx 20rpx 30rpx 30rpx"
+    /** 用于隔开上下左右的边距，带单位的写法，如："30rpx 30rpx"，"20rpx 20rpx 30rpx 30rpx" */
     margin: {
       type: String,
       default: "0",

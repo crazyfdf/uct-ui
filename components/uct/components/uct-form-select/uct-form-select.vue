@@ -64,7 +64,7 @@
              style="width: 15rpx;height: 27rpx" />
     </view>
     <!-- 地区选择器 -->
-    <view v-if="item.type == 'cascader' && item.options.showSearch == false"
+    <view v-if="item.type == 'cascader'"
           @tap="visible = true"
           class="x-sbc"
           style="width:100%">
@@ -82,7 +82,7 @@
     <view class="uct-select x-sbc"
           style="width:100%"
           :class="html?'c-black':'c-black-7'"
-          v-if="item.type == 'cascader' && item.options.showSearch == true"
+          v-if="item.type == 'treeSelect'"
           @tap="openMap">{{ html ? html : item.options.placeholder }}
       <image :src="require('../../static/imgs/public/right.png')"
              style="width: 15rpx;height: 27rpx" />
@@ -192,14 +192,12 @@ export default {
           minute: true,
         };
         break;
-      case "cascader":
-        if (this.item.options.showSearch) {
-          // 地图选择地址后的回调
-          this.$uct.Bus.$on("updateData", (content) => {
-            this.value = content;
-            this.html = content.address;
-          });
-        }
+      case "treeSelect":
+        // 地图选择地址后的回调
+        this.$uct.Bus.$on("updateData", (content) => {
+          this.value = content;
+          this.html = content.address;
+        });
         break;
     }
   },
