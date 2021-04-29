@@ -59,11 +59,7 @@
             "mode" : "history"
         },
         "sdkConfigs" : {
-            "maps" : {
-                "qqmap" : {
-                    "key" : "LXCBZ-NNIKD-UZ64F-H6AFI-UNJLH-OCFGE"
-                }
-            }
+            "maps" : {}
         },
         "template" : "",
         "optimization" : {

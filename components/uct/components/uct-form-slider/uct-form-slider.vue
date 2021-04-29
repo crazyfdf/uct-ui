@@ -34,22 +34,6 @@
 <script>
 /**
  * slider 滑块选择器
- * @tutorial https://uviewui.com/components/slider.html
- * @property {Number | String} value 滑块默认值（默认0）
- * @property {Number | String} min 最小值（默认0）
- * @property {Number | String} max 最大值（默认100）
- * @property {Number | String} step 步长（默认1）
- * @property {Number | String} blockWidth 滑块宽度，高等于宽（30）
- * @property {Number | String} height 滑块条高度，单位rpx（默认6）
- * @property {String} inactiveColor 底部条背景颜色（默认#c0c4cc）
- * @property {String} activeColor 底部选择部分的背景颜色（默认#2979ff）
- * @property {String} blockColor 滑块颜色（默认#ffffff）
- * @property {Object} blockStyle 给滑块自定义样式，对象形式
- * @property {Boolean} disabled 是否禁用滑块(默认为false)
- * @event {Function} start 滑动触发
- * @event {Function} moving 正在滑动中
- * @event {Function} end 滑动结束
- * @example <uct-slider v-model="value" />
  */
 export default {
   name: "uct-slider",
@@ -217,9 +201,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../libs/css/style.components.scss";
-
 .uct-slider {
+  width: 100%;
   position: relative;
   border-radius: 999px;
   border-radius: 999px;

@@ -1,7 +1,6 @@
 /* 表单主题 */
 // $formType:flex; //左右
 // $formType:block; //上下
-
 /* ==================
        自定义偏移变量   
  ==================== */
@@ -26,16 +25,7 @@ $spaceSizes: (2: 2rpx,
 /* ==================
        自定义颜色变量   
  ==================== */
-$uct-black: black;
-$uct-white:#fff;
-$uct-gray: #bbbbbb;
-$uct-dark: #777777;
-$uct-blue: #1464C7;
-$uct-skyblue: #4E92E7;
-$uct-green: #01b601;
-$uct-red: #FF0000;
-$uct-orange: #F79347;
-$uct-yellow:#FFBF2B;
+
 
 $colorTypes: (bc: background-color, c: color);
 $colorSizes: (black: $uct-black,

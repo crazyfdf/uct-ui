@@ -10,8 +10,10 @@
       <!-- Form布局组件 -->
       <!-- card布局 -->
       <uct-card v-if="item.type == 'card'"
-                :item="item">
+                :className="['bc-gray']"
+                :title="item.label">
         <uct-form @dataItem="dataItem"
+                  slot="body"
                   v-if="item.list&&item.list.length"
                   :_formConfig="formData.config"
                   :_formList="item.list"></uct-form>
@@ -41,7 +43,7 @@
                   :hidden="item.options.hidden"
                   :text="item.label"></uct-button>
       <!-- 增删改查组件 -->
-      <uct-form-item v-if="['input', 'textarea', 'number','cascader', 'select', 'time', 'date','radio', 'checkbox','uploadFile', 'uploadImg','switch','rate'].includes(item.type)"
+      <uct-form-item v-if="['input', 'textarea', 'number','cascader', 'select', 'time', 'date','radio', 'checkbox','uploadFile', 'uploadImg','switch','rate','slider'].includes(item.type)"
                      :ref="item.key"
                      @input="changeInput"
                      :config="config"
@@ -132,7 +134,6 @@ export default {
         if (Object.keys(this.formData).length) {
           return this.formData.config;
         } else {
-          console.log(11);
           return this._formConfig;
         }
       },

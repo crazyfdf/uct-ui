@@ -4,10 +4,12 @@
            src="/static/imgs/public/logo_bg.png"
            mode="aspectFill"></image>
     <view class="force-login__content y-f">
+      <!-- #ifdef MP-WEIXIN -->
       <open-data class="user-avatar"
                  type="userAvatarUrl"></open-data>
       <open-data class="user-name"
                  type="userNickName"></open-data>
+      <!--  #endif -->
       <view class="login-notice">为了提供更优质的服务，需要获取您的头像昵称</view>
       <button class="cu-btn author-btn"
               @getuserinfo="getuserinfo"
@@ -18,24 +20,24 @@
   </view>
 </template>
 <script>
-import Wechat from '@/common/wechat/wechat';
-import store from '@/common/store';
-import { mapMutations, mapActions, mapState } from 'vuex';
+import Wechat from "@/common/wechat/wechat";
+import store from "@/common/store";
+import { mapMutations, mapActions, mapState } from "vuex";
 export default {
   methods: {
-    ...mapActions(['setTokenAndBack']),
-    async getuserinfo (e) {
+    ...mapActions(["setTokenAndBack"]),
+    async getuserinfo(e) {
       var wechat = new Wechat();
       let token = await wechat.login_hawk(e);
-      this.$tools.GetLoc()
+      this.$tools.GetLoc();
       this.setTokenAndBack(token);
     },
-    closeAuth () {
+    closeAuth() {
       uni.navigateBack({
-        delta: 1
+        delta: 1,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

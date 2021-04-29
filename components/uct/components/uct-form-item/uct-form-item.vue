@@ -45,7 +45,15 @@
                        class="uct-form-item-value"
                        :class="config.layout == 'horizontal'? 'uct-form-item-value-flex': 'uct-form-item-value-block'"
                        v-model="value"></uct-form-switch>
-
+      <!-- 滑块 -->
+      <uct-form-slider v-if="item.type == 'slider'"
+                       :min="item.options.min"
+                       :max="item.options.max"
+                       :step="item.options.step"
+                       :disabled="item.options.disabled"
+                       v-model="value"
+                       class="uct-form-item-value"
+                       :class="config.layout == 'horizontal'? 'uct-form-item-value-flex': 'uct-form-item-value-block'"></uct-form-slider>
     </view>
 
     <!-- 提示语 -->
@@ -159,7 +167,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style scope lang="scss">
 /*表单主题*/
 .uct-form-item {
   display: flex;
@@ -196,28 +204,5 @@ export default {
       box-sizing: border-box;
     }
   }
-}
-/* start--Retina 屏幕下的 1px 边框--start */
-.uct-border-bottom {
-  position: relative;
-}
-
-.uct-border-bottom:after {
-  /* #ifndef APP-NVUE */
-  content: " ";
-  /* #endif */
-  position: absolute;
-  left: 0;
-  top: 0;
-  pointer-events: none;
-  box-sizing: border-box;
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-  // 多加0.1%，能解决有时候边框缺失的问题
-  width: 199.8%;
-  height: 199.7%;
-  transform: scale(0.5, 0.5);
-  border: 1px solid $u-border-color;
-  z-index: 2;
 }
 </style>
