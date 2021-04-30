@@ -4,7 +4,7 @@ export default [
     groupName_en: "Basic components",
     list: [
       {
-        path: "/pages/index/example/tools/css",
+        path: "/pages/example/tools/css",
         icon: "color",
         title: "CSS 样式",
         title_en: "CSS",
@@ -16,13 +16,13 @@ export default [
     groupName_en: "filter Tool",
     list: [
       {
-        path: "/pages/index/example/tools/timeFormat",
+        path: "/pages/example/tools/timeFormat",
         icon: "timeFormat",
         title: "TimeFormat 时间格式化",
         title_en: "TimeFormat",
       },
       {
-        path: "/pages/index/example/tools/unit",
+        path: "/pages/example/tools/unit",
         icon: "random",
         title: "Unit 单位转换",
         title_en: "Unit",
@@ -34,7 +34,7 @@ export default [
     groupName_en: "Tool library",
     list: [
       {
-        path: "/pages/index/example/tools/debounce",
+        path: "/pages/example/tools/debounce",
         icon: "debounce",
         title: "Throttle | Debounce 节流防抖",
         title_en: "Throttle | Debounce",
@@ -46,7 +46,7 @@ export default [
       //   title_en: "DeepMerge",
       // },
       {
-        path: "/pages/index/example/tools/deepClone",
+        path: "/pages/example/tools/deepClone",
         icon: "deepClone",
         title: "DeepClone 对象深度克隆",
         title_en: "DeepClone",
@@ -65,7 +65,7 @@ export default [
       //   title_en: "Guid",
       // },
       {
-        path: "/pages/index/example/tools/route",
+        path: "/pages/example/tools/route",
         icon: "route",
         title: "Route 路由跳转",
         title_en: "Route",
@@ -95,7 +95,7 @@ export default [
       //   title_en: "QueryParams",
       // },
       {
-        path: "/pages/index/example/tools/rule",
+        path: "/pages/example/tools/rule",
         icon: "test",
         title: "Rule 规则校验",
         title_en: "Rule",
@@ -126,10 +126,16 @@ export default [
     groupName_en: "UniSDK",
     list: [
       {
-        path: "/pages/index/example/tools/callPhone",
+        path: "/pages/example/tools/callPhone",
         icon: "debounce",
         title: "CallPhone 拨打电话",
         title_en: "CallPhone",
+      },
+      {
+        path: "/pages/example/tools/getLoc",
+        icon: "debounce",
+        title: "getLoc 获取地址",
+        title_en: "GetLoc",
       },
     ],
   },

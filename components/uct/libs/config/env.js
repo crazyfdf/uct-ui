@@ -9,7 +9,7 @@ const ENV_BASE_URL = {
   production: "http://2g238e1732.51mypc.cn:9200/", //生产环境
 };
 /* 腾讯地图 */
-const key = "LXCBZ-NNIKD-UZ64F-H6AFI-UNJLH-OCFGE";
+const key = "6LCBZ-CV66R-X4JWV-WXPZZ-K5BKS-HHBNO";
 let QQMapWX, qqmapsdk;
 if (key) {
   QQMapWX = require("./map/qqmap-wx-jssdk.min.js");

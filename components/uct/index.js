@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-13 07:55:05
- * @LastEditTime: 2021-04-27 17:16:35
+ * @LastEditTime: 2021-04-30 11:22:26
  * @LastEditors: 祸灵
  * @Description: In User Settings Edit
  * @FilePath: \UC-font\components\uct\index.js
@@ -30,9 +30,9 @@ const $uct = {
   showToast: tools.showToast,
   showLoading: tools.showLoading,
   checkNetwork: tools.checkNetwork,
-  GetLoc: tools.GetLoc,
-  GetSystemInfo: tools.GetSystemInfo,
-  GetAppVersion: tools.GetAppVersion,
+  getLoc: tools.getLoc,
+  getSystemInfo: tools.getSystemInfo,
+  getAppVersion: tools.getAppVersion,
   getClientId: tools.getClientId,
   Container: lodash.Container,
   Either: lodash.Either,
@@ -45,7 +45,7 @@ const $uct = {
   debounce,
   throttle,
   clone,
-  Bus: new Vue(),
+  bus: new Vue(),
   color: filter.color,
   timeFormat: filter.timeFormat,
   numberFormat: filter.numberFormat,

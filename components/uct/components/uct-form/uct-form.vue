@@ -18,6 +18,9 @@
                   :_formConfig="formData.config"
                   :_formList="item.list"></uct-form>
       </uct-card>
+      <!-- 分割线 -->
+      <uct-divider v-if="item.type == 'divider'"
+                   :item="item"></uct-divider>
       <!-- Form布局组件END -->
 
       <!-- 大标题 -->
@@ -28,10 +31,9 @@
       <!-- 警告提示 -->
       <uct-alert v-if="item.type == 'alert'"
                  :item="item"></uct-alert>
-
-      <!-- 分割线 -->
-      <uct-divider v-if="item.type == 'divider'"
-                   :item="item"></uct-divider>
+      <!-- HTML -->
+      <rich-text v-if="item.type == 'html'"
+                 :nodes="item.options.defaultValue"></rich-text>
       <!-- 按钮 -->
       <uct-button v-if="item.type == 'button'"
                   :form-type="item.options.handle"

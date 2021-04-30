@@ -28,6 +28,91 @@
       }],
       "key": "card_1619595796400"
     }, {
+      "type": "tabs",
+      "label": "标签页布局",
+      "icon": "icon-tabs",
+      "options": {
+        "tabBarGutter": null,
+        "type": "line",
+        "tabPosition": "top",
+        "size": "default",
+        "animated": true
+      },
+      "columns": [{
+          "value": "1",
+          "label": "选项1",
+          "list": [{
+            "type": "radio",
+            "label": "单选框",
+            "icon": "icon-danxuan-cuxiantiao",
+            "options": {
+              "disabled": false,
+              "hidden": false,
+              "defaultValue": "",
+              "dynamicKey": "",
+              "dynamic": false,
+              "options": [{
+                  "value": "1",
+                  "label": "选项1"
+                },
+                {
+                  "value": "2",
+                  "label": "选项2"
+                },
+                {
+                  "value": "3",
+                  "label": "选项3"
+                }
+              ]
+            },
+            "model": "radio_1619679845672",
+            "key": "radio_1619679845672",
+            "help": "",
+            "rules": [{
+              "required": false,
+              "message": "必填项"
+            }]
+          }]
+        },
+        {
+          "value": "2",
+          "label": "选项2",
+          "list": [{
+            "type": "checkbox",
+            "label": "多选框",
+            "icon": "icon-duoxuan1",
+            "options": {
+              "disabled": false,
+              "hidden": false,
+              "defaultValue": [],
+              "dynamicKey": "",
+              "dynamic": false,
+              "options": [{
+                  "value": "1",
+                  "label": "选项1"
+                },
+                {
+                  "value": "2",
+                  "label": "选项2"
+                },
+                {
+                  "value": "3",
+                  "label": "选项3"
+                }
+              ]
+            },
+            "model": "checkbox_1619679847556",
+            "key": "checkbox_1619679847556",
+            "help": "",
+            "rules": [{
+              "required": false,
+              "message": "必填项"
+            }]
+          }]
+        }
+      ],
+      "key": "tabs_1619679676304"
+    }, {
       "type": "text",
       "label": "input",
       "options": {
@@ -528,6 +613,15 @@
         "required": false,
         "message": "必填项"
       }]
+    },
+    {
+      "type": "html",
+      "label": "HTML",
+      "options": {
+        "hidden": false,
+        "defaultValue": "<strong>HTML</strong>"
+      },
+      "key": "html_1619678660001"
     },
     {
       "type": "button",

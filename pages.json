@@ -8,7 +8,7 @@
     }
   },
   "pages": [
-    // 演示-组件
+    // // 演示-组件
     {
       "path": "pages/index",
       "name": "index",
@@ -18,16 +18,58 @@
         "navigationStyle": "custom"
       }
     }
+    // // 演示-组件
+    // {
+    //   "path": "pages/index/components",
+    //   "name": "components",
+    //   "aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
+    //   "style": {
+    //     "navigationBarTitleText": "组件",
+    //     "navigationStyle": "custom"
+    //   }
+    // }, // 演示-工具
+    // {
+    //   "path": "pages/index/tools",
+    //   "name": "tools",
+    //   "style": {
+    //     "navigationBarTitleText": "工具",
+    //     "navigationStyle": "custom"
+    //   }
+    // }, // 演示-模板
+    // {
+    //   "path": "pages/index/templates",
+    //   "name": "templates",
+    //   "style": {
+    //     "navigationBarTitleText": "模板",
+    //     "navigationStyle": "custom"
+    //   }
+    // }
   ],
   "subPackages": [{
       // 演示-工具
-      "root": "pages/index/example/tools",
+      "root": "pages/example/tools",
       "pages": [{
           "path": "css",
           "name": "css",
           "style": {
             "navigationStyle": "custom",
             "navigationBarTitleText": "CSS"
+          }
+        },
+        {
+          "path": "unit",
+          "name": "unit",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "unit"
+          }
+        },
+        {
+          "path": "timeFormat",
+          "name": "timeFormat",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "timeFormat"
           }
         },
         {
@@ -44,14 +86,6 @@
           "style": {
             "navigationStyle": "custom",
             "navigationBarTitleText": "deepClone"
-          }
-        },
-        {
-          "path": "timeFormat",
-          "name": "timeFormat",
-          "style": {
-            "navigationStyle": "custom",
-            "navigationBarTitleText": "timeFormat"
           }
         },
         {
@@ -79,17 +113,17 @@
           }
         },
         {
-          "path": "unit",
-          "name": "unit",
+          "path": "getLoc",
+          "name": "getLoc",
           "style": {
             "navigationStyle": "custom",
-            "navigationBarTitleText": "unit"
+            "navigationBarTitleText": "getLoc"
           }
         }
       ]
     }, {
       // 演示-组件
-      "root": "pages/index/example/components",
+      "root": "pages/example/components",
       "pages": [{
         "path": "button",
         "name": "button",
@@ -167,12 +201,25 @@
           "navigationStyle": "custom",
           "navigationBarTitleText": "列表导航栏"
         }
+      }, {
+        "path": "details",
+        "name": "details",
+        "style": {
+          "navigationStyle": "custom",
+          "navigationBarTitleText": "详情"
+        }
       }]
     },
     {
       // 演示-模板页面
-      "root": "pages/public",
+      "root": "pages/example/templates",
       "pages": [{
+        "path": "index",
+        "name": "index",
+        "style": {
+          "navigationBarTitleText": "首页"
+        }
+      }, {
         "path": "webview",
         "style": {
           "navigationBarTitleText": "webview" //外部链接
@@ -195,12 +242,6 @@
         "style": {
           "navigationBarTitleText": "搜索地址"
         }
-      }, {
-        "path": "avatar-cropper",
-        "name": "avatar-cropper",
-        "style": {
-          "navigationBarTitleText": "头像裁剪"
-        }
       }]
     }
   ],
@@ -211,5 +252,29 @@
     "backgroundColor": "#FFFFFF",
     "backgroundColorTop": "#FFFFFF" // iOS APP真机bounce回弹区域默认灰色,建议统一重置为白色
   }
-
+  // "tabBar": {
+  //   "color": "#909399",
+  //   "selectedColor": "#303133",
+  //   "backgroundColor": "#FFFFFF",
+  //   "borderStyle": "black",
+  //   "list": [{
+  //       "pagePath": "pages/index/components",
+  //       "iconPath": "/static/imgs/tabbar/component.png",
+  //       "selectedIconPath": "static/imgs/tabbar/component_select.png",
+  //       "text": "组件"
+  //     },
+  //     {
+  //       "pagePath": "pages/index/tools",
+  //       "iconPath": "static/imgs/tabbar/template.png",
+  //       "selectedIconPath": "static/imgs/tabbar/template_select.png",
+  //       "text": "工具"
+  //     },
+  //     {
+  //       "pagePath": "pages/index/templates",
+  //       "iconPath": "static/imgs/tabbar/template.png",
+  //       "selectedIconPath": "static/imgs/tabbar/template_select.png",
+  //       "text": "模板"
+  //     }
+  //   ]
+  // }
 }

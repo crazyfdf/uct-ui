@@ -18,6 +18,7 @@
             @touchmove="onTouchMove"
             @touchend="onTouchEnd"
             @touchcancel="onTouchEnd">
+        <!-- @slot 滑块插槽 -->
         <slot v-if="$slots.default  || $slots.$default" />
         <view v-else
               class="uct-slider__button"
@@ -33,62 +34,62 @@
 
 <script>
 /**
- * slider 滑块选择器
+ * @displayName slider 滑块选择器
  */
 export default {
   name: "uct-slider",
   props: {
-    // 当前进度百分比值，范围0-100
+    /** 当前进度百分比值，范围0-100 */
     value: {
       type: [Number, String],
       default: 0,
     },
-    // 是否禁用滑块
+    /** 是否禁用滑块 */
     disabled: {
       type: Boolean,
       default: false,
     },
-    // 滑块宽度，高等于宽，单位rpx
+    /** 滑块宽度，高等于宽，单位rpx */
     blockWidth: {
       type: [Number, String],
       default: 30,
     },
-    // 最小值
+    /** 最小值 */
     min: {
       type: [Number, String],
       default: 0,
     },
-    // 最大值
+    /** 最大值 */
     max: {
       type: [Number, String],
       default: 100,
     },
-    // 步进值
+    /** 步进值 */
     step: {
       type: [Number, String],
       default: 1,
     },
-    // 滑块条高度，单位rpx
+    /** 滑块条高度，单位rpx */
     height: {
       type: [Number, String],
       default: 6,
     },
-    // 进度条的激活部分颜色
+    /** 进度条的激活部分颜色 */
     activeColor: {
       type: String,
       default: "#2979ff",
     },
-    // 进度条的背景颜色
+    /** 进度条的背景颜色 */
     inactiveColor: {
       type: String,
       default: "#c0c4cc",
     },
-    // 滑块的背景颜色
+    /** 滑块的背景颜色 */
     blockColor: {
       type: String,
       default: "#ffffff",
     },
-    // 用户对滑块的自定义颜色
+    /** 用户对滑块的自定义颜色 */
     blockStyle: {
       type: Object,
       default() {

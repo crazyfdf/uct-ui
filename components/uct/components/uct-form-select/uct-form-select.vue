@@ -194,7 +194,7 @@ export default {
         break;
       case "treeSelect":
         // 地图选择地址后的回调
-        this.$uct.Bus.$on("updateData", (content) => {
+        this.$uct.bus.$on("updateData", (content) => {
           this.value = content;
           this.html = content.address;
         });

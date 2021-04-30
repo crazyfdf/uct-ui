@@ -1,5 +1,5 @@
 {
-    "name" : "uniwork_miniprogram",
+    "name" : "uct-ui",
     "appid" : "__UNI__8D02ECB",
     "description" : "",
     "versionName" : "1.0.0",
@@ -59,7 +59,11 @@
             "mode" : "history"
         },
         "sdkConfigs" : {
-            "maps" : {}
+            "maps" : {
+                "qqmap" : {
+                    "key" : "6LCBZ-CV66R-X4JWV-WXPZZ-K5BKS-HHBNO"
+                }
+            }
         },
         "template" : "",
         "optimization" : {

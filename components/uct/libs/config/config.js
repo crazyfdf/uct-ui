@@ -1,6 +1,16 @@
 // 此版本发布于2021-04-21
+import tools from "../utils/tools";
 let version = "0.0.1";
 let systemInfo = uni.getSystemInfoSync();
+// #ifdef APP-PLUS
+(() =>
+  Promise.all([tools.getAppVersion(), tools.getClientId()]).then(res => {
+    systemInfo.appVersion = res[0];
+    systemInfo.clientId = res[1];
+    return systemInfo;
+  }))();
+// #endif
+
 function navHeight() {
   // #ifdef APP-PLUS || H5
   return 44;

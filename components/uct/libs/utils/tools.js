@@ -66,7 +66,7 @@ export default {
     uni.showToast({
       title: `${title}` || "",
       icon: options.icon || "none",
-      duration: (options && options.duration) || 1500,
+      duration: (options && options.duration) || 1000,
       image: (options && options.image) || "",
       mask: (options && options.mask) || true,
     });
@@ -78,7 +78,7 @@ export default {
     });
     setTimeout(function() {
       uni.hideLoading();
-    }, options.time || 1500);
+    }, options.time || 1000);
   },
 
   // 检查网络
@@ -101,34 +101,39 @@ export default {
     });
   },
 
-  GetLoc() {
+  getLoc() {
     return new Promise((resolve, reject) => {
       //获得地址
       uni.getLocation({
         type: "gcj02",
         geocode: true,
         success: function(lb) {
-          var latitude = lb.latitude;
-          var longitude = lb.longitude;
-          var speed = lb.speed;
-          var accuracy = lb.accuracy;
-          qqmapsdk.reverseGeocoder({
-            location: {
-              latitude: latitude,
-              longitude: longitude,
-            },
-            get_poi: 1,
-            poi_options: "page_size=20;page_index=1",
-            success: function(e) {
-              resolve(e.result);
-            },
-            fail: err => {
-              uni.showToast({
-                icon: "none",
-                title: `${err}`,
-              });
-            },
-          });
+          // let location = {
+          //   ...lb.address,
+          //   latitude: lb.latitude,
+          //   longitude: lb.longitude,
+          // };
+          resolve(lb);
+          /* if (this.$uct.qqmapsdk) {
+            this.$uct.qqmapsdk.reverseGeocoder({
+              location,
+              get_poi: 1,
+              poi_options: "page_size=20;page_index=1",
+              success: function(e) {
+                resolve(e.result);
+              },
+              fail: err => {
+                uni.showToast({
+                  icon: "none",
+                  title: `${err}`,
+                });
+              },
+            });
+          } else {
+            resolve({
+              location,
+            });
+          }*/
         },
         fail: function(res) {
           console.log(res);
@@ -142,37 +147,28 @@ export default {
   },
 
   /* 获取设备信息 */
-  GetSystemInfo() {
+  getSystemInfo() {
     // #ifdef APP-PLUS
     return new Promise((resolve, reject) => {
-      try {
-        if (uni.getStorageSync("platform")) {
-          resolve(uni.getStorageSync("platform"));
-        } else {
-          uni.getSystemInfo({
-            success: function(res) {
-              uni.setStorageSync("platform", res.platform);
-              resolve(res.platform);
-            },
-          });
-        }
-      } catch (e) {
-        console.log(e);
-      }
+      uni.getSystemInfo({
+        success: function(res) {
+          resolve(res.platform);
+        },
+      });
     });
     // #endif
   },
 
-  GetAppVersion() {
+  getAppVersion() {
     // #ifdef APP-PLUS
     return new Promise((resolve, reject) => {
       try {
         if (uni.getStorageSync("version")) {
           resolve(uni.getStorageSync("version"));
         } else {
-          plus.runtime.getProperty(plus.runtime.appid, function(wgtinfo) {
-            uni.setStorageSync("version", wgtinfo.version);
-            resolve(wgtinfo.version);
+          plus.runtime.getProperty(plus.runtime.appid, function(res) {
+            uni.setStorageSync("version", res.version);
+            resolve(res.version);
           });
         }
       } catch (e) {
@@ -184,35 +180,33 @@ export default {
   //获取客户端ID
   getClientId() {
     // #ifdef APP-PLUS
-    //获取客户端ID和版本号
-    var clientid = "";
-    // 苹果系统
-    plus.device.getInfo({
-      success: function(e) {
-        clientid = e.uuid;
-        uni.setStorageSync("clientid", clientid);
-      },
-      fail: function(e) {
-        console.log(e);
-      },
+    return new Promise((resolve, reject) => {
+      //获取客户端ID和版本号
+      var clientId = "";
+      // 苹果系统
+      plus.device.getInfo({
+        success: function(e) {
+          clientId = e.uuid;
+        },
+        fail: function(e) {
+          console.log(e);
+        },
+      });
+      // 安卓系统
+      plus.device.getAAID({
+        success: function(e) {
+          clientId = e.aaid;
+        },
+        fail: function(e) {
+          console.log(e);
+        },
+      });
+      //老版本、安卓模拟器
+      if (clientId == "") {
+        clientId = plus.device.uuid;
+      }
+      resolve(clientId);
     });
-    // 安卓系统
-    plus.device.getAAID({
-      success: function(e) {
-        clientid = e.aaid;
-        console.log(clientid);
-        uni.setStorageSync("clientid", clientid);
-      },
-      fail: function(e) {
-        console.log(e);
-      },
-    });
-    //老版本、安卓模拟器
-    if (clientid == "") {
-      clientid = plus.device.uuid;
-      uni.setStorageSync("clientid", clientid);
-    }
-    return clientid;
     // #endif
   },
 

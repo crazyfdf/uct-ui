@@ -1,7 +1,7 @@
 <!--
  * @Author: 祸灵
  * @Date: 2021-02-24 16:18:53
- * @LastEditTime: 2021-04-23 15:31:07
+ * @LastEditTime: 2021-04-29 16:02:47
  * @LastEditors: 祸灵
  * @Description: 通用列表组件
  * @FilePath: \uct-ui\components\uct-scroll\uct-scroll.vue
@@ -26,25 +26,31 @@
     </view>
 
     <!-- list内容懒加载 -->
-    <uct-scroll-item v-show="tabNowIndex === index"
-                     v-if="lazy"
-                     :ref="'uctscroll'+index"
-                     v-for="(item,index) in tabs"
-                     :key="index"
-                     @downCallback="downCallback"
-                     @success="success"
-                     :url="item.url"
-                     :api="item.api"
-                     :more="item.more"
-                     :fixed="item.fixed||item.fixed===undefined?true:false"
-                     :tabIndex="tabNowIndex"
-                     :index="index"
-                     :downOption="downOption"
-                     :upOption="upOption"
-                     :top="top1"
-                     :bottom="bottom">
-      <slot></slot>
-    </uct-scroll-item>
+    <view v-if="lazy">
+      <uct-scroll-item v-show="tabNowIndex === index"
+                       :ref="'uctscroll'+index"
+                       v-for="(item,index) in tabs"
+                       :key="index"
+                       @downCallback="downCallback"
+                       @success="success"
+                       :url="item.url"
+                       :api="item.api"
+                       :more="item.more"
+                       :fixed="item.fixed||item.fixed===undefined?true:false"
+                       :tabIndex="tabNowIndex"
+                       :index="index"
+                       :downOption="downOption"
+                       :upOption="upOption"
+                       :top="top1"
+                       :bottom="bottom">
+        <!-- #ifdef MP -->
+        <slot name="{{index}}"></slot>
+        <!-- #endif -->
+        <!-- #ifndef MP -->
+        <slot :name="index"></slot>
+        <!-- #endif -->
+      </uct-scroll-item>
+    </view>
     <!-- list内容不使用懒加载 -->
     <view v-if="!lazy">
       <uct-scroll-item v-if="tabNowIndex === index"

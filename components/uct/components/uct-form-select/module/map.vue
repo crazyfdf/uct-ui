@@ -258,7 +258,7 @@ export default {
         lat: address.location.lat,
         lng: address.location.lng,
       };
-      this.$Bus.$emit("updateData", a);
+      this.$uct.bus.$emit("updateData", a);
       uni.navigateBack({
         delta: 1,
       });

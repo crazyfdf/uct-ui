@@ -34,19 +34,19 @@ export default {
       router: [
         {
           text: "保留当前页面，跳转到应用内的某个页面",
-          handler: () => this.$uct.to("/pages/index/example/components/empty", {}, 0),
+          handler: () => this.$uct.to("/pages/example/components/empty", {}, 0),
         },
         {
           text: "关闭当前页面，跳转到应用内的某个页面",
-          handler: () => this.$uct.to("/pages/index/example/components/empty", {}, 1),
+          handler: () => this.$uct.to("/pages/example/components/empty", {}, 1),
         },
         {
           text: "关闭所有页面，打开到应用内的某个页面",
-          handler: () => this.$uct.to("/pages/index/example/components/empty", {}, 2),
+          handler: () => this.$uct.to("/pages/example/components/empty", {}, 2),
         },
         {
           text: "跳转到tabBar页面，并关闭其他所有非tabBar页面",
-          handler: () => this.$uct.to("/pages/index/example/components/empty", {}, 3),
+          handler: () => this.$uct.to("/pages/example/components/empty", {}, 3),
         },
         {
           text: "跳转外部链接。例如：百度",

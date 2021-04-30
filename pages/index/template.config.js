@@ -4,7 +4,7 @@ export default [
     groupName_en: "Parts",
     list: [
       {
-        path: "/pages/index/example/components/save-img",
+        path: "/pages/example/components/save-img",
         icon: "image",
         title: "SaveImg 保存图",
         title_en: "SaveImg",
@@ -15,6 +15,13 @@ export default [
     groupName: "页面",
     groupName_en: "Page",
     list: [
+      {
+        path: "/pages/example/templates/index",
+        icon: "tabbar",
+        title: "Index 首页",
+        title_en: "Index",
+      },
+
       // {
       //   path: "/pages/template/wxCenter/index",
       //   icon: "wxCenter",
@@ -62,12 +69,6 @@ export default [
       //   title: "Order 订单列表",
       //   title_en: "Order",
       // },
-      // {
-      //   path: "/pages/public/avatar-cropper",
-      //   icon: "image",
-      //   title: "AvatarCropper 头像裁剪",
-      //   title_en: "AvatarCropper",
-      // },
       {
         path: "http://www.baidu.com",
         icon: "link",
@@ -75,19 +76,19 @@ export default [
         title_en: "WebView",
       },
       {
-        path: "/pages/public/login",
+        path: "/pages/example/templates/login",
         icon: "login",
         title: "Login 登录界面",
         title_en: "Login",
       },
       {
-        path: "/pages/public/address-search",
+        path: "/pages/example/templates/address-search",
         icon: "address",
         title: "Address 收货地址",
         title_en: "Address",
       },
       {
-        path: "/pages/public/map",
+        path: "/pages/example/templates/map",
         icon: "citySelect",
         title: "Map 地址选择",
         title_en: "CitySelect",

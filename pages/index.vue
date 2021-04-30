@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import tabbarConfig from "./tabbar.config.js";
 import tools from "@/pages/index/tools.vue";
 import components from "@/pages/index/components.vue";
 import templates from "@/pages/index/templates.vue";
@@ -23,7 +22,24 @@ export default {
   data() {
     return {
       current: 1,
-      tabbarConfig: tabbarConfig,
+      tabbarConfig: [
+        {
+          iconPath: "/static/imgs/tabbar/js.png",
+          selectedIconPath: "/static/imgs/tabbar/js_select.png",
+          text: "工具",
+        },
+        {
+          iconPath: "/static/imgs/tabbar/component.png",
+          selectedIconPath: "/static/imgs/tabbar/component_select.png",
+          text: "组件",
+          midButton: true,
+        },
+        {
+          iconPath: "/static/imgs/tabbar/template.png",
+          selectedIconPath: "/static/imgs/tabbar/template_select.png",
+          text: "模板",
+        },
+      ],
     };
   },
   mounted() {
@@ -31,17 +47,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* page {
-		background-color: rgb(240, 242, 244);
-	} */
-</style>
-
-<style lang="scss" scoped>
-.u-cell-icon {
-  width: 36rpx;
-  height: 36rpx;
-  margin-right: 8rpx;
-}
-</style>
