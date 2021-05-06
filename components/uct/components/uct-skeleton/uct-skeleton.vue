@@ -51,40 +51,33 @@
 
 <script>
 /**
- * skeleton 骨架屏
- * @description 骨架屏一般用于页面在请求远程数据尚未完成时，页面用灰色块预显示本来的页面结构，给用户更好的体验。
- * @tutorial https://www.uviewui.com/components/skeleton.html
- * @property {String} el-color 骨架块状元素的背景颜色（默认#e5e5e5）
- * @property {String} bg-color 骨架组件背景颜色（默认#ffffff）
- * @property {Boolean} animation 骨架块是否显示动画效果（默认false）
- * @property {String Number} border-radius u-skeleton-fillet类名元素，对应的骨架块的圆角大小，单位rpx（默认10）
- * @property {Boolean} loading 是否显示骨架组件，请求完成后，将此值设置为false（默认true）
- * @example <uct-skeleton :loading="true" :animation="true"></uct-skeleton>
+ * 骨架屏一般用于页面在请求远程数据尚未完成时，页面用灰色块预显示本来的页面结构，给用户更好的体验。
+ * @displayName Skeleton 骨架屏
  */
 export default {
-  name: "u-skeleton",
+  name: "uct-skeleton",
   props: {
-    // 需要渲染的元素背景颜色，十六进制或者rgb等都可以
+    /** 需要渲染的元素背景颜色，十六进制或者rgb等都可以 */
     elColor: {
       type: String,
       default: "#e5e5e5",
     },
-    // 整个骨架屏页面的背景颜色
+    /** 整个骨架屏页面的背景颜色 */
     bgColor: {
       type: String,
       default: "#ffffff",
     },
-    // 是否显示加载动画
+    /** 是否显示加载动画 */
     animation: {
       type: Boolean,
       default: false,
     },
-    // 圆角值，只对类名为u-skeleton-fillet的元素生效，为数值，不带单位
+    /** 圆角值，只对类名为uct-skeleton-fillet的元素生效，为数值，不带单位 */
     borderRadius: {
       type: [String, Number],
       default: "10",
     },
-    // 是否显示骨架，true-显示，false-隐藏
+    /** 是否显示骨架，true-显示，false-隐藏 */
     loading: {
       type: Boolean,
       default: true,
@@ -114,7 +107,7 @@ export default {
       query = uni.createSelectorQuery();
       // #endif
       query
-        .selectAll(".u-skeleton")
+        .selectAll(".uct-skeleton")
         .boundingClientRect()
         .exec((res) => {
           this.windowHeight = res[0][0].height;
@@ -140,7 +133,7 @@ export default {
       query = uni.createSelectorQuery();
       // #endif
       query
-        .selectAll(".u-skeleton-rect")
+        .selectAll(".uct-skeleton-rect")
         .boundingClientRect()
         .exec((res) => {
           this.RectNodes = res[0];
@@ -157,7 +150,7 @@ export default {
       query = uni.createSelectorQuery();
       // #endif
       query
-        .selectAll(".u-skeleton-fillet")
+        .selectAll(".uct-skeleton-fillet")
         .boundingClientRect()
         .exec((res) => {
           this.filletNodes = res[0];
@@ -174,7 +167,7 @@ export default {
       query = uni.createSelectorQuery();
       // #endif
       query
-        .selectAll(".u-skeleton-circle")
+        .selectAll(".uct-skeleton-circle")
         .boundingClientRect()
         .exec((res) => {
           this.circleNodes = res[0];

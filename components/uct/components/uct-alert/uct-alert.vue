@@ -1,5 +1,5 @@
 <template>
-  <!-- 警告提示 -->
+  <!-- 提示 -->
   <view class='form-alert'
         :style="{'background-color':bColor.bgColor,'border-color':bColor.borColor}">
     <image v-if="item.options.showIcon"
@@ -18,16 +18,16 @@
 
 <script>
 /**
- * 表单的警告提示
- * @displayName Alert警告提示
+ * 表单的提示
+ * @displayName Alert提示
  */
 export default {
   props: {
-    /** 警告提示配置
+    /** 提示配置
      * @values {"type": "alert",
-      "label": "警告提示",
+      "label": "提示",
       "options": {"type": "success",
-        "description": "这是success的警告提示",
+        "description": "这是success的提示",
         "showIcon": true,
         "banner": true,
         "hidden": false,

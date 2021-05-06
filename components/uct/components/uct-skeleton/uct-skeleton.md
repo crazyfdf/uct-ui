@@ -1,10 +1,11 @@
+##  Skeleton使用方法
+``` vue
 <template>
   <view class='uct-details'>
     <!-- @slot 详情页的自定义navbar插槽 -->
     <slot name="nav"></slot>
     <view class="uct-skeleton uct-skeleton-rect"
           style="flex:1;width:100vw">
-      <!-- @slot 详情页内容插槽 -->
       <slot></slot>
     </view>
     <uct-skeleton :loading="loading"
@@ -14,12 +15,9 @@
     </uct-skeleton>
   </view>
 </template>
+```
 
-<script>
-/**
- * @displayName Details 详情页面
- * 详情页面布局模板
- */
+```js
 export default {
   props: {
     /** 是否加载中状态 */
@@ -37,8 +35,10 @@ export default {
     this.$nextTick(() => (this.ready = true));
   },
 };
-</script>
 
+```
+
+```scss
 <style scoped lang="scss">
 .uct-details {
   position: relative;
@@ -49,3 +49,4 @@ export default {
   height: 100vh;
 }
 </style>
+```

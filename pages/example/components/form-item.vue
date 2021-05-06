@@ -3,7 +3,7 @@
  * @Author: 祸灵
  * @LastEditors: 祸灵
  * @Date: 2021-04-15 17:52:37
- * @LastEditTime: 2021-04-28 14:48:08
+ * @LastEditTime: 2021-05-06 14:14:01
  * @Description: 
 -->
 <template>
@@ -13,9 +13,7 @@
     </uct-nav>
     <!-- 增删改查组件 -->
     <uct-form-item class="px20 mt100"
-                   @mapData="mapData"
                    v-if="Object.keys(item).length"
-                   :ref="item.key"
                    :config="formData.config"
                    :item="item"></uct-form-item>
   </view>
@@ -23,8 +21,6 @@
 
 <script>
 export default {
-  components: {},
-  props: {},
   data() {
     return {
       type: "",
@@ -39,6 +35,5 @@ export default {
       }
     });
   },
-  methods: {},
 };
 </script>

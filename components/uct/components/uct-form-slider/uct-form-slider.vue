@@ -34,6 +34,7 @@
 
 <script>
 /**
+ * 表单滑块选择器
  * @displayName slider 滑块选择器
  */
 export default {

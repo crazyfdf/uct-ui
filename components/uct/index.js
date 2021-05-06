@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-13 07:55:05
- * @LastEditTime: 2021-04-30 11:22:26
+ * @LastEditTime: 2021-05-06 11:18:32
  * @LastEditors: 祸灵
  * @Description: In User Settings Edit
  * @FilePath: \UC-font\components\uct\index.js
@@ -12,11 +12,11 @@ import api from "./common/request/index";
 import tools from "./libs/utils/tools";
 import filter from "./libs/utils/filter";
 import { debounce, throttle, clone } from "./libs/utils/interactive";
-import { API_URL, qqmapsdk } from "./libs/config/env.js";
-import config from "./libs/config/config.js";
+import { API_URL, qqmapsdk } from "./common/config/env.js";
+import config from "./common/config/config.js";
 import lodash from "./libs/lodash/lodash.js";
+import store from "./common/store/store.mixin.js";
 import uView from "uview-ui";
-
 Vue.use(uView);
 
 const $uct = {
@@ -51,6 +51,7 @@ const $uct = {
   numberFormat: filter.numberFormat,
 };
 const install = Vue => {
+  Vue.mixin(store);
   Vue.prototype.$uct = $uct;
 };
 export default {
