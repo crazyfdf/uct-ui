@@ -138,7 +138,7 @@ export default [
     ],
   },
   {
-    groupName: "布局组件",
+    groupName: "其他组件",
     groupName_en: "Layout components",
     list: [
       // {
@@ -147,6 +147,12 @@ export default [
       //   title: "Line 线条",
       //   title_en: "Line",
       // },
+      {
+        path: "/pages/example/components/save-img",
+        icon: "image",
+        title: "SaveImg 保存图",
+        title_en: "SaveImg",
+      },
       {
         path: "/pages/example/components/card",
         icon: "card",

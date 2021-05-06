@@ -1,16 +1,11 @@
 export default [
-  {
-    groupName: "部件",
-    groupName_en: "Parts",
-    list: [
-      {
-        path: "/pages/example/components/save-img",
-        icon: "image",
-        title: "SaveImg 保存图",
-        title_en: "SaveImg",
-      },
-    ],
-  },
+  // {
+  //   groupName: "部件",
+  //   groupName_en: "Parts",
+  //   list: [
+
+  //   ],
+  // },
   {
     groupName: "页面",
     groupName_en: "Page",

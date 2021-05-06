@@ -17,7 +17,7 @@
 
 <script>
 /**
- * @displayName Details 详情页面
+ * @displayName Details 详情
  * 详情页面布局模板
  */
 export default {
