@@ -3,7 +3,7 @@
  * @Author: 祸灵
  * @LastEditors: 祸灵
  * @Date: 2021-04-13 16:08:09
- * @LastEditTime: 2021-04-15 17:51:08
+ * @LastEditTime: 2021-05-07 16:06:59
  * @Description: 
 -->
 ##  Form使用方法
@@ -21,7 +21,7 @@
 export default {
   data() {
     return {
-      formData: require("@/config/form.json"),//表单数据
+      formData: require("@/json/form.json"),//表单数据
       
       url: "system/uploadPartnerByProject",//表单提交地址
     };

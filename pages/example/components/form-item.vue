@@ -25,7 +25,7 @@ export default {
     return {
       type: "",
       item: {},
-      formData: require("@/config/form.json"),
+      formData: require("@/json/form.json"),
     };
   },
   mounted() {
