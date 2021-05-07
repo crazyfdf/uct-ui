@@ -29,7 +29,6 @@ let barTheme = {
     background: "#bbe4e3",
   },
 };
-import { SET_THEME } from "../types.js";
 const state = {
   themeKey: uni.getStorageSync("themeKey") ? uni.getStorageSync("themeKey") : "red-theme",
 };
@@ -37,15 +36,14 @@ const state = {
 const actions = {};
 
 const mutations = {
-  [SET_THEME](state, data) {
+  setTheme(state, data) {
     state.themeKey = data;
     uni.setStorageSync("themeKey", data);
-    let fcolor = data == "dark-theme" ? "#ffffff" : "#000000"; //标题字体色
     let item = barTheme[data];
     let tcolor = item.color;
     let bcolor = item.background; //背景色。
     uni.setNavigationBarColor({
-      frontColor: fcolor,
+      frontColor: tcolor,
       backgroundColor: bcolor,
     });
     uni.setTabBarStyle({

@@ -5,11 +5,9 @@
   "main": "main.js",
   "dependencies": {
     "@dcloudio/uni-ui": "^1.2.11",
-    "lodash": "^4.17.21",
     "uni-read-pages": "^1.0.5",
     "uni-simple-router": "^2.0.0-alpha.3",
     "uview-ui": "^1.8.3",
-    "vue-jsonp": "^2.0.0",
     "vuex": "^3.6.0"
   },
   "devDependencies": {},

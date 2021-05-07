@@ -1,6 +1,5 @@
 import Request from './request'
 import apiList from './api'
-import store from '@/common/store/index.js'
 
 export default function api (url, data = {}) {
   const request = new Request();
@@ -14,7 +13,6 @@ export default function api (url, data = {}) {
         uni.navigateTo({
           url: '/pages/public/login'
         })
-        store.commit('OUT_LOGIN');
         throw ('暂未登入,已阻止此次API请求~');
       }
     }
@@ -43,7 +41,6 @@ export default function api (url, data = {}) {
     if (response.data.code === 401)
     { // 服务端返回的状态码不等于200，则reject()
       uni.removeStorageSync('token');
-      // store.commit('LOGIN_TIP', true)
       uni.navigateTo({
         url: '/pages/public/login'
       })

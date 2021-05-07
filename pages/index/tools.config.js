@@ -137,6 +137,12 @@ export default [
         title: "getLoc 获取地址",
         title_en: "GetLoc",
       },
+      {
+        path: "/pages/example/tools/vuex",
+        icon: "deepMerge",
+        title: "Vuex 对象深度合并",
+        title_en: "Vuex",
+      },
     ],
   },
 ];

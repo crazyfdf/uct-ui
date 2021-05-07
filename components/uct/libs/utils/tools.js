@@ -1,3 +1,5 @@
+import wxLogin from "./login/wxLogin";
+import uniLogin from "./login/uniLogin";
 const routerType = {
   0: "navigateTo", //保留当前页面，跳转到应用内的某个页面，使用uni.navigateBack可以返回到原页面。
   1: "redirectTo", //关闭当前页面，跳转到应用内的某个页面。
@@ -5,6 +7,8 @@ const routerType = {
   3: "switchTab", //跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面。
 };
 export default {
+  wxLogin,
+  uniLogin,
   /**
    * @description: 跳转再封装，不支持复杂传参。
    * @param {string} path 跳转地址
@@ -208,14 +212,5 @@ export default {
       resolve(clientId);
     });
     // #endif
-  },
-
-  /* 深拷贝 */
-  deepCopy(obj) {
-    let res = obj instanceof Array ? [] : {};
-    for (const [key, value] of Object.entries(obj)) {
-      res[key] = typeof value == "object" ? this.deepCopy(value) : value;
-    }
-    return res;
   },
 };

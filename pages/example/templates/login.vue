@@ -20,17 +20,15 @@
   </view>
 </template>
 <script>
-import Wechat from "@/common/wechat/wechat";
-import store from "@/common/store";
-import { mapMutations, mapActions, mapState } from "vuex";
 export default {
   methods: {
-    ...mapActions(["setTokenAndBack"]),
     async getuserinfo(e) {
-      var wechat = new Wechat();
-      let token = await wechat.login_hawk(e);
-      this.$tools.GetLoc();
-      this.setTokenAndBack(token);
+      let token = await this.$uct.wxLogin(e);
+      this.$uct.vuex("user.token", token);
+      console.log(this.$store.state.user.token);
+      uni.navigateBack({
+        delta: 1,
+      });
     },
     closeAuth() {
       uni.navigateBack({

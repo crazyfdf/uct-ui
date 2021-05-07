@@ -1,11 +1,7 @@
 import { mapState } from "vuex";
-import store from "./index";
 
 // 尝试将用户在根目录中的store/index.js的vuex的state变量，全部加载到全局变量中
 let $storeKey = [];
-try {
-  $storeKey = store.state ? Object.keys(store.state) : [];
-} catch (e) {}
 
 module.exports = {
   beforeCreate() {

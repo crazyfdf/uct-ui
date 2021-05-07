@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App";
-import store from "@/components/uct/common/store";
-import { router, RouterMount } from "@/components/uct/common/router"; //路径换成自己的
+import store from "@/common/store";
+import { router, RouterMount } from "@/common/router"; //路径换成自己的
 import uct from "@/components/uct";
 
 Vue.use(uct);

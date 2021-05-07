@@ -119,6 +119,14 @@
             "navigationStyle": "custom",
             "navigationBarTitleText": "getLoc"
           }
+        },
+        {
+          "path": "vuex",
+          "name": "vuex",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "vuex"
+          }
         }
       ]
     }, {
