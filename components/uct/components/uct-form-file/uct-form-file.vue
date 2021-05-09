@@ -5,7 +5,7 @@
     <u-upload v-if="item.type=='uploadImg'"
               :before-upload="beforeUpload"
               class="uct-input"
-              :action="item.options.actions"
+              :action="$uct.API_URL+item.options.action"
               :file-list="fileList"
               :max-count="item.options.limit"></u-upload>
     <!-- :max-size="5 * 1024 * 1024" -->
@@ -96,11 +96,12 @@ export default {
       this.index = index;
     },
     upLoad() {
+      let url = this.$uct.API_URL + this.item.options.action;
       this.$refs.lFile.upload({
         // #ifdef APP-PLUS
         currentWebview: this.$mp.page.$getAppWebview(),
         // #endif
-        url: this.item.options.actions, //测试地址，记得更换
+        url, //测试地址，记得更换
         name: "file",
         // key: this.item.options.formData.key,
         // token: this.item.options.formData.token,

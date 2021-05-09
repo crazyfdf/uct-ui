@@ -1,7 +1,7 @@
 <!--
  * @Author: 祸灵
  * @Date: 2021-02-24 16:18:53
- * @LastEditTime: 2021-04-29 16:02:47
+ * @LastEditTime: 2021-05-07 16:23:44
  * @LastEditors: 祸灵
  * @Description: 通用列表组件
  * @FilePath: \uct-ui\components\uct-scroll\uct-scroll.vue
@@ -44,9 +44,11 @@
                        :top="top1"
                        :bottom="bottom">
         <!-- #ifdef MP -->
+        <!-- @slot 支持列表内容插槽 -->
         <slot name="{{index}}"></slot>
         <!-- #endif -->
         <!-- #ifndef MP -->
+        <!-- @slot 支持列表内容插槽 -->
         <slot :name="index"></slot>
         <!-- #endif -->
       </uct-scroll-item>

@@ -4,7 +4,7 @@ export default [
     groupName_en: "Basic components",
     list: [
       {
-        path: "/pages/example/tools/css",
+        path: "/pages/tools/css",
         icon: "color",
         title: "CSS 样式",
         title_en: "CSS",
@@ -16,13 +16,13 @@ export default [
     groupName_en: "filter Tool",
     list: [
       {
-        path: "/pages/example/tools/timeFormat",
+        path: "/pages/tools/timeFormat",
         icon: "timeFormat",
         title: "TimeFormat 时间格式化",
         title_en: "TimeFormat",
       },
       {
-        path: "/pages/example/tools/unit",
+        path: "/pages/tools/unit",
         icon: "random",
         title: "Unit 单位转换",
         title_en: "Unit",
@@ -34,7 +34,7 @@ export default [
     groupName_en: "Tool library",
     list: [
       {
-        path: "/pages/example/tools/debounce",
+        path: "/pages/tools/debounce",
         icon: "debounce",
         title: "Throttle | Debounce 节流防抖",
         title_en: "Throttle | Debounce",
@@ -46,7 +46,7 @@ export default [
       //   title_en: "DeepMerge",
       // },
       {
-        path: "/pages/example/tools/deepClone",
+        path: "/pages/tools/deepClone",
         icon: "deepClone",
         title: "DeepClone 对象深度克隆",
         title_en: "DeepClone",
@@ -65,7 +65,7 @@ export default [
       //   title_en: "Guid",
       // },
       {
-        path: "/pages/example/tools/route",
+        path: "/pages/tools/route",
         icon: "route",
         title: "Route 路由跳转",
         title_en: "Route",
@@ -95,7 +95,7 @@ export default [
       //   title_en: "QueryParams",
       // },
       {
-        path: "/pages/example/tools/rule",
+        path: "/pages/tools/rule",
         icon: "test",
         title: "Rule 规则校验",
         title_en: "Rule",
@@ -122,25 +122,25 @@ export default [
     ],
   },
   {
-    groupName: "UniSDK",
+    groupName: "UniApi",
     groupName_en: "UniSDK",
     list: [
       {
-        path: "/pages/example/tools/callPhone",
+        path: "/pages/tools/callPhone",
         icon: "debounce",
         title: "CallPhone 拨打电话",
         title_en: "CallPhone",
       },
       {
-        path: "/pages/example/tools/getLoc",
+        path: "/pages/tools/getLoc",
         icon: "debounce",
         title: "getLoc 获取地址",
         title_en: "GetLoc",
       },
       {
-        path: "/pages/example/tools/vuex",
+        path: "/pages/tools/vuex",
         icon: "deepMerge",
-        title: "Vuex 对象深度合并",
+        title: "Vuex 操作",
         title_en: "Vuex",
       },
     ],

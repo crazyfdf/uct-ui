@@ -224,7 +224,7 @@ export default {
     },
     // 打开地图
     openMap() {
-      this.$uct.to("/pages/public/map");
+      this.$uct.to("/pages/templates/map");
     },
   },
 };

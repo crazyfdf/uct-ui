@@ -11,7 +11,7 @@ export default [
     groupName_en: "Page",
     list: [
       {
-        path: "/pages/example/templates/index",
+        path: "/pages/templates/index",
         icon: "tabbar",
         title: "Index 首页",
         title_en: "Index",
@@ -71,23 +71,25 @@ export default [
         title_en: "WebView",
       },
       {
-        path: "/pages/example/templates/login",
+        path: "/pages/templates/login",
         icon: "login",
         title: "Login 登录界面",
         title_en: "Login",
       },
+      // {
+      //   path: "/pages/templates/address-search",
+      //   icon: "address",
+      //   title: "Address 收货地址",
+      //   title_en: "Address",
+      // },
+      // #ifndef H5
       {
-        path: "/pages/example/templates/address-search",
-        icon: "address",
-        title: "Address 收货地址",
-        title_en: "Address",
-      },
-      {
-        path: "/pages/example/templates/map",
+        path: "/pages/templates/map",
         icon: "citySelect",
         title: "Map 地址选择",
         title_en: "CitySelect",
       },
+      // #endif
     ],
   },
 ];

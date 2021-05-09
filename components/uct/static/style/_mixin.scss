@@ -1,6 +1,5 @@
-/* ==================
-     flex布局  
- ==================== */
+// flex布局  
+
 // flex(主轴,交叉轴,方向,换行,多轴线对齐)
 @mixin flex($justify: null, $align: null, $direction: null, $warp: null, $warpAlign: null) {
 	display: flex;
@@ -170,9 +169,7 @@
 	}
 }
 
-/* ==================
-      渐变色 
- ==================== */
+// 渐变色 
 
 @mixin linear-gradient($from, $to) {
 	/* Fallback for sad browsers */

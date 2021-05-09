@@ -1,46 +1,22 @@
 /* 主题颜色 */
-/* 深黑 */
-#dark-theme {
-  background: #000;
 
-  .bColor {
-    background: #333;
-    color: #999;
-  }
+/* 背景 */
+$uct-bg-color:#fff;
 
-  .borderColor {
-    border-color: #999;
-  }
-}
+/* 字体 */
 
-/* 粉红 */
-#red-theme {
-  background: #f9e5ee;
+/* 主要 */
+$uct-main-color:#e4e7ed;
 
-  .bColor {
-    background: #f9e5ee;
-    color: #8e5a54;
-  }
+/* 一般 */
+$uct-base-color:#e4e7ed;
 
-  .borderColor {
-    border-color: #8e5a54;
-  }
-}
+/* 次要 */
+$uct-tips-color:#e4e7ed;
 
-/* 橘黄 */
-#yellow-theme {
-  background: #f6e1c9;
-
-  .bColor {
-    background: #f6e1c9;
-    color: #8c6031;
-  }
-
-  .borderColor {
-    border-color: #8c6031;
-  }
-}
+/* 边框 */
 $uct-border-color:#e4e7ed;
+
 /* 主色 */
 $uct-black: black;
 $uct-white:#fff;

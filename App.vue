@@ -1,8 +1,8 @@
 <script>
 export default {
   methods: {},
-  onLaunch: function (options) {
-    console.info(this.$uct.config);
+  onLaunch() {
+    console.info(this.$uct);
   },
 };
 </script>

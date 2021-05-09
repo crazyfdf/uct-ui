@@ -2,10 +2,13 @@ import Vue from "vue";
 import App from "./App";
 import store from "@/common/store";
 import { router, RouterMount } from "@/common/router"; //路径换成自己的
-import uct from "@/components/uct";
-
-Vue.use(uct);
 Vue.use(router);
+
+import uct from "@/components/uct";
+Vue.use(uct);
+
+import storeMixin from "@/common/mixins/store.mixin.js";
+Vue.mixin(storeMixin);
 
 App.mpType = "app";
 

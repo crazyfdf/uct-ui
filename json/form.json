@@ -556,32 +556,11 @@
         "placeholder": "上传",
         "fileName": "image",
         "headers": {},
-        "action": "http://cdn.kcz66.com/upload-img.txt",
+        "action": "",
         "listType": "picture-card"
       },
       "model": "uploadImg_1611652615076",
       "key": "uploadImg_1611652615076",
-      "rules": [{
-        "required": false,
-        "message": "必填项"
-      }]
-    },
-    {
-      "type": "slider",
-      "label": "滑动输入条",
-      "options": {
-        "width": "100%",
-        "defaultValue": 0,
-        "disabled": false,
-        "hidden": false,
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "showInput": false
-      },
-      "model": "slider_1619662388838",
-      "key": "slider_1619662388838",
-      "help": "",
       "rules": [{
         "required": false,
         "message": "必填项"
@@ -604,11 +583,32 @@
         "data": "{}",
         "fileName": "file",
         "headers": {},
-        "action": "http://cdn.kcz66.com/uploadFile.txt",
+        "action": "",
         "placeholder": "上传"
       },
       "model": "uploadFile_1611652731545",
       "key": "uploadFile_1611652731545",
+      "rules": [{
+        "required": false,
+        "message": "必填项"
+      }]
+    },
+    {
+      "type": "slider",
+      "label": "滑动输入条",
+      "options": {
+        "width": "100%",
+        "defaultValue": 0,
+        "disabled": false,
+        "hidden": false,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "showInput": false
+      },
+      "model": "slider_1619662388838",
+      "key": "slider_1619662388838",
+      "help": "",
       "rules": [{
         "required": false,
         "message": "必填项"

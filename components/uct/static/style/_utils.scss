@@ -1,6 +1,6 @@
-/*utils 工具*/
+// utils 工具
 
-/* 字重 */
+// 字重 
 .f700 {
   font-weight: 700;
 }
@@ -9,7 +9,7 @@
   font-weight: 900;
 }
 
-/*按钮禁用*/
+// 按钮禁用
 .disabled {
   outline: 0 none;
   cursor: default !important;
@@ -19,7 +19,7 @@
   pointer-events: none;
 }
 
-/* start--Retina 屏幕下的 1px 边框--start */
+// start--Retina 屏幕下的 1px 边框--start 
 .uct-border,
 .uct-border-bottom,
 .uct-border-left,
@@ -35,9 +35,9 @@
 .uct-border-top-bottom:after,
 .uct-border-top:after,
 .uct-border:after {
-  /* #ifndef APP-NVUE */
+  // #ifndef APP-NVUE 
   content: " ";
-  /* #endif */
+  // #endif 
   position: absolute;
   left: 0;
   top: 0;
@@ -49,11 +49,11 @@
   width: 199.8%;
   height: 199.7%;
   transform: scale(0.5, 0.5);
-  border: 1px solid $uct-border-color;
+  border: 1px solid $u-border-color;
   z-index: 2;
 }
 
-/* 必填项 */
+// 必填项 
 .isRequired::before {
   content: "*";
   color: red;
@@ -70,97 +70,95 @@
   background: #bfbfbf;
 }
 
-/* 滚动区域 */
+// 滚动区域 
 .scroll-box {
   flex: 1;
   height: 100%;
   position: relative;
 }
 
-/* 内容区 */
+// 内容区 
 .content_box {
   flex: 1;
   overflow-y: auto;
 }
 
-/* ==================
-          flex布局(colorui里面也有相关基础样式)
- ==================== */
+// flex布局(colorui里面也有相关基础样式)
 
-/* x水平排列*/
+// x水平排列
 
-/* x水平靠左*/
+// x水平靠左
 .x-js {
   display: flex;
   justify-content: flex-start;
 }
 
-/* x水平居中*/
+// x水平居中
 .x-jc {
   display: flex;
   justify-content: center;
 }
 
-/* x水平靠右*/
+// x水平靠右
 .x-je {
   display: flex;
   justify-content: flex-end;
 }
 
-/*x两端且水平居中*/
+// x两端且水平居中
 .x-sbc {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/*x平分且水平居中*/
+// x平分且水平居中
 .x-sac {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-/*x水平靠上对齐*/
+// x水平靠上对齐
 .x-as {
   display: flex;
   align-items: flex-start;
 }
 
-/*x水平居中对齐*/
+// x水平居中对齐
 .x-ac {
   display: flex;
   align-items: center;
 }
 
-/*x水平靠下对齐*/
+// x水平靠下对齐
 .x-ae {
   display: flex;
   align-items: flex-end;
 }
 
-/*上下左右居中*/
+// 上下左右居中
 .x-c {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/*y竖直靠左*/
+// y竖直靠左
 .y-start {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-/*y竖直靠右*/
+// y竖直靠右
 .y-end {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 }
 
-/*y竖直居中*/
+// y竖直居中
 .y-f {
   display: flex;
   flex-direction: column;
@@ -174,7 +172,7 @@
   justify-content: space-between;
 }
 
-/*y竖直两端居中*/
+// y竖直两端居中
 .y-bc {
   display: flex;
   flex-direction: column;

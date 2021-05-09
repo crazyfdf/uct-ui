@@ -1,4 +1,4 @@
-/*偏移模型*/
+// 偏移模型
 @each $typeKey,
 $type in $spaceTypes {
 
@@ -32,7 +32,7 @@ $type in $spaceTypes {
   }
 }
 
-/* 颜色模型 */
+// 颜色模型
 @each $typeKey,
 $type in $colorTypes {
 
@@ -53,7 +53,7 @@ $type in $colorTypes {
   }
 }
 
-/* 边框模型 */
+// 边框模型
 
 @each $typeKey,
 $type in $borderTypes {
@@ -78,7 +78,7 @@ $type in $borderTypes {
   }
 }
 
-// /* 字体模型 */
+// // 字体模型
 // f12 font-size:12px;
 @for $i from 8 to 36 {
   .f#{$i} {
@@ -86,7 +86,7 @@ $type in $borderTypes {
   }
 }
 
-/*文本溢出省略号*/
+//文本溢出省略
 // more-t3
 @for $i from 1 to 5 {
 
@@ -109,7 +109,7 @@ $type in $borderTypes {
   }
 }
 
-/* 宽高 */
+// 宽高
 // @for $i from 1 to 375 {
 //   .w#{$i} {
 //     width: $i*2rpx;

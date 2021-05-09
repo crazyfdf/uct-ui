@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import "../../libs/utils/aop.js";
+import "../../tools/aop.js";
 
 /**
  * 表单业务组件，专门为表单而设计的，利用它可以快速实现表单验证、提交、增删改查等功能。
@@ -212,15 +212,13 @@ export default {
       if (this.url) {
         this.$uct.api(this.url, { ...data }).then((res) => {
           console.log(res);
-          if (res.code == "000") {
-            /**
-             * 表单提交事件
-             * @event submit
-             * @property {Object} data 表单提交数据
-             * @params  {Object} data
-             */
-            this.$emit("submit", data);
-          }
+          /**
+           * 表单提交事件
+           * @event submit
+           * @property {Object} data 表单提交数据
+           * @params  {Object} data
+           */
+          this.$emit("submit", data, res);
         });
       } else {
         /**

@@ -47,7 +47,7 @@
   ],
   "subPackages": [{
       // 演示-工具
-      "root": "pages/example/tools",
+      "root": "pages/tools",
       "pages": [{
           "path": "css",
           "name": "css",
@@ -131,7 +131,7 @@
       ]
     }, {
       // 演示-组件
-      "root": "pages/example/components",
+      "root": "pages/components",
       "pages": [{
         "path": "button",
         "name": "button",
@@ -220,7 +220,7 @@
     },
     {
       // 演示-模板页面
-      "root": "pages/example/templates",
+      "root": "pages/templates",
       "pages": [{
         "path": "index",
         "name": "index",
