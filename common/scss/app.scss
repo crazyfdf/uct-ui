@@ -1,8 +1,10 @@
+@import "uview-ui/index.scss";
+@import "@/components/uct/index.scss";
 // utils 工具
 
 // 字重 
-.f700 {
-  font-weight: 700;
+.f600 {
+  font-weight: 600;
 }
 
 .f900 {
@@ -19,7 +21,7 @@
   pointer-events: none;
 }
 
-// start--Retina 屏幕下的 1px 边框--start 
+// 边框
 .uct-border,
 .uct-border-bottom,
 .uct-border-left,

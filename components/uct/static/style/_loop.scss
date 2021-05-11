@@ -62,16 +62,16 @@ $type in $borderTypes {
   $size in $colorSizes {
     @for $i from 1 to 2 {
 
-      // bs-1-red border:1 solid red
+      // bs-1-red border:2rpx solid red
       .b#{$typeKey}-#{$i}-#{$sizeKey} {
-        border: $i*1px $type $size;
+        border: $i*2px $type $size;
       }
 
-      // bs-t-red1 border-top:1 solid red
+      // bs-t-1-red border-top:2rpx solid red
       @each $directionKey,
       $direction in $spaceDirections {
-        .b#{$typeKey}-#{$sizeKey}-#{$i}-#{$directionKey} {
-          border-#{$direction}: $i*1px $type $size;
+        .b#{$typeKey}-#{$directionKey}-#{$i}-#{$sizeKey} {
+          border-#{$direction}: $i*2px $type $size;
         }
       }
     }
@@ -82,7 +82,7 @@ $type in $borderTypes {
 // f12 font-size:12px;
 @for $i from 8 to 36 {
   .f#{$i} {
-    font-size: $i*1px;
+    font-size: $i*2rpx;
   }
 }
 
@@ -108,14 +108,3 @@ $type in $borderTypes {
     }
   }
 }
-
-// 宽高
-// @for $i from 1 to 375 {
-//   .w#{$i} {
-//     width: $i*2rpx;
-//   }
-
-//   .h#{$i} {
-//     height: $i*2rpx;
-//   }
-// }

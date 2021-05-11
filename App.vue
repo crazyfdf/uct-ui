@@ -8,6 +8,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "uview-ui/index.scss";
-@import "@/components/uct/index.scss";
+@import "@/common/scss/app.scss";
 </style>

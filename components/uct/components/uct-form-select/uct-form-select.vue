@@ -78,6 +78,7 @@
       <image :src="require('../../static/imgs/public/right.png')"
              style="width: 15rpx;height: 27rpx" />
     </view>
+
     <!-- 打开地图选择具体地址 -->
     <view class="uct-select x-sbc"
           style="width:100%"
@@ -87,7 +88,6 @@
       <image :src="require('../../static/imgs/public/right.png')"
              style="width: 15rpx;height: 27rpx" />
     </view>
-
   </view>
 </template>
 

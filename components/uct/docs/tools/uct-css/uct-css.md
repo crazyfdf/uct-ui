@@ -3,25 +3,24 @@
  * @Author: 祸灵
  * @LastEditors: 祸灵
  * @Date: 2021-04-14 17:20:51
- * @LastEditTime: 2021-04-20 14:30:29
+ * @LastEditTime: 2021-05-10 14:43:49
  * @Description: 
 -->
 # CSS 样式
 **注意**:UCT为了更好编写css，使用了scss预处理器，使用uct之前，请确认您的Hbuilder X已经安装了scss预处理器，一般情况下，相信您已经安装了。如果没有安装， 请在 Hbuilder X->工具->插件安装 中找到找到"scss/sass编译"安装即可，安装完毕如果不生效，请重启Hbuilder X。
 
+## Color 色彩
 
-
-##   Color 色彩
-
->UCT得出一套专有的调色板，在各个组件内部，使用统一的配色，为您的产品带来统一又鲜明的视觉效果。
-
+> UCT得出一套专有的调色板，在各个组件内部，使用统一的配色，为您的产品带来统一又鲜明的视觉效果。
 
 ### 平台差异说明
 
 | App | H5 | 微信小程序 |
 | --- | --- | --- |
 | √ | √ | √ |
+### 主题色
 
+`primary`，`success`，`error`，`warning`，`info`是uView的主题色，他们给人在视觉感受上分别对应于蓝色，绿色，红色，黄色，灰色。 
 
 ### 主色
 
@@ -53,9 +52,10 @@ $uct-yellow:#FFBF2B;
 
 /* 在您编写css的地方使用这些变量 */
 .title {
-	color: $uct-yellow;
+	color: $uct-cbase;
 	......
 }
+
 
 ~~~
 
@@ -64,28 +64,30 @@ $uct-yellow:#FFBF2B;
 推荐：UCT已通过`scss`生成了css样式，可直接在标题内使用class：
 
 ~~~
-/* 字体红色 */
+/* 字体基础色 */
 
-  <view class="c-red"></view>
+  <view class="c-cbase"></view>
 
 /* 背景红色 */
 
-  <view class="bc-red"></view>
+  <view class="bc-bgc"></view>
 
 /* 边框红色 */
 
-  <view class="bs-1-red"></view>
+  <view class="bs-1-brc"></view>
+
 ~~~
 
 或者：
+
 ~~~
 
 
 /* 在您编写css的地方使用这些变量 */
 .title {
-    color:$uct-yellow;
-    background-color:$uct-yellow;
-    border:$uct-yellow;
+    color:$uct-cbase;
+    background-color:$uct-bgc;
+    border:$uct-brc;
 }
 
 ~~~
@@ -148,42 +150,44 @@ $spaceSizes: (
 | App | H5 | 微信小程序 |
 | --- | --- | --- |
 | √ | √ | √ |
+
 全局：
-苹方字体 14px 默认字重 
+字体颜色
 ```
-page {
-    font-family: pingFang !important;  
-    font-size: 14px;
-    ::-webkit-scrollbar {
-        width: 0;
-        height: 0;
-        background-color: transparent;
-      }
-}
+// 主要
+$uct-cmain;
+// 一般
+$uct-cbase;
+// 次要
+$uct-ctips;
+// 占位
+$uct-clight;
 ```
 
 字重：
-f500
-正常-500，一般-700，重要-900
+一般-600，重要-900
+
 ```
 /\* 字重 \*/
-.f700 {
-    font-weight: 700;
+.f600 {
+    font-weight: 600;
 }
 .f900 {
     font-weight: 900;
 }
 ```
+
 字体大小：
 8px-36px
 ```
-// /\* 字体模型 \*/
+
+// 字体模型
 
 // f12 font-size:12px;
 
 @for $i from 8 to 36 {
 .f#{$i} {
-    font-size: $i*1px;
+    font-size: $i*2rpx;
   }
 }
 ```

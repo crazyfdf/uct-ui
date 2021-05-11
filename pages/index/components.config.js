@@ -75,12 +75,14 @@ export default [
         title: "Cascader 地区选择器",
         title_en: "Picker",
       },
+      // #ifndef H5
       {
         path: "/pages/components/form-item?type=treeSelect",
         icon: "picker",
         title: "TreeSelect 地图选择器",
         title_en: "Picker",
       },
+      // #endif
       {
         path: "/pages/components/form-item?type=rate",
         icon: "rate",
