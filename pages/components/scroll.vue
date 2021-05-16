@@ -5,6 +5,7 @@
     </uct-nav>
     <uct-scroll :tabs="tabs"
                 @success="init"
+                nav
                 v-model="tabIndex"
                 @change="changeTabIndex"
                 :tabRight="tabRight">

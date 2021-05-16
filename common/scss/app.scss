@@ -63,20 +63,19 @@
 
 // 格式化页面
 .page-box {
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
-  background: #bfbfbf;
 }
 
 // 滚动区域 
 .scroll-box {
+  position: relative;
   flex: 1;
   height: 100%;
-  position: relative;
 }
 
 // 内容区 

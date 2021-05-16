@@ -18,32 +18,6 @@
         "navigationStyle": "custom"
       }
     }
-    // // 演示-组件
-    // {
-    //   "path": "pages/index/components",
-    //   "name": "components",
-    //   "aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
-    //   "style": {
-    //     "navigationBarTitleText": "组件",
-    //     "navigationStyle": "custom"
-    //   }
-    // }, // 演示-工具
-    // {
-    //   "path": "pages/index/tools",
-    //   "name": "tools",
-    //   "style": {
-    //     "navigationBarTitleText": "工具",
-    //     "navigationStyle": "custom"
-    //   }
-    // }, // 演示-模板
-    // {
-    //   "path": "pages/index/templates",
-    //   "name": "templates",
-    //   "style": {
-    //     "navigationBarTitleText": "模板",
-    //     "navigationStyle": "custom"
-    //   }
-    // }
   ],
   "subPackages": [{
       // 演示-工具
@@ -222,10 +196,10 @@
       // 演示-模板页面
       "root": "pages/templates",
       "pages": [{
-        "path": "index",
-        "name": "index",
+        "path": "home",
+        "name": "home",
         "style": {
-          "navigationBarTitleText": "首页"
+          "navigationBarTitleText": "首页模板"
         }
       }, {
         "path": "webview",

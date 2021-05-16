@@ -119,6 +119,12 @@ export default [
       //   title: "MpShare 小程序分享",
       //   title_en: "MpShare",
       // },
+      {
+        path: "/pages/tools/vuex",
+        icon: "deepMerge",
+        title: "Vuex 操作",
+        title_en: "Vuex",
+      },
     ],
   },
   {
@@ -136,12 +142,6 @@ export default [
         icon: "debounce",
         title: "getLoc 获取地址",
         title_en: "GetLoc",
-      },
-      {
-        path: "/pages/tools/vuex",
-        icon: "deepMerge",
-        title: "Vuex 操作",
-        title_en: "Vuex",
       },
     ],
   },

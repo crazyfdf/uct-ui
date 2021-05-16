@@ -30,7 +30,7 @@ uni.scss:导入全局样式变量
 // uni.scss
 @import '@/common/scss/theme.scss';
 ```
-*** 具体配置介绍 ***
 
-## 配置
->common文件夹下的配置
+
+
+

@@ -1,5 +1,73 @@
 {
   "list": [{
+      "type": "tabs",
+      "label": "标签页布局",
+      "options": {
+        "tabBarGutter": null,
+        "type": "line",
+        "tabPosition": "top",
+        "size": "default",
+        "animated": true
+      },
+      "columns": [{
+          "value": "1",
+          "label": "选项1",
+          "list": [{
+            "type": "input",
+            "label": "输入框",
+            "icon": "icon-write",
+            "options": {
+              "type": "text",
+              "width": "100%",
+              "defaultValue": "",
+              "placeholder": "请输入",
+              "clearable": false,
+              "maxLength": null,
+              "hidden": false,
+              "disabled": false
+            },
+            "model": "input_1620808698084",
+            "key": "input_1620808698084",
+            "help": "",
+            "prefix": "",
+            "suffix": "",
+            "rules": [{
+              "required": false,
+              "message": "必填项"
+            }]
+          }]
+        },
+        {
+          "value": "2",
+          "label": "选项2",
+          "list": [{
+            "type": "textarea",
+            "label": "文本框",
+            "icon": "icon-edit",
+            "options": {
+              "width": "100%",
+              "minRows": 4,
+              "maxRows": 6,
+              "maxLength": null,
+              "defaultValue": "",
+              "clearable": false,
+              "hidden": false,
+              "disabled": false,
+              "placeholder": "请输入"
+            },
+            "model": "textarea_1620808699945",
+            "key": "textarea_1620808699945",
+            "help": "",
+            "rules": [{
+              "required": false,
+              "message": "必填项"
+            }]
+          }]
+        }
+      ],
+      "key": "tabs_1620807323216"
+    },
+    {
       "type": "card",
       "label": "卡片布局",
       "list": [{

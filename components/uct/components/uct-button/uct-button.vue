@@ -14,10 +14,11 @@
             @touchcancel="$emit('touchcancel', $event)"
             @touchend="$emit('touchend', $event)"
             @touchmove="$emit('touchmove', $event)"
-            @touchstart="$emit('touchstart', $event)">
+            @touchstart="$emit('touchstart', $event)"
+            :loading="rotate1">
       <view :class="rotate1?'rotate_loop':''">
-        <text v-if="rotate1"
-              class="cuIcon cuIcon-loading1"></text>
+        <!-- <text v-if="rotate1"
+              class="cuIcon cuIcon-loading1"></text> -->
         <view v-if="!rotate1">
           <!-- @slot 按钮内容文本 -->
           <slot name="text">{{ text }}</slot>
@@ -94,8 +95,6 @@ export default {
 </script>
 
 <style>
-@import url("./css/icon.css");
-
 button {
   outline: none; /* 或者 outline: 0 */
 }

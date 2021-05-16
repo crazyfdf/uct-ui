@@ -18,6 +18,15 @@
                   :_formConfig="formData.config"
                   :_formList="item.list"></uct-form>
       </uct-card>
+      <!-- <uct-form-tabs v-if="item.type == 'tabs'"
+                     :item="item.columns">
+        <uct-form @dataItem="dataItem"
+                  v-for="(item1,index1) in item.columns"
+                  :slot="index1"
+                  v-if="item1.list&&item1.list.length"
+                  :_formConfig="formData.config"
+                  :_formList="item1.list"></uct-form>
+      </uct-form-tabs> -->
       <!-- 分割线 -->
       <uct-divider v-if="item.type == 'divider'"
                    :item="item"></uct-divider>

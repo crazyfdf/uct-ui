@@ -1,7 +1,7 @@
 <!--
  * @Author: 祸灵
  * @Date: 2021-02-24 16:18:53
- * @LastEditTime: 2021-05-07 16:23:44
+ * @LastEditTime: 2021-05-12 16:11:06
  * @LastEditors: 祸灵
  * @Description: 通用列表组件
  * @FilePath: \uct-ui\components\uct-scroll\uct-scroll.vue
@@ -36,12 +36,14 @@
                        :url="item.url"
                        :api="item.api"
                        :more="item.more"
+                       :tabsHeight="tabsHeight"
+                       :nav="nav"
                        :fixed="item.fixed||item.fixed===undefined?true:false"
                        :tabIndex="tabNowIndex"
                        :index="index"
                        :downOption="downOption"
                        :upOption="upOption"
-                       :top="top1"
+                       :top="top"
                        :bottom="bottom">
         <!-- #ifdef MP -->
         <!-- @slot 支持列表内容插槽 -->
@@ -64,12 +66,13 @@
                        :url="item.url"
                        :api="item.api"
                        :more="item.more"
+                       :tabsHeight="tabsHeight"
                        :fixed="item.fixed||item.fixed===undefined?true:false"
                        :tabIndex="tabNowIndex"
                        :index="index"
                        :downOption="downOption"
                        :upOption="upOption"
-                       :top="top1"
+                       :top="top"
                        :bottom="bottom">
         <!-- @slot 支持列表内容插槽 -->
         <slot></slot>
@@ -103,6 +106,11 @@ export default {
     px: {
       type: Number,
       default: 20,
+    },
+    /** 页面是否有自定义的navbar */
+    nav: {
+      type: Boolean,
+      default: false,
     },
     /**
      * 是否开启懒加载
@@ -191,22 +199,6 @@ export default {
       get() {
         return this.value;
       },
-    },
-    /**
-     * @description: scroll的离页面顶部的距离，this.baseTop为导航栏的高度，单位rpx
-     * @param {*}
-     * @return {*}
-     */
-    top1(v) {
-      if (this.tabs.length > 1) {
-        return (
-          (this.$uct.config.navHeight + this.$uct.config.statusBarHeight) * 2 +
-          this.tabsHeight +
-          this.top
-        );
-      } else {
-        return this.top;
-      }
     },
   },
   methods: {

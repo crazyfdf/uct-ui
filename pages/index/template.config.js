@@ -11,10 +11,10 @@ export default [
     groupName_en: "Page",
     list: [
       {
-        path: "/pages/templates/index",
+        path: "/pages/templates/home",
         icon: "tabbar",
-        title: "Index 首页",
-        title_en: "Index",
+        title: "Home 首页",
+        title_en: "Home",
       },
 
       // {

@@ -5,6 +5,7 @@
     </uct-nav>
     <uct-scroll-item @success="init"
                      :tabIndex="false"
+                     nav
                      :url="scrollOption.url"
                      :api="scrollOption.api"
                      :more="scrollOption.more"

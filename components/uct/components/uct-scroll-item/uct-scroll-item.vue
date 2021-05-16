@@ -8,7 +8,7 @@
                   @up="upCallback"
                   :down="downOption"
                   :up="upOption"
-                  :top="top"
+                  :top="top1"
                   :bottom="bottom">
       <!-- @slot 列表内容 -->
       <slot></slot>
@@ -37,13 +37,24 @@ export default {
       type: Number | Boolean,
       default: false,
     },
+    /** 列表栏高度，单位rpx */
+    tabsHeight: {
+      type: Number,
+      default: 0,
+    },
+
+    /** 页面是否有自定义的navbar */
+    nav: {
+      type: Boolean,
+      default: false,
+    },
     /**
      * 是否通过fixed固定scroll的高度, 默认false
      * @values true,false //false时为relative
      */
     fixed: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     /** 列表下标 */
     index: {
@@ -120,6 +131,17 @@ export default {
      * @param {*}
      * @return {*}
      */
+    top1(v) {
+      let top = this.top;
+      if (this.tabIndex !== false) {
+        top += this.tabsHeight;
+      }
+      if (this.nav) {
+        top +=
+          (this.$uct.config.navHeight + this.$uct.config.statusBarHeight) * 2;
+      }
+      return top;
+    },
   },
   watch: {
     more: {
