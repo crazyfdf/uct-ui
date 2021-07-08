@@ -22,7 +22,6 @@
       </view>
       <view class='icon_img_tip'
             v-if='list.length == 0'>
-        <image src='/icon/icon_tip.png' />
         <view>快去添加地址吧~~</view>
       </view>
     </view>

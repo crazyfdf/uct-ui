@@ -40,7 +40,7 @@
          :markers='map.markers'
          @regionchange='mapChange'>
       <!-- <cover-view class='icon-position' style="margin-top: 100px;"> -->
-      <cover-image src="/static/imgs/public/icon_position.png"
+      <cover-image :src="map.iconPath"
                    class="icon-img"></cover-image>
       <!-- </cover-view> -->
     </map>
@@ -70,6 +70,7 @@
 </template>
 
 <script>
+  const iconPath='data:image/png;base64,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'
 export default {
   data() {
     return {
@@ -78,14 +79,14 @@ export default {
         longitude: 0,
         latitude: 0,
         showLocation: true,
-        iconPath: "/static/imgs/public/icon_position.png",
+        iconPath,
         width: 40,
         height: 40,
         scale: 16,
         controls: [
           {
             id: "map",
-            iconPath: "/static/imgs/public/icon_position.png",
+            iconPath,
             position: { left: 1200, top: 1200, width: 40, height: 40 },
             clickable: false,
           },

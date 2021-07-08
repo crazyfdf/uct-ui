@@ -5,6 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "@dcloudio/uni-ui": "^1.2.11",
+    "uctui": "^1.0.1",
     "uni-read-pages": "^1.0.5",
     "uni-simple-router": "^2.0.0-alpha.3",
     "uview-ui": "^1.8.3",

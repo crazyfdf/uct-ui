@@ -1,27 +1,27 @@
-import Vue from "vue";
-import App from "./App";
-import store from "@/common/store";
-import { router, RouterMount } from "@/common/router"; //路径换成自己的
+import Vue from 'vue';
+import App from './App';
+import store from '@/common/store';
+import { router, RouterMount } from '@/common/router'; //路径换成自己的
 Vue.use(router);
 
-import uct from "@/components/uct";
+import uct from 'uctui';
 Vue.use(uct);
 
-import storeMixin from "@/common/mixins/store.mixin.js";
+import storeMixin from '@/common/mixins/store.mixin.js';
 Vue.mixin(storeMixin);
 
-App.mpType = "app";
+App.mpType = 'app';
 
 Vue.prototype.$store = store;
 
 const app = new Vue({
-  store,
-  ...App,
+	store,
+	...App,
 });
 
 //v1.3.5起 H5端 你应该去除原有的app.$mount();使用路由自带的渲染方式
 // #ifdef H5
-RouterMount(app, router, "#app");
+RouterMount(app, router, '#app');
 // #endif
 
 // #ifndef H5
