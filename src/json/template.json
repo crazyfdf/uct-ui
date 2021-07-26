@@ -1,0 +1,36 @@
+{
+  "code": 1,
+  "msg": "模板数据",
+  "time": "1610691692",
+  "data": {
+    "tabbar": [{
+      "id": 52,
+      "type": "tabbar",
+      "category": "tabbar",
+      "name": "底部导航",
+      "content": {
+        "style": 1,
+        "color": "#333",
+        "activeColor": "#479FF7",
+        "list": [{
+          "name": "表单模板",
+          "image": "/static/imgs/tabbar/home.png",
+          "activeImage": "/static/imgs/tabbar/home_sel.png",
+          "path": "/pages/index/home",
+          "path_name": "",
+          "path_type": 2
+        }, {
+          "name": "列表模板",
+          "image": "/static/imgs/tabbar/live.png",
+          "activeImage": "/static/imgs/tabbar/live_sel.png",
+          "path": "/pages/index/live",
+          "path_name": "",
+          "path_type": 2
+        }],
+        "isshow": true,
+        "bgcolor": "#ffffff"
+      },
+      "decorate_id": 2
+    }]
+  }
+}
