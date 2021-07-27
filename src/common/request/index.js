@@ -6,18 +6,18 @@ export default function api(url, data = {}) {
 	let api = getApiObj(url);
 	request.interceptor.request((config, cancel) => {
 		/* 请求之前拦截器 */
-		if (api.auth) {
-			let token = uni.getStorageSync('token');
-			if (!token) {
-				uni.navigateTo({
-					url: '/pages/public/login',
-				});
-				throw '暂未登入,已阻止此次API请求~';
-			}
-		}
-		if (uni.getStorageSync('token')) {
-			config.header.token = uni.getStorageSync('token');
-		}
+		// if (api.auth) {
+		// 	let token = uni.getStorageSync('token');
+		// 	if (!token) {
+		// 		uni.navigateTo({
+		// 			url: '/pages/public/login',
+		// 		});
+		// 		throw '暂未登入,已阻止此次API请求~';
+		// 	}
+		// }
+		// if (uni.getStorageSync('token')) {
+		// 	config.header.token = uni.getStorageSync('token');
+		// }
 		config.data = {
 			...api.data,
 			...data,

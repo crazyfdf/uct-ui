@@ -1,3 +1,4 @@
+import config from '@/common/config.json';
 // uniapp在H5中各API的z-index值如下：
 /**
  * actionsheet: 999
@@ -8,13 +9,13 @@
  */
 
 export default {
-	toast: 10090,
-	noNetwork: 10080,
+	toast: config.toast,
+	noNetwork: config.noNetwork,
 	// popup包含popup，actionsheet，keyboard，picker的值
-	popup: 10075,
-	mask: 10070,
-	navbar: 980,
-	topTips: 975,
-	sticky: 970,
-	indexListSticky: 965,
-}
+	popup: config.popup,
+	mask: config.mask,
+	navbar: config.navbar,
+	topTips: config.topTips,
+	sticky: config.sticky,
+	indexListSticky: config.indexListSticky,
+};
