@@ -1,0 +1,56 @@
+/* ==================
+       自定义偏移变量   
+ ==================== */
+$spaceTypes: (m: margin, p: padding);
+$spaceDirections: (t: top, r: right, b: bottom, l: left);
+// 偏移变量大小
+$spaceSizes: (2: 2rpx,
+  4: 4rpx,
+  8: 8rpx,
+  10: 10rpx,
+  15: 15rpx,
+  20: 20rpx,
+  24: 24rpx,
+  30: 30rpx,
+  40:40rpx,
+  50:50rpx,
+  60:60rpx,
+  70:70rpx,
+  80:80rpx,
+  100:100rpx,
+  140:140rpx);
+
+/* ==================
+       自定义颜色变量   
+ ==================== */
+
+
+$colorTypes: (bc: background-color, c: color);
+$colorSizes: (
+  primary:$uct-primary,
+  success:$uct-success,
+  error:$uct-error,
+  warning:$uct-warning,
+  info:$uct-info,
+  bgc:$uct-bgc,
+  cmain:$uct-cmain,
+  cbase:$uct-cbase,
+  ctips:$uct-ctips,
+  clight:$uct-clight,
+  brc:$uct-brc,
+  black: $uct-black,
+  white:$uct-white,
+  gray: $uct-gray,
+  dark: $uct-dark,
+  blue: $uct-blue,
+  skyblue: $uct-skyblue,
+  green: $uct-green,
+  red: $uct-red,
+  orange: $uct-orange,
+  yellow:$uct-yellow);
+
+/* ==================
+       边框变量   
+ ==================== */
+
+$borderTypes: (s:solid, d:dashed);
