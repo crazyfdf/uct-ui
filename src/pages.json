@@ -19,7 +19,9 @@
       }
     }
   ],
-  "subPackages": [{
+  "subPackages": [
+    // 该注释是用来创建页面的，不可删除！
+    {
       // 演示-工具
       "root": "pages/tools",
       "pages": [{

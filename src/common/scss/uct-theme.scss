@@ -33,6 +33,10 @@ $uct-red: #FF0000;
 $uct-orange: #F79347;
 $uct-yellow:#FFBF2B;
 
+// 字体大小(8-36)*2rpx
+$fontSizeStart: 8;
+$fontSizeEnd:36;
+
 // 偏移变量大小
 $spaceSizes: (2: 2rpx,
   4: 4rpx,
