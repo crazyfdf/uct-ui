@@ -1,4 +1,4 @@
 {
-	"packages": ["src/packages/uctui/*"],
+	"packages": ["src/packages/*"],
 	"version": "1.0.4"
 }

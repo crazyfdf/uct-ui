@@ -2,6 +2,9 @@
 	"name": "uctui-hbuilder-cli",
 	"version": "0.1.0",
 	"private": true,
+	"workspaces": [
+		"src/packages/*"
+	],
 	"scripts": {
 		"serve": "npm run dev:h5",
 		"build": "npm run build:h5",
