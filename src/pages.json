@@ -4,7 +4,7 @@
 		"custom": {
 			"^uni-(.*)": "@dcloudio/uni-ui/components/uni-ui/lib/uni-$1/uni-$1.vue",
 			"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue", // 匹配node_modules内的vue文件
-			"^uct-(.*)": "@/uctui/components/uct-$1/uct-$1.vue" // 匹配组件目录内的vue文件
+			"^uct-(.*)": "@/packages/uctui/components/uct-$1/uct-$1.vue" // 匹配组件目录内的vue文件
 		}
 	},
 	"pages": [

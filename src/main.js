@@ -3,7 +3,7 @@ import App from './App';
 import store from '@/common/store';
 import { router, RouterMount } from '@/common/router'; //路径换成自己的
 import storeMixin from '@/common/mixins/store.mixin.js';
-import uct from 'uctui';
+import uct from 'packages/uctui';
 
 Vue.use(router);
 Vue.use(uct);
