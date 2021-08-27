@@ -1,7 +1,5 @@
 import config from '@/common/config.json';
 
-// 此版本发布于2021-04-21
-let version = config.version;
 let systemInfo = uni.getSystemInfoSync();
 
 function navHeight() {
@@ -25,9 +23,10 @@ function statusBarHeight() {
 }
 
 export default {
-	version: version,
+	// 此版本发布于2021-04-21
+	version: config.version,
 	// 主题名称
-	type: config.type,
+	type: ['primary', 'success', 'info', 'error', 'warning'],
 	navHeight: navHeight(),
 	statusBarHeight: statusBarHeight(),
 	systemInfo,

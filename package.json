@@ -62,7 +62,7 @@
     "core-js": "^3.6.5",
     "flyio": "^0.6.2",
     "regenerator-runtime": "^0.12.1",
-    "uctui": "^1.0.2",
+    "uctui": "^1.0.3",
     "uni-read-pages": "^1.0.5",
     "uni-simple-router": "^2.0.0-alpha.3",
     "uview-ui": "^1.8.3",

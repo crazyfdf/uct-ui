@@ -4,9 +4,6 @@
     "development": "",
     "production": ""
   },
-
-  "type": ["primary", "success", "info", "error", "warning"],
-
   "zIndex": {
     "toast": 10090,
     "noNetwork": 10080,
