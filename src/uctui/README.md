@@ -33,7 +33,7 @@ UCT UI，是[uni-app](https://uniapp.dcloud.io/)生态优秀的UI框架，全面
 
 ## 安装
 
-#### [**下载地址**](https://uct-1257264070.cos-website.ap-guangzhou.myqcloud.com/guide/uct-guide/install.html)
+#### [**下载地址**]()
 
 ## 快速上手
 
@@ -58,7 +58,7 @@ Vue.use(uct);
 
 ~~~
 /* uni.scss */
-@import 'uctui/static/style/\_theme.scss';
+@import 'uctui/static/style/_theme.scss';
 ~~~
 
 4.  `pages.json`配置easycom规则(按需引入)

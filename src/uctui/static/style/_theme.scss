@@ -1,0 +1,55 @@
+// 主题颜色
+$uct-primary:#2979FF;
+$uct-success:#19BE6B;
+$uct-error:#FA3534;
+$uct-warning:#FF9900;
+$uct-info:#909399;
+
+// 背景
+$uct-bgc:#F3F4F6;
+
+// 字体
+// 主要
+$uct-main:#303133;
+// 一般
+$uct-base:#606266;
+// 次要
+$uct-tips:#909399;
+// 占位
+$uct-light:#C0C4CC;
+
+// 边框
+$uct-brc:#E4E7ED;
+
+// 主色
+$uct-black: black;
+$uct-white:#fff;
+$uct-gray: #bbbbbb;
+$uct-dark: #777777;
+$uct-blue: #1464C7;
+$uct-skyblue: #4E92E7;
+$uct-green: #01b601;
+$uct-red: #FF0000;
+$uct-orange: #F79347;
+$uct-yellow:#FFBF2B;
+
+// 字体大小(8-35)*2rpx
+$fontSizeStart: 8;
+$fontSizeEnd:36;
+
+// 偏移变量大小
+$spaceSizes: (2: 2rpx,
+  4: 4rpx,
+  8: 8rpx,
+  10: 10rpx,
+  15: 15rpx,
+  20: 20rpx,
+  24: 24rpx,
+  30: 30rpx,
+  40:40rpx,
+  50:50rpx,
+  60:60rpx,
+  70:70rpx,
+  80:80rpx,
+  100:100rpx,
+  140:140rpx);

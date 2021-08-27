@@ -1,0 +1,4 @@
+{
+	"packages": ["src/uct/*"],
+	"version": "1.0.2"
+}
