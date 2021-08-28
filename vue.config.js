@@ -17,6 +17,10 @@ module.exports = {
 				}, true),
 			}),
 		],
+		devServer: {
+			port: 8080,
+			compress: true,
+		},
 		resolve: {
 			alias: {
 				'@': resolve('src'),

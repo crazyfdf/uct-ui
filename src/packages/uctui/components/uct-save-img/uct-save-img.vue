@@ -12,7 +12,7 @@
       </view>
     </u-mask>
     <!-- nvue不能使用uview -->
-    <u-popup ref="popup" v-if="!lazyLoad" type="center">
+    <uni-popup ref="popup" v-if="!lazyLoad" type="center">
       <view
         class="y-c"
         style="height: 100vh; margin-top: -80rpx"
@@ -25,7 +25,7 @@
         />
         <text class="mt20 f16 c-white">长按保存图片至相册</text>
       </view>
-    </u-popup>
+    </uni-popup>
   </view>
 </template>
 
