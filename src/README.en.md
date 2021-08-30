@@ -50,7 +50,7 @@ Vue.use(uct);
 ~~~
 /* App.vue */
 <style lang="scss">
-@import "uctui/index.scss";
+@import "@/packages/uctui/index.scss";
 </style>
 ~~~
 
@@ -58,7 +58,7 @@ Vue.use(uct);
 
 ~~~
 /* uni.scss */
-@import 'uctui/static/style/\_theme.scss';
+@import '@/packages/uctui/static/style/\_theme.scss';
 ~~~
 
 4.  `pages.json`配置easycom规则(按需引入)
@@ -69,7 +69,7 @@ Vue.use(uct);
     "easycom": {
         "autoscan": true,
         "custom": {
-          "^uct-(.*)": "uctui/components/uct-$1/uct-$1.vue" // 匹配components目录内的vue文件
+          "^uct-(.*)": "@/packages/uctui/components/uct-$1/uct-$1.vue" // 匹配components目录内的vue文件
         }
       },
 	// 此为本身已有的内容

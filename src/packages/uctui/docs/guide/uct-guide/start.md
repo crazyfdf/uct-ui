@@ -8,7 +8,7 @@ pages.json：
     "autoscan": true,
     "custom": {
       "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue", // 匹配node_modules内的vue文件
-      "^uct-(.*)": "uctui/components/uct-$1/uct-$1.vue" // 匹配components目录内的vue文件
+      "^uct-(.*)": "@/packages/uctui/components/uct-$1/uct-$1.vue" // 匹配components目录内的vue文件
     }
   },
 ```

@@ -1,284 +1,284 @@
 {
-	"easycom": {
-		"autoscan": true,
-		"custom": {
-			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
-			"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue", // 匹配node_modules内的vue文件
-			"^uct-(.*)": "@/packages/uctui/components/uct-$1/uct-$1.vue" // 匹配组件目录内的vue文件
-		}
-	},
-	"pages": [
-		// // 演示-组件
-		{
-			"path": "pages/index",
-			"name": "index",
-			"aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
-			"style": {
-				"navigationBarTitleText": "组件",
-				"navigationStyle": "custom"
-			}
-		}
-	],
-	"subPackages": [
-		{
-			// 演示-工具
-			"root": "pages/tools",
-			"pages": [
-				{
-					"path": "css",
-					"name": "css",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "CSS"
-					}
-				},
-				{
-					"path": "unit",
-					"name": "unit",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "unit"
-					}
-				},
-				{
-					"path": "timeFormat",
-					"name": "timeFormat",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "timeFormat"
-					}
-				},
-				{
-					"path": "debounce",
-					"name": "debounce",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "debounce"
-					}
-				},
-				{
-					"path": "deepClone",
-					"name": "deepClone",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "deepClone"
-					}
-				},
-				{
-					"path": "route",
-					"name": "route",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "route"
-					}
-				},
-				{
-					"path": "rule",
-					"name": "rule",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "rule"
-					}
-				},
-				{
-					"path": "callPhone",
-					"name": "callPhone",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "callPhone"
-					}
-				},
-				{
-					"path": "getLoc",
-					"name": "getLoc",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "getLoc"
-					}
-				},
-				{
-					"path": "vuex",
-					"name": "vuex",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "vuex"
-					}
-				}
-			]
-		},
-		{
-			// 演示-组件
-			"root": "pages/components",
-			"pages": [
-				{
-					"path": "button",
-					"name": "button",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "按钮"
-					}
-				},
-				{
-					"path": "save-img",
-					"name": "save-img",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "分享图"
-					}
-				},
-				{
-					"path": "empty",
-					"name": "empty",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "空页面"
-					}
-				},
-				{
-					"path": "form",
-					"name": "form",
-					"style": {
-						"navigationBarTitleText": "表单",
-						"navigationStyle": "custom"
-					}
-				},
-				{
-					"path": "form-item",
-					"name": "form-item",
-					"style": {
-						"navigationBarTitleText": "子表单",
-						"navigationStyle": "custom"
-					}
-				},
-				{
-					"path": "scroll",
-					"name": "scroll",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "列表"
-					}
-				},
-				{
-					"path": "scroll-item",
-					"name": "scroll-item",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "子列表"
-					}
-				},
-				{
-					"path": "card",
-					"name": "card",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "卡片"
-					}
-				},
-				{
-					"path": "divider",
-					"name": "divider",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "分割线"
-					}
-				},
-				{
-					"path": "navbar",
-					"name": "navbar",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "导航栏"
-					}
-				},
-				{
-					"path": "tabbar",
-					"name": "tabbar",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "列表导航栏"
-					}
-				},
-				{
-					"path": "details",
-					"name": "details",
-					"style": {
-						"navigationStyle": "custom",
-						"navigationBarTitleText": "详情"
-					}
-				}
-			]
-		},
-		{
-			// 演示-模板页面
-			"root": "pages/templates",
-			"pages": [
-				{
-					"path": "home",
-					"name": "home",
-					"style": {
-						"navigationBarTitleText": "首页模板"
-					}
-				},
-				{
-					"path": "webview",
-					"style": {
-						"navigationBarTitleText": "webview" //外部链接
-					}
-				},
-				{
-					"path": "login",
-					"name": "login",
-					"style": {
-						"navigationBarTitleText": "登入"
-					}
-				},
-				{
-					"path": "map",
-					"name": "map",
-					"style": {
-						"navigationBarTitleText": "地图"
-					}
-				},
-				{
-					"path": "address-search",
-					"name": "address-search",
-					"style": {
-						"navigationBarTitleText": "搜索地址"
-					}
-				}
-			]
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#479ff7",
-		"backgroundColor": "#FFFFFF",
-		"backgroundColorTop": "#FFFFFF" // iOS APP真机bounce回弹区域默认灰色,建议统一重置为白色
-	}
-	// "tabBar": {
-	//   "color": "#909399",
-	//   "selectedColor": "#303133",
-	//   "backgroundColor": "#FFFFFF",
-	//   "borderStyle": "black",
-	//   "list": [{
-	//       "pagePath": "pages/index/components",
-	//       "iconPath": "/static/imgs/tabbar/component.png",
-	//       "selectedIconPath": "static/imgs/tabbar/component_select.png",
-	//       "text": "组件"
-	//     },
-	//     {
-	//       "pagePath": "pages/index/tools",
-	//       "iconPath": "static/imgs/tabbar/template.png",
-	//       "selectedIconPath": "static/imgs/tabbar/template_select.png",
-	//       "text": "工具"
-	//     },
-	//     {
-	//       "pagePath": "pages/index/templates",
-	//       "iconPath": "static/imgs/tabbar/template.png",
-	//       "selectedIconPath": "static/imgs/tabbar/template_select.png",
-	//       "text": "模板"
-	//     }
-	//   ]
-	// }
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
+      "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue", // 匹配node_modules内的vue文件
+      "^uct-(.*)": "@/packages/uctui/components/uct-$1/uct-$1.vue" // 匹配组件目录内的vue文件
+    }
+  },
+  "pages": [
+    // // 演示-组件
+    {
+      "path": "pages/index",
+      "name": "index",
+      "aliasPath": "/", //对于h5端你必须在首页加上aliasPath并設置为/
+      "style": {
+        "navigationBarTitleText": "组件",
+        "navigationStyle": "custom"
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      // 演示-工具
+      "root": "pages/tools",
+      "pages": [
+        {
+          "path": "css",
+          "name": "css",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "CSS"
+          }
+        },
+        {
+          "path": "unit",
+          "name": "unit",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "unit"
+          }
+        },
+        {
+          "path": "timeFormat",
+          "name": "timeFormat",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "timeFormat"
+          }
+        },
+        {
+          "path": "debounce",
+          "name": "debounce",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "debounce"
+          }
+        },
+        {
+          "path": "deepClone",
+          "name": "deepClone",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "deepClone"
+          }
+        },
+        {
+          "path": "route",
+          "name": "route",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "route"
+          }
+        },
+        {
+          "path": "rule",
+          "name": "rule",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "rule"
+          }
+        },
+        {
+          "path": "callPhone",
+          "name": "callPhone",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "callPhone"
+          }
+        },
+        {
+          "path": "getLoc",
+          "name": "getLoc",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "getLoc"
+          }
+        },
+        {
+          "path": "vuex",
+          "name": "vuex",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "vuex"
+          }
+        }
+      ]
+    },
+    {
+      // 演示-组件
+      "root": "pages/components",
+      "pages": [
+        {
+          "path": "button",
+          "name": "button",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "按钮"
+          }
+        },
+        {
+          "path": "save-img",
+          "name": "save-img",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "分享图"
+          }
+        },
+        {
+          "path": "empty",
+          "name": "empty",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "空页面"
+          }
+        },
+        {
+          "path": "form",
+          "name": "form",
+          "style": {
+            "navigationBarTitleText": "表单",
+            "navigationStyle": "custom"
+          }
+        },
+        {
+          "path": "form-item",
+          "name": "form-item",
+          "style": {
+            "navigationBarTitleText": "子表单",
+            "navigationStyle": "custom"
+          }
+        },
+        {
+          "path": "scroll",
+          "name": "scroll",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "列表"
+          }
+        },
+        {
+          "path": "scroll-item",
+          "name": "scroll-item",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "子列表"
+          }
+        },
+        {
+          "path": "card",
+          "name": "card",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "卡片"
+          }
+        },
+        {
+          "path": "divider",
+          "name": "divider",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "分割线"
+          }
+        },
+        {
+          "path": "navbar",
+          "name": "navbar",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "导航栏"
+          }
+        },
+        {
+          "path": "tabbar",
+          "name": "tabbar",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "列表导航栏"
+          }
+        },
+        {
+          "path": "details",
+          "name": "details",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTitleText": "详情"
+          }
+        }
+      ]
+    },
+    {
+      // 演示-模板页面
+      "root": "pages/templates",
+      "pages": [
+        {
+          "path": "home",
+          "name": "home",
+          "style": {
+            "navigationBarTitleText": "首页模板"
+          }
+        },
+        {
+          "path": "webview",
+          "style": {
+            "navigationBarTitleText": "webview" //外部链接
+          }
+        },
+        {
+          "path": "login",
+          "name": "login",
+          "style": {
+            "navigationBarTitleText": "登入"
+          }
+        },
+        {
+          "path": "map",
+          "name": "map",
+          "style": {
+            "navigationBarTitleText": "地图"
+          }
+        },
+        {
+          "path": "address-search",
+          "name": "address-search",
+          "style": {
+            "navigationBarTitleText": "搜索地址"
+          }
+        }
+      ]
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#479ff7",
+    "backgroundColor": "#FFFFFF",
+    "backgroundColorTop": "#FFFFFF" // iOS APP真机bounce回弹区域默认灰色,建议统一重置为白色
+  }
+  // "tabBar": {
+  //   "color": "#909399",
+  //   "selectedColor": "#303133",
+  //   "backgroundColor": "#FFFFFF",
+  //   "borderStyle": "black",
+  //   "list": [{
+  //       "pagePath": "pages/index/components",
+  //       "iconPath": "/static/imgs/tabbar/component.png",
+  //       "selectedIconPath": "static/imgs/tabbar/component_select.png",
+  //       "text": "组件"
+  //     },
+  //     {
+  //       "pagePath": "pages/index/tools",
+  //       "iconPath": "static/imgs/tabbar/template.png",
+  //       "selectedIconPath": "static/imgs/tabbar/template_select.png",
+  //       "text": "工具"
+  //     },
+  //     {
+  //       "pagePath": "pages/index/templates",
+  //       "iconPath": "static/imgs/tabbar/template.png",
+  //       "selectedIconPath": "static/imgs/tabbar/template_select.png",
+  //       "text": "模板"
+  //     }
+  //   ]
+  // }
 }
