@@ -23,7 +23,7 @@ UCT UI，是[uni-app](https://uniapp.dcloud.io/)生态优秀的UI框架，全面
 也可以通过**微信**扫码，查看最佳的演示效果。  
 
 
-##链接
+## 链接
 
 *   [官方文档](https://uct-1257264070.cos-website.ap-guangzhou.myqcloud.com/)
 *   [更新日志](https://uct-1257264070.cos-website.ap-guangzhou.myqcloud.com/guide/uct-guide/update-log.html)
@@ -58,7 +58,7 @@ Vue.use(uct);
 
 ~~~
 /* uni.scss */
-@import '@/packages/uctui/static/style/\_theme.scss';
+@import '@/packages/uctui/static/style/_theme.scss';
 ~~~
 
 4.  `pages.json`配置easycom规则(按需引入)
