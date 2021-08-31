@@ -1,28 +1,28 @@
 // 主题颜色
-$uct-primary:$u-type-primary;
-$uct-success:$u-type-success;
-$uct-error:$u-type-error;
-$uct-warning:$u-type-warning;
-$uct-info:$u-type-info;
+$uct-primary:#2979FF;
+$uct-success:#19BE6B;
+$uct-error:#FA3534;
+$uct-warning:#FF9900;
+$uct-info:#909399;
 
 // 背景
-$uct-bgc:$u-bg-color;
+$uct-bgc:#F3F4F6;
 
 // 字体
 // 主要
-$uct-main:$u-main-color;
-// 内容
-$uct-base:$u-content-color;
-// 提示
-$uct-tips:$u-tips-color;
+$uct-main:#303133;
+// 一般
+$uct-base:#606266;
+// 次要
+$uct-tips:#909399;
 // 占位
-$uct-light:$u-light-color;
+$uct-light:#C0C4CC;
 
 // 边框
-$uct-brc:$u-border-color;
+$uct-brc:#E4E7ED;
 
 // 主色
-$uct-black: black;
+$uct-black: #000;
 $uct-white:#fff;
 $uct-gray: #bbbbbb;
 $uct-dark: #777777;
@@ -53,4 +53,3 @@ $spaceSizes: (2: 2rpx,
   80:80rpx,
   100:100rpx,
   140:140rpx);
-
